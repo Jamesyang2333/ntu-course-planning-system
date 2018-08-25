@@ -1,0 +1,65 @@
+
+/*-----------------------
+[3. Demo-1 CSS]
+--------------------------*/
+#demo1 {padding-top: 130px;}	
+.skill{overflow:hidden;}
+.skill {
+  margin-bottom: 0;
+  padding-top: 50px;
+}
+.service-text{margin-top:30px;}
+.skill .progress .lead {
+  color: #444;
+  font-size: 14px;
+  font-weight: 400;
+  left: 0;
+  position: absolute;
+  top: -23px;
+  z-index: 99;
+}
+.skill .progress {
+  background-color: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  height: 5px;
+  margin-bottom: 50px;
+  overflow: visible;
+  position: relative;
+}
+.skill .progress-bar span {
+  background: #333 none repeat scroll 0 0;
+  float: right;
+  font-size: 11px;
+  margin-right: 10px;
+  margin-top: -26px;
+  position: relative;
+  padding: 0 5px;
+}
+.skill .progress-bar > span:before,.skill .progress-bar > span:after{
+  border: medium solid transparent;
+  content: " ";
+  height: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  width: 0;
+}
+.skill .progress-bar > span:before{
+  border-top-color: #333;
+  border-width: 5px;
+  left: 50%;
+  margin-left: -5px;
+}
+.demo1 .skill .progress:nth-child(1) .progress-bar {
+  background: #23C6EC;
+}
+.demo1 .skill .progress:nth-child(2) .progress-bar {
+  background: #EB3B60;
+}
+.demo1 .skill .progress:nth-child(3) .progress-bar {
+  background: #2BCDC0;
+}
+.demo1 .skill .progress:nth-child(4) .progress-bar {
+  background: #1116EC;
+}

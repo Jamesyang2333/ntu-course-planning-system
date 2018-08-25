@@ -1,0 +1,676 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static %}
+
+
+{% block body_block %}
+    <div class="container">
+    <section style="padding-bottom: 0px;padding-top: 10%">
+        <div class="row">
+    <div class="alert alert-info alert-dismissible" id="myAlert">
+    <a href="#" class="close">&times;</a>
+    <strong>Step 1</strong> Choose courses from the catalogue or type in course codes manually.
+  </div>
+        <div class="alert alert-warning alert-dismissible" id="myAlert">
+    <a href="#" class="close">&times;</a>
+    <strong>Step 2</strong>  (Optional) Tick the time slots for which you are not available.
+  </div>
+
+        <div class="alert alert-success alert-dismissible" id="myAlert">
+    <a href="#" class="close">&times;</a>
+    <strong>Step 3</strong> Click the button "PLAN" and your desired index combinations will be shown in less than a second!
+  </div>
+<script>
+$(document).ready(function(){
+    $(".close").click(function(){
+        $("#myAlert").alert("close");
+    });
+});
+</script>
+            </div>
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+    <section style="padding-top:0%">
+    <form action="/timetable/search/" method="post">
+    <div class="row" >
+        <div class="col-md-4  ">
+            <div class="panel panel-default" style="background-color:#F0E5DF;border-color:#F0E5DF;height: 100%px">
+
+                <div class="form-group form-group-sm panel-body">
+                <div class="row">
+                <div class="col-md-6">
+                    <label>Courses:</label>
+                        {% csrf_token %}
+
+                    <p><input class="form-control" type="text" id='a' name="text" value="{{ a }}"></p>
+                    <p><input class="form-control" type="text" id='b' name="text" value="{{ b }}"></p>
+                    <p><input class="form-control" type="text" id='c' name="text" value="{{ c }}"></p>
+                    <p><input class="form-control" type="text" id='d' name="text" value="{{ d }}"></p>
+                    <p><input class="form-control" type="text" id='e' name="text" value="{{ e }}"></p>
+                    <p><input class="form-control" type="text" id='f' name="text" value="{{ f }}"></p>
+                    <p><input class="form-control" type="text" id='g' name="text" value="{{ g }}"></p>
+                    <p><input class="form-control" type="text" id='h' name="text" value="{{ h }}"></p>
+                    <p><input class="form-control" type="text" id='i' name="text" value="{{ i }}"></p>
+                    <p><input class="form-control" type="text" id='j' name="text" value="{{ j }}"></p>
+                </div>
+
+<div class="col-md-6">
+                    <label>Time not available:</label>
+
+                        <div class="checkbox" style="font-size: small;height:250px;overflow:scroll;background-color: #FFFFFF">
+                            <table class="table table-bordered" >
+                                <tr>
+                                    <td></td>
+                                    <td>M</td>
+                                    <td>T</td>
+                                    <td>W</td>
+                                    <td>T</td>
+                                    <td>F</td>
+
+                                </tr>
+                    <tr>
+                        <script>
+                            $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+                        </script>
+                        <td>8:30 - 9:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 8:30-9:30" id="0" value="00"  aria-label="..."  {{check00}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 8:30-9:30" id="12" value="12"  aria-label="..."  {{check12}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 8:30-9:30" id="24" value="24"  aria-label="..."  {{check24}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 8:30-9:30" id="36" value="36"  aria-label="..."  {{check36}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 8:30-9:30" id="48" value="48"  aria-label="..."  {{check48}}>
+                    </label></td>
+
+                    </tr>
+                                    <td>9:30 - 10:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 9:30-10:30" id="1" value="01"  aria-label="..."  {{check01}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 9:30-10:30" id="13" value="13"  aria-label="..."  {{check13}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 9:30-10:30" id="25" value="25"  aria-label="..."  {{check25}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 9:30-10:30" id="37" value="37"  aria-label="..."  {{check37}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 9:30-10:30" id="49" value="49"  aria-label="..."  {{check49}}>
+                    </label></td>
+
+                    </tr>
+                            <tr>
+                                <td>10:30 - 11:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 10:30-11:30" id="2" value="02"  aria-label="..."  {{check02}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 10:30-11:30" id="14" value="14"  aria-label="..."  {{check14}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 10:30-11:30" id="26" value="26"  aria-label="..."  {{check26}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 10:30-11:30" id="38" value="38"  aria-label="..."  {{check38}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 10:30-11:30" id="50" value="50"  aria-label="..."  {{check50}}>
+                    </label></td>
+
+                    </tr>
+                                <tr>
+                                     <td>11:30 - 12:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 11:30-12:30" id="3" value="03"  aria-label="..."  {{check03}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 11:30-12:30" id="15" value="15"  aria-label="..."  {{check15}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 11:30-12:30" id="27" value="27"  aria-label="..."  {{check27}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 11:30-12:30" id="39" value="39"  aria-label="..."  {{check39}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 11:30-12:30" id="51" value="51"  aria-label="..."  {{check51}}>
+                    </label></td>
+
+                    </tr>
+                                
+                            <tr>
+                                <td>12:30 - 13:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 12:30-13:30" id="4" value="04"  aria-label="..."  {{check04}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 12:30-13:30" id="16" value="16"  aria-label="..."  {{check16}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 12:30-13:30" id="28" value="28"  aria-label="..."  {{check28}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 12:30-13:30" id="40" value="40"  aria-label="..."  {{check40}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 12:30-13:30" id="52" value="52"  aria-label="..."  {{check52}}>
+                    </label></td>
+
+                    </tr>
+                                
+                                
+                                <tr>
+                                    <td>13:30 - 14:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 13:30-14:30" id="5" value="05"  aria-label="..."  {{check05}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 13:30-14:30" id="17" value="17"  aria-label="..."  {{check17}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 13:30-14:30" id="29" value="29"  aria-label="..."  {{check29}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 13:30-14:30" id="41" value="41"  aria-label="..."  {{check41}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 13:30-14:30" id="53" value="53"  aria-label="..."  {{check53}}>
+                    </label></td>
+
+                    </tr>
+                                
+                                
+                            <tr>
+                                <td>14:30 - 15:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 14:30-15:30" id="6" value="06"  aria-label="..."  {{check06}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 14:30-15:30" id="18" value="18"  aria-label="..."  {{check18}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 14:30-15:30" id="30" value="30"  aria-label="..."  {{check30}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 14:30-15:30" id="42" value="42"  aria-label="..."  {{check42}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 14:30-15:30" id="54" value="54"  aria-label="..."  {{check54}}>
+                    </label></td>
+
+                    </tr>
+                                
+                                <tr>
+                                     <td>15:30 - 16:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 16:30-16:30" id="7" value="07"  aria-label="..."  {{check07}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 16:30-16:30" id="19" value="19"  aria-label="..."  {{check19}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 16:30-16:30" id="31" value="31"  aria-label="..."  {{check31}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 16:30-16:30" id="43" value="43"  aria-label="..."  {{check43}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 16:30-16:30" id="55" value="55"  aria-label="..."  {{check55}}>
+                    </label></td>
+
+                    </tr>
+                                
+                                
+                                
+                            <tr>
+                                 <td>16:30 - 17:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 16:30-17:30" id="8" value="08"  aria-label="..."  {{check08}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 16:30-17:30" id="20" value="20"  aria-label="..."  {{check20}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 16:30-17:30" id="32" value="32"  aria-label="..."  {{check32}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 16:30-17:30" id="44" value="44"  aria-label="..."  {{check44}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 16:30-17:30" id="56" value="56"  aria-label="..."  {{check56}}>
+                    </label></td>
+
+                    </tr>
+                                
+                                <tr>
+                                     <td>17:30 - 18:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 17:30-18:30" id="9" value="09"  aria-label="..."  {{check09}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 17:30-18:30" id="21" value="21"  aria-label="..."  {{check21}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 17:30-18:30" id="33" value="33"  aria-label="..."  {{check33}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 17:30-18:30" id="45" value="45"  aria-label="..."  {{check45}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 17:30-18:30" id="57" value="57"  aria-label="..."  {{check57}}>
+                    </label></td>
+
+                    </tr>
+                                
+                            <tr>
+                                <td>18:30 - 19:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 18:30-19:30" id="10" value="10"  aria-label="..."  {{check10}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 18:30-19:30" id="22" value="22"  aria-label="..."  {{check22}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 18:30-19:30" id="34" value="34"  aria-label="..."  {{check34}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 18:30-19:30" id="46" value="46"  aria-label="..."  {{check46}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 18:30-19:30" id="58" value="58"  aria-label="..."  {{check58}}>
+                    </label></td>
+                    </tr>
+                            
+                            <tr>
+                                <td>19:30 - 20:30</td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 19:30-20:30" id="11" value="11"  aria-label="..."  {{check11}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 19:30-20:30" id="23" value="23"  aria-label="..."  {{check23}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 19:30-20:30" id="35" value="35"  aria-label="..."  {{check35}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 19:30-20:30" id="47" value="47"  aria-label="..."  {{check47}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 19:30-20:30" id="59" value="59"  aria-label="..."  {{check59}}>
+                    </label></td>
+                    </tr>
+                            
+                            
+                            
+                            
+                            </table>
+                            </div>
+                    </div>
+
+                    <p><input class="btn btn-default" type="submit" value="PLAN"></p>
+                </div>
+                    {% block lastpage %}
+                        {% endblock %}
+
+                </div>
+    </div>
+
+        </div>
+        <div class="col-md-8">
+<div class=" panel panel-default" style="background-color:#F0E5DF;height: 100%;border-color:#F0E5DF">
+    <div class="panel-body">
+            {% block display_block %}
+
+
+
+<div class="col-md-6">
+
+
+  <label for="continent">Options:</label>
+  <select class="selectpicker" style="width: 100%;height:430px" size="30" id="continent" onchange="countryChange(this);">
+    <option value="Computer Science">Computer Science</option>
+      <option></option>
+    <option value="Top 20 PE">Top 20 Oversubscribed General Prescribed Electives past subscription rate</option>
+    <option value="Top 20 UE">Top 20 Oversubscribed Unrestricted Electives past subscription rate</option>
+    <option></option>
+<option></option>
+<option value="">---All General Prescribed Electives by Exam Date---</option>
+<option value="PEXAM;23-NOV-2018;">GERPE 23-NOV-2018</option>
+<option value="PEXAM;26-NOV-2018;">GERPE 26-NOV-2018</option>
+<option value="PEXAM;27-NOV-2018;">GERPE 27-NOV-2018</option>
+<option value="PEXAM;28-NOV-2018;">GERPE 28-NOV-2018</option>
+<option value="PEXAM;29-NOV-2018;">GERPE 29-NOV-2018</option>
+<option value="PEXAM;03-DEC-2018;">GERPE 03-DEC-2018</option>
+<option value="PEXAM;04-DEC-2018;">GERPE 04-DEC-2018</option>
+<option value="PEXAM;05-DEC-2018;">GERPE 05-DEC-2018</option>
+<option value="PEXAM;06-DEC-2018;">GERPE 06-DEC-2018</option>
+<option value=""> </option>
+<option value="">---All Unrestricted Electives by Exam Date---</option>
+<option value="GEXAM;23-NOV-2018;">UE 23-NOV-2018</option>
+<option value="GEXAM;26-NOV-2018;">UE 26-NOV-2018</option>
+<option value="GEXAM;27-NOV-2018;">UE 27-NOV-2018</option>
+<option value="GEXAM;28-NOV-2018;">UE 28-NOV-2018</option>
+<option value="GEXAM;29-NOV-2018;">UE 29-NOV-2018</option>
+<option value="GEXAM;30-NOV-2018;">UE 30-NOV-2018</option>
+<option value="GEXAM;03-DEC-2018;">UE 03-DEC-2018</option>
+<option value="GEXAM;04-DEC-2018;">UE 04-DEC-2018</option>
+<option value="GEXAM;05-DEC-2018;">UE 05-DEC-2018</option>
+<option value="GEXAM;06-DEC-2018;">UE 06-DEC-2018</option>
+<option></option>
+<option value="HW0001;">English Proficiency</option>
+<option></option>
+<option value="GERP;AHSS;">General Education in Art, Humanities and Social Sciences</option>
+<option value="GERP;BM;">General Education in Business &amp; Management</option>
+<option value="GERP;STS;">General Education in Science, Technology &amp; Society</option>
+<option value="GERP;LS;">General Education in Liberal Studies</option>
+<option value="GERP;LA;">General Education in Liberal Arts</option>
+<option></option>
+<option value="MLOAD;AHIS;">Minor in Art History</option>
+<option value="MLOAD;APY;">Minor in Applied Physics</option>
+<option value="MLOAD;CCW;">Minor in Chinese Creative Writing</option>
+<option value="MLOAD;CDA;">Minor in Computing And Data Analysis</option>
+<option value="MLOAD;CHEM;">Minor in Chemistry And Biological Chemistry</option>
+<option value="MLOAD;CHIN;">Minor in Chinese</option>
+<option value="MLOAD;CM;">Minor in Computing</option>
+<option value="MLOAD;CS;">Minor in Communication Studies</option>
+<option value="MLOAD;CW;">Minor in Creative Writing</option>
+<option value="MLOAD;DRA;">Minor in Drama And Performance</option>
+<option value="MLOAD;ECHE;">Minor in Early Childhood Education</option>
+<option value="MLOAD;ECON;">Minor in Economics</option>
+<option value="MLOAD;EDU;">Minor in Education Studies</option>
+<option value="MLOAD;ELIT;">Minor in English Literature</option>
+<option value="MLOAD;ENGY;">Minor in Energy</option>
+<option value="MLOAD;ENT;">Minor in Entrepreneurship</option>
+<option value="MLOAD;ENUS;">Minor in Environmental And Urban Studies</option>
+<option value="MLOAD;ENV;">Minor in Environmental Management</option>
+<option value="MLOAD;ENVS;">Minor in Environmental Sustainability</option>
+<option value="MLOAD;FIN;">Minor in Finance</option>
+<option value="MLOAD;FS;">Minor in Film Studies</option>
+<option value="MLOAD;GA;">Minor in Global Asia</option>
+<option value="MLOAD;HIST;">Minor in History</option>
+<option value="MLOAD;HPA;">Minor in Public Administration</option>
+<option value="MLOAD;ICT;">Minor in Information-Communication Technology</option>
+<option value="MLOAD;LFSC;">Minor in Life Sciences</option>
+<option value="MLOAD;LING;">Minor in Linguistics And Multilingual Studies</option>
+<option value="MLOAD;MATH;">Minor in Mathematics</option>
+<option value="MLOAD;MUS;">Minor in Music</option>
+<option value="MLOAD;NBS;">Minor in Business</option>
+<option value="MLOAD;PHIL;">Minor in Philosophy</option>
+<option value="MLOAD;PHY;">Minor in Physics</option>
+<option value="MLOAD;PPGA;">Minor in Public Policy And Global Affairs</option>
+<option value="MLOAD;PSY;">Minor in Psychology</option>
+<option value="MLOAD;RMI;">Minor in Risk Management And Insurance</option>
+<option value="MLOAD;SC;">Minor in Strategic Communication</option>
+<option value="MLOAD;SOC;">Minor in Sociology</option>
+<option value="MLOAD;SSCI;">Minor in Sport  Science</option>
+<option value="MLOAD;SYMT;">Minor in Systems Management</option>
+<option value="MLOAD;STS;">Minor in Science, Technology And Society</option>
+<option value="MLOAD;TRAN;">Minor in Translation</option>
+<option value=""> </option>
+<option value="">---All Unrestricted Electives---</option>
+<option value="GLOAD;ACC;">Accountancy</option>
+<option value="GLOAD;ADM;">Art, Design &amp; Media</option>
+<option value="GLOAD;BIE;">Bioengineering</option>
+<option value="GLOAD;BS;">Biological Sciences</option>
+<option value="GLOAD;BUS;">Business</option>
+<option value="GLOAD;CBE;">Chemical &amp; Biomolecular Engineering</option>
+<option value="GLOAD;CE;">Computer Engineering</option>
+<option value="GLOAD;CEE;">Civil Engineering</option>
+<option value="GLOAD;CHEM;">Chemistry and Biological Chemistry</option>
+<option value="GLOAD;CHIN;">Chinese</option>
+<option value="GLOAD;CS;">Communication Studies</option>
+<option value="GLOAD;CSC;">Computer Science</option>
+<option value="GLOAD;ECON;">Economics</option>
+<option value="GLOAD;EEE;">Electrical &amp; Electronic Engineering</option>
+<option value="GLOAD;EESS;">Environmental Earth Systems Science</option>
+<option value="GLOAD;ELH;">English</option>
+<option value="GLOAD;HIST;">History</option>
+<option value="GLOAD;LMS;">Linguistics &amp; Multilingual Studies</option>
+<option value="GLOAD;MAT;">Materials Engineering</option>
+<option value="GLOAD;MATH;">Mathematical Sciences</option>
+<option value="GLOAD;ME;">Mechanical Engineering</option>
+<option value="GLOAD;MS;">Maritime Studies</option>
+<option value="GLOAD;NIE;">National Institute of Education</option>
+<option value="GLOAD;NTC;">Nanyang Technopreneurship Centre</option>
+<option value="GLOAD;PHIL;">Philosophy</option>
+<option value="GLOAD;PHY;">Physics and Applied Physics</option>
+<option value="GLOAD;PPGA;">Public Policy And Global Affairs</option>
+<option value="GLOAD;PSY;">Psychology</option>
+<option value="GLOAD;SOC;">Sociology</option>
+<option value="GLOAD;SOH;">Humanities</option>
+<option value="GLOAD;SPS;">Physical and Mathematical Sciences</option>
+<option value="GLOAD;SSM;">Sport Science &amp; Management</option>
+<option value="GLOAD;SSS;">Social Sciences</option>v
+
+      <!--put here!-->
+
+  </select>
+  <br/>
+                </div>
+                <div class="col-md-6">
+  <label for="country">Courses:</label>
+  <select class="selectpicker" name="subj_code" style="width:100%;height:430px" size="30" id="country" onchange="subj_select(this.form,this.options[this.selectedIndex].value);">
+
+
+  </select>
+                </div>
+                </div>
+                </div>
+<script type="text/javascript">
+ //<![CDATA[
+ // array of possible countries in the same order as they appear in the country selection list
+ var typeLists = new Array(125)
+ typeLists["empty"]=[""]
+ typeLists[""]=[""];
+ typeLists["Computer Science"] =['---Computer Science Year 1---', 'CY1001 - Introductory Biology (3 AU)', 'CY1101 - Prin Of Modern Chemistry (3 AU)', 'CY1308 - Physics (3 AU)', 'CY1500 - Intro Research Methodology (3 AU)', 'CY1601 - Mathematics I (4 AU)', 'CZ1003 - Intro Tocomputational Thinking (3 AU)', 'CZ1005 - Digital Logic (3 AU)', 'CZ1006 - Computer Organisation & Archit (3 AU)', 'CZ1007 - Data Structures (3 AU)', 'CZ1011 - Engineering Mathematics I (3 AU)', 'CZ1012 - Engineering Mathematics Ii (3 AU)', 'CZ1013 - Physics For Computing (2 AU)', 'CZ3001 - Advanced Computer Architecture (3 AU)', 'GC0001 - Sustainability:See Thru The Ha (1 AU)', 'HW0001 - English Proficiency (0 AU)', 'HW0188 - Engineering Communication I (2 AU)', 'MH1812 - Discrete Mathematics (3 AU)', 'ML0001 - Absolute Basics For Career (1 AU)', 'SP0001 - Writing And Reasoning (3 AU)', 'SP0005 - Quantitative Reasoning (3 AU)', '', '---Computer Science Year 2---', 'CY0001 - Writing & Reasoning (3 AU)', 'CY2001 - Research Attachment 1 (4 AU)', 'CY2002 - Research Attachment 2 (4 AU)', 'CZ2001 - Algorithms (3 AU)', 'CZ2002 - Object Oriented Des & Prog (3 AU)', 'CZ2003 - Computer Graphics & Visual (3 AU)', 'CZ2004 - Human Computer Interaction (3 AU)', 'CZ2005 - Operating Systems (3 AU)', 'CZ2006 - Software Engineering (3 AU)', 'CZ2007 - Introduction To Databases (3 AU)', 'HY0001 - Ethics & Moral Reasoning (1 AU)', 'SP0032 - Art, Technology And The Image (3 AU)', 'SP0056 - Workings Of The Human Body (3 AU)', 'SP0058 - Intro To Programming (3 AU)', 'SP0073 - The Great Ideas (3 AU)', '', '---Computer Science Year 3---', 'CY0006 - Ent, Innovation & Leadership (3 AU)', 'CZ2005 - Operating Systems (3 AU)', 'CZ2007 - Introduction To Databases (3 AU)', 'CZ3001 - Advanced Computer Architecture (3 AU)', 'CZ3002 - Advanced Software Engineering (3 AU)', 'CZ3003 - Software Sys Analysis & Design (3 AU)', 'CZ3004 - Multidisciplinary Des Proj (4 AU)', 'CZ3005 - Artificial Intelligence (3 AU)', 'CZ3006 - Net Centric Computing (3 AU)', 'CZ3007 - Compiler Techniques (3 AU)', 'CZ4057 - Time-Criticalcomputing (3 AU)', 'ET0001 - Enterprise & Innovation (1 AU)', 'HW0288 - Engineering Communication Ii (2 AU)', 'ML0002 - Career Power Up! (1 AU)', '', '---Computer Science Year 4---', 'CZ4003 - Computer Vision (3 AU)', 'CZ4016 - Advanced Topics In  Algorithms (3 AU)', 'CZ4022 - Personal Mobile Networks (3 AU)', 'CZ4023 - Adv Computer Networks (3 AU)', 'CZ4031 - Database System Principles (3 AU)', 'CZ4032 - Data Analytics & Mining (3 AU)', 'CZ4042 - Neural Network & Deep Learning (3 AU)', 'CZ4045 - Natural Lang Processing (3 AU)', 'CZ4057 - Time-Criticalcomputing (3 AU)', 'CZ4062 - Computer Security (3 AU)', 'CZ4064 - Security Management (3 AU)', 'CZ4068 - Application Security (3 AU)', '', '---Computer Science Year ---', 'BS0001 - Biology & Society (3 AU)', 'BU8341 - Practical Ethics (3 AU)', 'BU8542 - Making The World A Betterplace (3 AU)', 'BU8543 - Tourism & Society (3 AU)', "BU8544 - Consumers' Pur Of Hea,Bea & We (3 AU)", 'BU8641 - Howtobean Explorer Ofthe World (3 AU)', 'BU8642 - Leadership In The 21st Century (3 AU)', 'BU8644 - Smarter Bra?The Sci Of Dec Mak (3 AU)', 'CS8300 - Science Fiction Film (3 AU)', 'DD8002 - Ways Of Seeing (3 AU)', 'DD8008 - Faith & Art (3 AU)', 'DD8010 - Visualization Of Cult Heritage (3 AU)', 'DD8012 - Contemporary Curating (3 AU)', 'DF2009 - History Of Film (3 AU)', 'DF8000 - Survey Of Experimental Film (3 AU)', 'DM2000 - Interactive I (3 AU)', 'DP2000 - Photo Imaging I (3 AU)', 'DP2001 - Digital Photography (3 AU)', 'DP2010 - Art & Ecology Workshop (3 AU)', 'DT2003 - 3d Modelling I (3 AU)', 'DT2005 - Lighting & Rendering Pipelin (3 AU)', 'HC8005 - Dir Read Mod Chin Song Ly (3 AU)', 'HE9091 - Principles Of Economics (3 AU)', 'HG8002 - The Story Of English (3 AU)', 'HG8012 - Code-Breakers At Work (3 AU)', 'HL8001 - Madness In Literature & Film (3 AU)', 'HL8025 - Soc Con Of Utopias & Dystopias (3 AU)', 'HP8002 - Working In 21st Century (3 AU)', 'HP8003 - Are U Ok? Mental Health (3 AU)', 'HP8006 - Psy Of Crisis Stress Mgt (3 AU)', 'HS8008 - Understand Culture & Glob (3 AU)', 'HS8019 - Livingin Contemporary Cit (3 AU)', 'HY8002 - Logic And Critical Thinking (3 AU)', ''];
+ typeLists["Top 20 PE"] = ['-----General Education in Liberal Arts-----', 'DT2003 - 3d Modelling I (3 AU) [2750%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'DT2003 - 3d Modelling I (3 AU) [2750%]', '', '-----General Education in Liberal Arts-----', 'DP2001 - Digital Photography (3 AU) [648%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'DP2001 - Digital Photography (3 AU) [648%]', '', '-----General Education in Liberal Arts-----', 'DP2000 - Photo Imaging I (3 AU) [424%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'DP2000 - Photo Imaging I (3 AU) [424%]', '', '-----General Education in Liberal Arts-----', 'HP8003 - Are U Ok? Mental Health (3 AU) [358%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HP8003 - Are U Ok? Mental Health (3 AU) [358%]', '', '-----General Education in Business & Management-----', 'BU8301 - Fundamentals Of Bus Law (3 AU) [259%]', 'CS8060 - Introduction To Advertising (3 AU) [221%]', 'BU8201 - Business Finance (3 AU) [220%]', '', '-----General Education in Liberal Studies-----', 'BU8542 - Making The World A Betterplace (3 AU) [197%]', '', '-----General Education in Liberal Arts-----', 'BU8542 - Making The World A Betterplace (3 AU) [197%]', '', '-----General Education in Business & Management-----', 'AB0301 - Legal & Ethical Iss In Sus (3 AU) [194%]', '', '-----General Education in Liberal Arts-----', 'HP8006 - Psy Of Crisis Stress Mgt (3 AU) [157%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HP8006 - Psy Of Crisis Stress Mgt (3 AU) [157%]', '', '-----General Education in Liberal Studies-----', 'HL8025 - Soc Con Of Utopias & Dystopias (3 AU) [115%]', '', '-----General Education in Liberal Arts-----', 'HL8025 - Soc Con Of Utopias & Dystopias (3 AU) [115%]', 'BU8641 - Howtobean Explorer Ofthe World (3 AU) [113%]', '', '-----General Education in Liberal Studies-----', 'BU8641 - Howtobean Explorer Ofthe World (3 AU) [113%]', ''];
+ typeLists["Top 20 UE"] = ['-----Philosophy-----', 'HY1001 - Introduction To Philosophy (3 AU) [4300%]', '', '-----Art, Design & Media Year 2-----', 'DT2003 - 3d Modelling I (3 AU) [2750%]', '', '-----Communication Studies Year 1-----', 'CS2056 - Psy & Communication (3 AU) [1300%]', '', '-----Art, Design & Media Year 2-----', 'DP2001 - Digital Photography (3 AU) [648%]', '', '-----Sport Science & Management-----', 'SS9003 - Intro To Pilates Matwk & Ha Yo (3 AU) [510%]', '', '-----Business Year 3-----', 'BF3204 - Financial Modelling (4 AU) [500%]', '', '-----Communication Studies Year 3-----', 'CS4074 - Consumer Behavior (4 AU) [500%]', '', '-----Humanities-----', 'LL9001 - Singapore Sign Language Lev 1 (3 AU) [462%]', '', '-----Art, Design & Media Year 2-----', 'DP2000 - Photo Imaging I (3 AU) [424%]', '', '-----National Institute of Education-----', 'AED28D - Basic Counselling Skills (3 AU) [387%]', '', '-----Philosophy-----', 'HY2008 - Environmental Ethics (3 AU) [367%]', '', '-----National Institute of Education-----', 'AGQ28B - Everyday Science In Foods (3 AU) [353%]', '', '-----Psychology-----', 'HP1000 - Intro To Psychology (3 AU) [349%]', '', '-----Communication Studies Year 1-----', 'CS2064 - Television Practicum (3 AU) [320%]', '', '-----Art, Design & Media Year 2-----', 'DT2012 - Digital Painting (3 AU) [300%]', '', '-----National Institute of Education-----', 'AED38A - Motivatin Pupils To Learn (3 AU) [287%]', '', '-----Sport Science & Management-----', 'SS9106 - Netball (3 AU) [283%]', '', '-----National Institute of Education-----', 'AAA28R - Ceramics I (3 AU) [273%]', '', '-----Communication Studies Year 1-----', 'CS2006 - Theo Of Vis Comm & Their App (3 AU) [271%]', '', '-----Sport Science & Management-----', 'SS9101 - Badminton (3 AU) [268%]', ''];
+ typeLists["PEXAM;23-NOV-2018;"] = ['-----General Education in Art, Humanities and Social Sciences-----', 'HS8008 - Understand Culture & Glob (3 AU)', '', '-----General Education in Liberal Arts-----', 'HS8008 - Understand Culture & Glob (3 AU)', ''];
+ typeLists["PEXAM;26-NOV-2018;"] = ['-----General Education in Business & Management-----', 'BU8301 - Fundamentals Of Bus Law (3 AU) [259%]', '', '-----General Education in Science, Technology & Society-----', 'CM8002 - Forensic Science (3 AU)', 'CV4107 - Eng Economics & Finance (3 AU) [65%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HE9091 - Principles Of Economics (3 AU) [23%]', '', '-----General Education in Liberal Arts-----', 'HE9091 - Principles Of Economics (3 AU) [23%]', '', '-----General Education in Science, Technology & Society-----', 'CM8022 - Appl Of Forensic Science (1 AU)', '', '-----General Education in Business & Management-----', 'RE8011 - Fundamentals Of Management (3 AU)', ''];
+ typeLists["PEXAM;27-NOV-2018;"] = ['-----General Education in Business & Management-----', 'BU8101 - Accounting:A User Perspec (3 AU) [53%]', '', '-----General Education in Liberal Arts-----', 'BU8543 - Tourism & Society (3 AU) [49%]', '', '-----General Education in Liberal Studies-----', 'BU8543 - Tourism & Society (3 AU) [49%]', '', '-----General Education in Science, Technology & Society-----', 'SU3001 - Integrated Urban Management (3 AU)', 'EE8086 - Astronomy-Strs,Gal & Cos (3 AU) [90%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HP8006 - Psy Of Crisis Stress Mgt (3 AU) [157%]', '', '-----General Education in Liberal Arts-----', 'HP8006 - Psy Of Crisis Stress Mgt (3 AU) [157%]', ''];
+ typeLists["PEXAM;28-NOV-2018;"] = ['-----General Education in Business & Management-----', 'BU8401 - Management Decision Tools (3 AU) [83%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'CS8300 - Science Fiction Film (3 AU)', '', '-----General Education in Liberal Arts-----', 'CS8300 - Science Fiction Film (3 AU)', '', '-----General Education in Science, Technology & Society-----', 'BS8004 - Trad Chin Med:A Primer Co (3 AU)', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HC8005 - Dir Read Mod Chin Song Ly (3 AU)', '', '-----General Education in Liberal Arts-----', 'HC8005 - Dir Read Mod Chin Song Ly (3 AU)', '', '-----General Education in Business & Management-----', 'BU8201 - Business Finance (3 AU) [220%]', 'MA8103 - Human Resource Management (3 AU) [54%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HP8005 - Intro To Human Res Mgt (3 AU) [52%]', '', '-----General Education in Liberal Arts-----', 'HP8005 - Intro To Human Res Mgt (3 AU) [52%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HL8001 - Madness In Literature & Film (3 AU) [95%]', '', '-----General Education in Liberal Arts-----', 'HL8001 - Madness In Literature & Film (3 AU) [95%]', '', '-----General Education in Science, Technology & Society-----', 'ES8005 - Environmental Earth System Sci (3 AU)', ''];
+ typeLists["PEXAM;29-NOV-2018;"] = ['-----General Education in Science, Technology & Society-----', "MH8300 - It'S A Dis Dis Wld: Maths (3 AU)", 'EE8084 - Cyber Security (3 AU) [78%]', '', '-----General Education in Business & Management-----', 'BU8601 - Fundamentals Of Mgt (3 AU) [98%]', '', '-----General Education in Science, Technology & Society-----', 'ES8001 - Natural Hazards & Society (3 AU)', ''];
+ typeLists["PEXAM;03-DEC-2018;"]= ['-----General Education in Science, Technology & Society-----', 'BS1001 - Introductory Biology (3 AU)', 'EE8094 - Impact Of Elect Rad On Humans (3 AU) [22%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HY8002 - Logic And Critical Thinking (3 AU)', '', '-----General Education in Liberal Arts-----', 'HY8002 - Logic And Critical Thinking (3 AU)', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HP8003 - Are U Ok? Mental Health (3 AU) [358%]', '', '-----General Education in Liberal Arts-----', 'HP8003 - Are U Ok? Mental Health (3 AU) [358%]', 'HG8002 - The Story Of English (3 AU) [25%]', '', '-----General Education in Art, Humanities and Social Sciences-----', 'HP8002 - Working In 21st Century (3 AU) [39%]', '', '-----General Education in Liberal Arts-----', 'HP8002 - Working In 21st Century (3 AU) [39%]', '', '-----General Education in Liberal Studies-----', 'HP8002 - Working In 21st Century (3 AU) [39%]', '', '-----General Education in Liberal Arts-----', 'HL8025 - Soc Con Of Utopias & Dystopias (3 AU) [115%]', '', '-----General Education in Liberal Studies-----', 'HL8025 - Soc Con Of Utopias & Dystopias (3 AU) [115%]', '', '-----General Education in Business & Management-----', 'BU8501 - Marketing 21st Century (3 AU) [75%]', ''];
+ typeLists["PEXAM;04-DEC-2018;"]= ['-----General Education in Science, Technology & Society-----', 'MA8005 - Aircraft Elect & Electron Cir (3 AU) [63%]', 'EE8085 - Electrificatn For The Built En (3 AU)', ''];
+ typeLists["PEXAM;05-DEC-2018;"]= ['-----General Education in Business & Management-----', 'EE8061 - Inno & Tech Management (3 AU)', ''];
+ typeLists["PEXAM;06-DEC-2018;"]= ['-----General Education in Liberal Arts-----', 'BS0001 - Biology & Society (3 AU)', '', '-----General Education in Liberal Studies-----', 'BS0001 - Biology & Society (3 AU)', ''];
+ typeLists["GEXAM;23-NOV-2018;"]= ['-----Chinese-----', 'HC1002 - Introduction To Chin Lang (3 AU)', '', '-----Economics-----', 'HE3001 - Mathematical Economics (3 AU)', '', '-----English-----', 'HL1001 - Intro To The Study Of Lit (3 AU)', 'HL2011 - Representations Of Asia (3 AU)', '', '-----Public Policy And Global Affairs-----', 'HA2020 - Socio-Political Ana In Pub Pol (3 AU)', '', '-----Sociology-----', 'HS2026 - Deviance & Society (3 AU)', '', '-----Computer Engineering Year 4-----', 'CE4064 - Security Management (3 AU)', '', '-----Computer Science Year 4-----', 'CZ4064 - Security Management (3 AU)', '', '-----Mathematical Sciences Year 4-----', 'MH4200 - Abstract Algebra Ii (4 AU)', 'MH4511 - Sampling & Survey (4 AU)', '', '-----Physics and Applied Physics Year 4-----', 'PH4402 - Condensed Matter Physics Ii (4 AU)', 'PH4408 - Nuclear Physics (3 AU)', '', '-----Computer Engineering Year 3-----', 'CE3006 - Digital Communications (3 AU)', '', '-----Physics and Applied Physics Year 3-----', 'PH3101 - Quantum Mechanics Ii (4 AU)', '', '-----Business Year 2-----', 'BA2203 - Statistical Modelling (4 AU)', 'BF2207 - International Finance (4 AU)', '', '-----Computer Engineering Year 2-----', 'CE2004 - Circuits & Signal Analysis (3 AU)', '', '-----Chemistry and Biological Chemistry Year 2-----', 'CM2021 - Inorganic & Bioinorg Chem (3 AU)', '', '-----Sport Science & Management Year 2-----', 'SS2102 - Intro To Sport Biomechanics (3 AU)', '', '-----Accountancy Year 1-----', 'AB1202 - Statistics & Analysis (3 AU)', '', '-----Business Year 1-----', 'AD1101 - Financial Accounting (4 AU) [100%]', '', '-----Computer Engineering Year 1-----', 'CE1005 - Digital Logic (3 AU) [12%]', '', '-----Computer Science Year 1-----', 'CZ1005 - Digital Logic (3 AU) [21%]', '', '-----Physics and Applied Physics Year 1-----', 'PH1105 - Optics, Vibrations & Waves (3 AU)', ''];
+ typeLists["GEXAM;26-NOV-2018;"]= ['-----Business-----', 'BU8301 - Fundamentals Of Bus Law (3 AU) [259%]', '', '-----Chemical & Biomolecular Engineering-----', 'CH9203 - Food Process Engineering (5 AU)', '', '-----Chemistry and Biological Chemistry-----', 'CM8002 - Forensic Science (3 AU)', 'CM8022 - Appl Of Forensic Science (1 AU)', '', '-----Chinese-----', 'HC2060 - Chinese Education In Sea (3 AU)', 'HC4015 - Special Topics In Classi (4 AU)', '', '-----Economics-----', 'HE2011 - Lab Econ & Lab Relations (3 AU)', 'HE9091 - Principles Of Economics (3 AU) [23%]', '', '-----English-----', 'HL2002 - Renaissance Literature (3 AU)', 'HL2007 - Contemporary Lit & Cult (3 AU)', '', '-----History-----', 'HH1002 - Asia-Pacific Glob His:Pre-1800 (3 AU)', '', '-----National Institute of Education-----', 'AAL28B - Globalisation (3 AU)', '', '-----Public Policy And Global Affairs-----', 'HA1002 - Intro To Political Theory (3 AU)', '', '-----Psychology-----', 'HP1000 - Intro To Psychology (3 AU) [349%]', 'HP3101 - App Stat Meth For Psy Res (3 AU)', '', '-----Sociology-----', 'HS1001 - Person & Society (3 AU)', 'HS2001 - Classical Social Theory (3 AU)', '', '-----Computer Engineering Year 4-----', 'CE4022 - Personal Mobile Networks (3 AU)', '', '-----Chemistry and Biological Chemistry Year 4-----', 'CM4043 - Molecular Modell:Prin& Ap (3 AU)', '', '-----Computer Science Year 4-----', 'CZ4022 - Personal Mobile Networks (3 AU)', '', '-----Materials Engineering Year 4-----', 'MS4601 - Prin Of Semiconductor Dev (3 AU)', 'MS4660 - Fund Of Intel Ppt In Mse (3 AU)', '', '-----Mechanical Engineering Year 4-----', 'MA4849 - Operations Research (3 AU)', '', '-----Physics and Applied Physics Year 4-----', 'PH4507 - Topics In Physics (3 AU)', '', '-----Biological Sciences Year 3-----', 'BS3021 - Bioimaging Techniques In Em (3 AU)', '', '-----Chemistry and Biological Chemistry Year 3-----', 'CM3041 - Phy & Biophy Chemistry 2 (3 AU)', '', '-----Mathematical Sciences Year 3-----', 'MH3300 - Graph Theory (4 AU)', '', '-----Physics and Applied Physics Year 3-----', 'PH3405 - Supercond, Superfluid&Bose-Ein (3 AU)', '', '-----Business Year 2-----', 'BA2202 - Mathematics Of Finance (4 AU)', 'BF2209 - Derivative Securities (4 AU) [160%]', 'BH2603 - Talent Sourcing & Acquisition (4 AU)', '', '-----Computer Science Year 2-----', 'CZ2004 - Human Computer Interaction (3 AU) [21%]', '', '-----Physics and Applied Physics Year 2-----', 'PH2103 - Thermal Physics (4 AU)', '', '-----Biological Sciences Year 1-----', 'BS1008 - Biostatistics (3 AU) [3%]', '', '-----Computer Engineering Year 1-----', 'CE1003 - Intro Tocomputational Thinking (3 AU) [148%]', '', '-----Communication Studies Year 1-----', 'CS0204 - Basic Media Writing (3 AU)', 'CS2021 - News Reporting & Writing (3 AU) [29%]', '', '-----Computer Science Year 1-----', 'CZ1003 - Intro Tocomputational Thinking (3 AU) [248%]', '', '-----Sport Science & Management Year 1-----', 'SS1101 - Human Anatomy & Physiology (3 AU)', ''];
+ typeLists["GEXAM;27-NOV-2018;"]= ['-----Business-----', 'BU8101 - Accounting:A User Perspec (3 AU) [53%]', 'BU8543 - Tourism & Society (3 AU) [49%]', '', '-----Civil Engineering-----', 'SU3001 - Integrated Urban Management (3 AU)', '', '-----Chemistry and Biological Chemistry-----', 'CM9081 - Medicinal Chemistry (3 AU)', '', '-----Chinese-----', 'HC2032 - Div & Int:Fro Chun To Wud (3 AU)', 'HC3011 - Studies Of Selected Poets (3 AU)', '', '-----Economics-----', 'HE2010 - Development Economics (3 AU)', '', '-----Electrical & Electronic Engineering-----', 'EE8086 - Astronomy-Strs,Gal & Cos (3 AU) [90%]', '', '-----History-----', 'HH1007 - The Making Of Civilizations (3 AU)', '', '-----Linguistics & Multilingual Studies-----', 'HG1001 - Mind & Meaning (3 AU)', '', '-----Materials Engineering-----', 'MS8205 - Materials For Energy Conver (3 AU)', '', '-----Public Policy And Global Affairs-----', 'HA2023 - Res Method In Social Sciences (3 AU)', 'HA3004 - United States And East Asia (3 AU)', '', '-----Psychology-----', 'HP3703 - Health Psychology (3 AU)', '', '-----Sociology-----', 'HS1002 - Singapore Society In Tran (3 AU)', 'HS3002 - Understanding Social Stat (3 AU)', 'HS3054 - Social Psychology (3 AU)', '', '-----Physical and Mathematical Sciences-----', 'CH9201 - Food Chemistry (5 AU)', '', '-----Computer Engineering Year 4-----', 'CE4068 - Application Security (3 AU)', '', '-----Computer Science Year 4-----', 'CZ4068 - Application Security (3 AU)', '', '-----Materials Engineering Year 4-----', 'MS4640 - Advanced Analysis Of Mat (3 AU)', '', '-----Mathematical Sciences Year 4-----', 'MH4510 - Stat Lern & Data Mining (4 AU)', 'MH4702 - Probabilistic Meth In Or (4 AU)', '', '-----Mechanical Engineering Year 4-----', 'MA4850 - Supply Chain & Logistics Mgt (3 AU)', '', '-----Physics and Applied Physics Year 4-----', 'PH4403 - Surfaces & Interfaces (4 AU)', '', '-----Business Year 3-----', 'BA3201 - Life Contingencies & Demo (4 AU)', '', '-----Chemistry and Biological Chemistry Year 3-----', 'CM3011 - Chem Spectroscopy & App (3 AU)', '', '-----Physics and Applied Physics Year 3-----', 'PH3102 - Condensed Matter Physics I (4 AU)', '', '-----Business Year 2-----', 'AD2101 - Management Accounting (4 AU)', '', '-----Computer Engineering Year 2-----', 'CE2001 - Algorithms (3 AU)', '', '-----Computer Science Year 2-----', 'CZ2001 - Algorithms (3 AU)', '', '-----Mathematical Sciences Year 2-----', 'MH2100 - Calculus Iii (4 AU)', '', '-----Accountancy Year 1-----', 'AB1301 - Business Law (3 AU)', '', '-----Biological Sciences Year 1-----', 'BS1002 - Biophysical Chemistry (3 AU)', '', '-----Mathematical Sciences Year 1-----', 'MH1800 - Calculus For The Sci I (3 AU)', ''];
+ typeLists["GEXAM;28-NOV-2018;"]= ['-----Biological Sciences-----', 'BS8004 - Trad Chin Med:A Primer Co (3 AU)', '', '-----Business-----', 'BU8201 - Business Finance (3 AU) [220%]', 'BU8401 - Management Decision Tools (3 AU) [83%]', '', '-----Chemistry and Biological Chemistry-----', 'CM9101 - Food Chemistry & Nutrition (3 AU)', '', '-----Communication Studies-----', 'CS8300 - Science Fiction Film (3 AU)', '', '-----Economics-----', 'HE3002 - Game Theo & App To Soc Sc (3 AU)', 'HE4017 - Monetary Economics (4 AU)', '', '-----Environmental Earth Systems Science-----', 'ES8005 - Environmental Earth System Sci (3 AU)', '', '-----English-----', 'HL1002 - Survey Of E Literature 1 (3 AU)', 'HL2024 - Approaches To Literature (3 AU)', 'HL2027 - Early American Literature (3 AU)', '', '-----Public Policy And Global Affairs-----', 'HA4016 - Global Cities:Policy& Politics (4 AU)', '', '-----Psychology-----', 'HP1100 - Fund Of Soc Sci Research (3 AU) [41%]', 'HP3802 - Personnel Psychology (3 AU)', '', '-----Sociology-----', 'HS2013 - Migration & Multiculturalism (3 AU)', '', '-----Computer Engineering Year 4-----', 'CE4016 - Advanced Topics In Algorithms (3 AU)', '', '-----Computer Science Year 4-----', 'CZ4016 - Advanced Topics In  Algorithms (3 AU)', '', '-----Mechanical Engineering Year 4-----', 'MA4845 - Manufacturing Automation (3 AU)', '', '-----Business Year 3-----', 'BF3204 - Financial Modelling (4 AU) [500%]', 'BM3505 - Services Marketing (4 AU)', 'BR3208 - Operational Risk Management (4 AU)', '', '-----Computer Engineering Year 3-----', 'CE3007 - Digital Signal Processing (3 AU)', '', '-----Mathematical Sciences Year 3-----', 'MH3101 - Complex Analysis (4 AU)', '', '-----Computer Engineering Year 2-----', 'CE2002 - Obj Oriented Des & Prog (3 AU)', '', '-----Chemistry and Biological Chemistry Year 2-----', 'CM2031 - Organic & Bioorganic Chem (3 AU)', '', '-----Computer Science Year 2-----', 'CZ2002 - Object Oriented Des & Prog (3 AU) [3%]', '', '-----Mathematical Sciences Year 2-----', 'MH2801 - Complex Methods For The Sci (3 AU)', '', '-----Accountancy Year 1-----', 'AB1501 - Marketing (3 AU)', 'AC1102 - Accounting Ii (4 AU)', '', '-----Computer Engineering Year 1-----', 'CE1006 - Computer Organisation & Archit (3 AU) [1%]', '', '-----Computer Science Year 1-----', 'CZ1006 - Computer Organisation & Archit (3 AU)', ''];
+ typeLists["GEXAM;29-NOV-2018;"]= ['-----Business-----', 'BU8601 - Fundamentals Of Mgt (3 AU) [98%]', '', '-----Civil Engineering-----', 'EM9105 - Energy Resources Managemt (3 AU)', '', '-----Chemistry and Biological Chemistry-----', 'CM9001 - Conceptual Chemistry With Lab (4 AU)', '', '-----Chinese-----', 'HC1001 - Intro Study Of Lit & Cult (3 AU)', 'HC1050 - The Sci Of Chin Charact (3 AU)', 'HC3014 - Cultural Studies Chin Cin (3 AU)', 'HC4031 - Interculturalism In Chin (4 AU)', 'HC4055 - Chinese Language Acquisition (4 AU)', 'HT9102 - Lang Foundation For Trans (3 AU) [40%]', '', '-----Economics-----', 'HE2005 - Principles Econometrics (3 AU)', 'HE3003 - The Chinese Economy (3 AU)', '', '-----Electrical & Electronic Engineering-----', 'EE8084 - Cyber Security (3 AU) [78%]', '', '-----Environmental Earth Systems Science-----', 'ES8001 - Natural Hazards & Society (3 AU)', '', '-----English-----', 'HL1007 - Classical Literature (3 AU)', 'HL2021 - Literature Of Empire (3 AU)', "HL2042 - Children'S Literature (3 AU)", '', '-----History-----', 'HH2027 - Blood,Germs & Sick Bodies (3 AU)', '', '-----Mathematical Sciences-----', "MH8300 - It'S A Dis Dis Wld: Maths (3 AU)", '', '-----National Institute of Education-----', 'AGQ28B - Everyday Science In Foods (3 AU) [353%]', '', '-----Public Policy And Global Affairs-----', 'HA1001 - Introto Intnl Relations& Fo Po (3 AU)', 'HA2009 - The Making Of E-Government (3 AU)', 'HA4006 - Special Topic In Public Admin (4 AU)', '', '-----Psychology-----', 'HP2200 - Biological Psychology (3 AU)', 'HP3901 - Cultural Psychology (3 AU)', 'HP4104 - Evi-Based Practice In Clin Psy (4 AU)', '', '-----Sociology-----', 'HS1003 - Soc Prob In A Global Con (3 AU)', 'HS3001 - Contemporary Social Theo (3 AU)', '', '-----Bioengineering Year 4-----', 'BG4231 - Advanced Biomaterials (3 AU)', '', '-----Biological Sciences Year 4-----', 'BS4013 - Phy Sys:Ani Models For Drug De (3 AU)', '', '-----Computer Engineering Year 4-----', 'CE4062 - Computer Security (3 AU)', '', '-----Chemistry and Biological Chemistry Year 4-----', 'CM4013 - Current Top In Analytical Chem (3 AU)', '', '-----Computer Science Year 4-----', 'CZ4062 - Computer Security (3 AU)', '', '-----Materials Engineering Year 4-----', 'MS4631 - Corrosion Engineering (3 AU)', 'MS4650 - Functional Nanostructure Mat (3 AU)', '', '-----Business Year 3-----', 'BA3203 - Actuar Asp Of Asset Val (4 AU)', 'BF3203 - Equity Securities (4 AU)', 'BF3211 - Comm Trading & Risk Mgt (3 AU)', '', '-----Chemistry and Biological Chemistry Year 3-----', 'CM3021 - Organometallic Chemistry (3 AU)', '', '-----Communication Studies Year 3-----', 'CS4043 - Spec Journalism;Sci&Health Rpt (4 AU)', '', '-----Computer Science Year 3-----', 'CZ3002 - Advanced Software Engineering (3 AU)', '', '-----Mathematical Sciences Year 3-----', 'MH3512 - Stochastic Processes (4 AU)', 'MH3600 - Knots & Surfaces (4 AU)', '', '-----Accountancy Year 2-----', 'AC2401 - Accounting Info Sys (4 AU)', '', '-----Business Year 2-----', 'BC2402 - Design & Dev Databases (4 AU)', 'BM2505 - Marketing Channels (4 AU)', '', '-----Computer Engineering Year 2-----', 'CE2005 - Operating Systems (3 AU)', '', '-----Computer Science Year 2-----', 'CZ2005 - Operating Systems (3 AU)', '', '-----Business Year 1-----', 'BE1401 - Bus Operations & Process (4 AU)', '', '-----Computer Engineering Year 1-----', 'CE1012 - Engineering Mathematics Ii (3 AU)', '', '-----Chemistry and Biological Chemistry Year 1-----', 'CM1031 - Basic Organic Chem Wi Lab (4 AU)', '', '-----Computer Science Year 1-----', 'CZ1012 - Engineering Mathematics Ii (3 AU) [1%]', '', '-----Physics and Applied Physics Year 1-----', 'PH1104 - Mechanics (3 AU)', ''];
+ typeLists["GEXAM;30-NOV-2018;"]= ['-----Accountancy-----', 'AB0901 - Principles Of Econ:A Spore Per (3 AU)', '', '-----Chinese-----', 'HC2053 - Varieties Of Chinese (3 AU)', 'HC4040 - Cross-Taiwan Straits Rela (4 AU)', '', '-----Economics-----', "HE4010 - S'Pore Eco In A Global Wo (4 AU)", '', '-----English-----', 'HL2041 - Asian Historical Fiction (3 AU)', 'HL4034 - British Asian Literature (4 AU)', '', '-----Public Policy And Global Affairs-----', 'HA3007 - Pub Budgeting & Fin Mgt (3 AU)', '', '-----Psychology-----', 'HP3801 - Psychology In The Workpl (3 AU)', 'HP4102 - Trauma Psychology & Crisis Mgt (4 AU)', '', '-----Sociology-----', 'HS3007 - Religion & Society (3 AU)', '', '-----Accountancy Year 3-----', 'AB3601 - Strategic Management (4 AU)', '', '-----Computer Engineering Year 3-----', 'CE3002 - Sensor Interfacing & Con (3 AU)', '', '-----Physics and Applied Physics Year 3-----', 'PH3404 - Phy Of Class & Quantum Info (3 AU)', '', '-----Biological Sciences Year 2-----', 'BS2001 - Physiology (3 AU)', 'BS2020 - Maths,Phys & B P  For Stru Bio (3 AU)', '', '-----Business Year 2-----', 'BR2202 - Insurance Law & Regulations (4 AU)', '', '-----Computer Science Year 2-----', 'CZ2007 - Introduction To Databases (3 AU)', '', '-----Mathematical Sciences Year 2-----', 'MH2200 - Groups & Symmetries (3 AU)', '', '-----Computer Engineering Year 1-----', 'CE1011 - Engineering Mathematics I (3 AU) [10%]', '', '-----Communication Studies Year 1-----', 'CS2401 - Info Analytics: Tools, Tech (3 AU)', '', '-----Computer Science Year 1-----', 'CZ1011 - Engineering Mathematics I (3 AU) [4%]', '', '-----Physics and Applied Physics Year 1-----', 'PH1801 - Foundations Of Physics I (3 AU)', ''];
+ typeLists["GEXAM;03-DEC-2018;"]= ['-----Business-----', 'BU8501 - Marketing 21st Century (3 AU) [75%]', '', '-----Civil Engineering-----', 'EM9104 - Air Quality Management (3 AU)', '', '-----Chemistry and Biological Chemistry-----', 'CM9092 - Polymer Chemistry (3 AU)', '', '-----Economics-----', 'HE3016 - Principles Of Math Finance (3 AU) [100%]', 'HE4020 - Econometric Time Series A (4 AU)', '', '-----Electrical & Electronic Engineering-----', 'EE8094 - Impact Of Elect Rad On Humans (3 AU) [22%]', '', '-----English-----', 'HL2004 - Sensibility & Romanticism (3 AU)', 'HL2006 - Modernism (3 AU)', 'HL4028 - Science & Literature (4 AU)', '', '-----Philosophy-----', 'HY8002 - Logic And Critical Thinking (3 AU)', '', '-----Public Policy And Global Affairs-----', 'HA1012 - Fundamentals Of Politics (3 AU)', 'HA2013 - Comparative Public Politics (3 AU)', 'HA2014 - Public Organisation & Mgt (3 AU)', 'HA3013 - Manag Hum Res & Beh In The Pub (3 AU)', '', '-----Psychology-----', 'HP3807 - Occupational Health Psychology (3 AU)', '', '-----Sociology-----', 'HS2007 - Understanding Globalizat (3 AU)', 'HS2028 - Graying Society (3 AU)', 'HS3016 - Societies In Compara Per (3 AU)', '', '-----Biological Sciences Year 4-----', 'BS4014 - Molecular Basis Of Diseases (3 AU)', '', '-----Computer Engineering Year 4-----', 'CE4003 - Computer Vision (3 AU)', 'CE4032 - Data Analytics & Mining (3 AU)', '', '-----Computer Science Year 4-----', 'CZ4003 - Computer Vision (3 AU)', 'CZ4032 - Data Analytics & Mining (3 AU)', '', '-----Mathematical Sciences Year 4-----', 'MH4320 - Computational Economics (4 AU)', '', '-----Computer Science Year 3-----', 'CZ3007 - Compiler Techniques (3 AU)', '', '-----Mathematical Sciences Year 3-----', 'MH3210 - Number Theory (4 AU)', '', '-----Physics and Applied Physics Year 3-----', 'PH3403 - Cosmology (3 AU)', '', '-----Computer Engineering Year 2-----', 'CE2006 - Software Engineering (3 AU)', '', '-----Chemistry and Biological Chemistry Year 2-----', 'CM2011 - Analytical Chemistry (3 AU)', '', '-----Computer Science Year 2-----', 'CZ2006 - Software Engineering (3 AU)', '', '-----Accountancy Year 1-----', 'AB1201 - Financial Management (3 AU)', '', '-----Biological Sciences Year 1-----', 'BS1001 - Introductory Biology (3 AU)', '', '-----Communication Studies Year 1-----', 'CS2400 - Foundation Of Info Analytics (3 AU) [33%]', '', '-----Mathematical Sciences Year 1-----', 'MH1300 - Foundations Of Maths (4 AU)', '', '-----Maritime Studies Year 1-----', 'MT1002 - Intro To Maritime Indust (2 AU)', ''];
+  typeLists["GEXAM;04-DEC-2018;"]= ['-----Business-----', 'BU9201 - Investments (3 AU)', '', '-----Chemistry and Biological Chemistry-----', 'CM9083 - Heterocyclic Chemistry (3 AU)', '', '-----Chinese-----', "HC3040 - China'S Reform & Econ Dev (3 AU)", 'HC4051 - Text, Rhetoric & Style (4 AU)', '', '-----Economics-----', "HE2006 - Int'L Monetary Economics (3 AU)", 'HE2013 - International Trade (3 AU)', 'HE4002 - Advanced Macroeconomics (4 AU)', 'HE4005 - Growth Theory & Empirics (4 AU)', '', '-----Electrical & Electronic Engineering-----', 'EE8085 - Electrificatn For The Built En (3 AU)', '', '-----English-----', 'HL2022 - South Asian Literature (3 AU)', 'HL4013 - Adv Stud In Literature&Culture (4 AU)', '', '-----Public Policy And Global Affairs-----', 'HA2015 - China In Africa (3 AU)', "HA3014 - Singapore'S Foreign Pol (3 AU)", '', '-----Psychology-----', 'HP2500 - Personality & Indiv Diff (3 AU)', '', '-----Sociology-----', 'HS4015 - Sociology Of Reproduction (4 AU)', '', '-----Computer Engineering Year 4-----', 'CE4031 - Database System Principles (3 AU)', 'CE4042 - Neural Network & Deep Learning (3 AU)', '', '-----Chemistry and Biological Chemistry Year 4-----', 'CM4012 - Structural Determination (3 AU)', 'CM4017 - Biomedical Imaging & Sensing (3 AU)', '', '-----Computer Science Year 4-----', 'CZ4031 - Database System Principles (3 AU)', 'CZ4042 - Neural Network & Deep Learning (3 AU)', '', '-----Materials Engineering Year 4-----', 'MS4651 - Thim Film Technology (3 AU)', '', '-----Physics and Applied Physics Year 4-----', 'PH4607 - Biomedical Imaging & Sensing (3 AU)', '', '-----Biological Sciences Year 3-----', 'BS3018 - Plant Biology (3 AU)', '', '-----Business Year 3-----', 'BF3201 - Corporate Finance & Strategy (4 AU) [250%]', 'BM3502 - Global Business Strategy (4 AU)', '', '-----Computer Engineering Year 3-----', 'CE3005 - Computer Networks (3 AU)', '', '-----Communication Studies Year 3-----', 'CS4027 - Narra Fil & Tv:Conc & App (4 AU)', '', '-----Computer Science Year 3-----', 'CZ3005 - Artificial Intelligence (3 AU)', '', '-----Mathematical Sciences Year 3-----', 'MH3510 - Regression Analysis (4 AU)', '', '-----Physics and Applied Physics Year 3-----', 'PH3502 - Chaotic Dynamical Systems (4 AU)', 'PH3601 - Fab Of Micro-& Nanoelect Dev (4 AU)', '', '-----Accountancy Year 2-----', 'AC2301 - Principles Of Taxation (4 AU) [50%]', '', '-----Chemistry and Biological Chemistry Year 2-----', 'CM2061 - Chem & Bio Chem Lab I (3 AU)', '', '-----Computer Science Year 2-----', 'CZ2003 - Computer Graphics & Visual (3 AU)', '', '-----Communication Studies Year 1-----', 'CS2056 - Psy & Communication (3 AU) [1300%]', '', '-----Mathematical Sciences Year 1-----', 'MH1200 - Linear Algebra I (4 AU)', ''];
+ typeLists["GEXAM;05-DEC-2018;"]= ['-----Chinese-----', 'HC2010 - Classical Chinese Fiction (3 AU)', 'HT9101 - Trans:His,Theories & Prin (3 AU) [72%]', '', '-----Economics-----', 'HE2004 - Introductory Econometrics (3 AU)', 'HE2009 - Industrial Organisation (3 AU)', 'HE3007 - Financial Economics (3 AU)', 'HE3013 - Urban Economics (3 AU)', 'HE4015 - Personnel Economics (4 AU)', '', '-----Electrical & Electronic Engineering-----', 'EE8061 - Inno & Tech Management (3 AU)', '', '-----English-----', 'HL2029 - American Modernism (3 AU)', 'HL3017 - The Rise Of The Novel (3 AU)', '', '-----Public Policy And Global Affairs-----', 'HA2017 - Foreign Policy Analysis (3 AU)', '', '-----Psychology-----', 'HP3201 - Evolutionary Psychology (3 AU) [4%]', 'HP4103 - The Forensic Psychology (4 AU)', '', '-----Sociology-----', 'HS2009 - Sociology Of The Life Cou (3 AU)', '', '-----Chemical & Biomolecular Engineering Year 4-----', 'CH4306 - Bioanalytical Techniques (3 AU)', '', '-----Computer Engineering Year 4-----', 'CE4023 - Advanced Computer Netwks (3 AU)', 'CE4045 - Natural Lang Processing (3 AU)', '', '-----Computer Science Year 4-----', 'CZ4023 - Adv Computer Networks (3 AU)', 'CZ4045 - Natural Lang Processing (3 AU)', '', '-----Materials Engineering Year 4-----', 'MS4610 - Advanced Biomaterials (3 AU)', '', '-----Mathematical Sciences Year 4-----', 'MH4311 - Cryptography (4 AU)', 'MH4513 - Survival Analysis (4 AU)', 'MH4700 - Numerical Analysis Ii (4 AU)', '', '-----Physics and Applied Physics Year 4-----', 'PH4501 - Statistical Mechanics Ii (4 AU)', 'PH4604 - Topics In Applied Physics (3 AU)', '', '-----Biological Sciences Year 3-----', 'BS3024 - Evolution In Health & Disease (3 AU)', '', '-----Business Year 3-----', 'BF3207 - Alternative Investments (4 AU) [125%]', 'BM3506 - Strategic Brand Mgt (4 AU)', '', '-----Computer Science Year 3-----', 'CZ3003 - Software Sys Analysis & Design (3 AU)', '', '-----Accountancy Year 2-----', 'AC2302 - Company Law & Corporate Gov (4 AU)', 'AC2312 - Company Law & Corporate Gov (4 AU)', '', '-----Biological Sciences Year 2-----', 'BS2002 - Microbiology (3 AU)', '', '-----Business Year 2-----', 'BF2201 - Investments (4 AU) [129%]', '', '-----Computer Engineering Year 2-----', 'CE2007 - Microprocessor-Based Sys Des (3 AU)', '', '-----Physics and Applied Physics Year 2-----', 'PH2104 - Analytical Mechanics (4 AU)', '', '-----Sport Science & Management Year 2-----', 'SS2101 - Foundations Of Motor Behaviour (3 AU)', '', '-----Chemistry and Biological Chemistry Year 1-----', 'CM1021 - Basic Inorganic Chem With Lab (4 AU)', '', '-----Mathematical Sciences Year 1-----', 'MH1812 - Discrete Mathematics (3 AU) [17%]', '', '-----Physics and Applied Physics Year 1-----', 'PH117S - Relativity & Quantum Physics (3 AU)', ''];
+ typeLists["GEXAM;06-DEC-2018;"]= ['-----Chinese-----', 'HC2030 - Pre-Qin Thought (3 AU)', 'HC2040 - Understanding China (3 AU)', 'HC3051 - Sociolinguistics (3 AU)', '', '-----Economics-----', 'HE2007 - Money & Banking (3 AU)', 'HE2008 - Public Finance (3 AU)', 'HE4023 - Econ Of Organ & Corp Mgt (4 AU)', '', '-----English-----', 'HL4023 - Adv Studies In American Lit (4 AU)', '', '-----Public Policy And Global Affairs-----', 'HA3015 - Media & Politics (3 AU)', '', '-----Psychology-----', "HP3204 - An Ape'S Guide To Human Lang (3 AU)", '', '-----Bioengineering Year 4-----', 'BG4215 - Biomedical Nanotechnology (3 AU)', '', '-----Materials Engineering Year 4-----', 'MS4620 - Polymer Technology (3 AU)', '', '-----Mathematical Sciences Year 4-----', 'MH4701 - Mathematical Programming (4 AU)', '', '-----Computer Engineering Year 3-----', 'CE3001 - Advanced Computer Architecture (3 AU)', '', '-----Chemistry and Biological Chemistry Year 3-----', 'CM3031 - Organic React Mech & Syn (3 AU)', '', '-----Communication Studies Year 3-----', 'CS4053 - Popular Cinema (4 AU)', '', '-----Computer Science Year 3-----', 'CZ3001 - Advanced Computer Architecture (3 AU)', 'CZ3006 - Net Centric Computing (3 AU)', '', '-----Physics and Applied Physics Year 3-----', 'PH3602 - Photonics (4 AU)', '', '-----Business Year 2-----', 'BF2206 - Wealth Management (4 AU) [180%]', 'BM2506 - Digital Marketing (4 AU) [64%]', '', '-----Communication Studies Year 2-----', 'CS2403 - Info Visualizatn & Presentn (3 AU)', '', '-----Mathematical Sciences Year 2-----', 'MH2500 - Probability & Intro To Stat (4 AU)', '', '-----Mathematical Sciences Year 1-----', 'MH1100 - Calculus I (4 AU)', ''];
+
+ typeLists["HW0001;"]=['-----Humanities and Social Sciences-----', 'HW0001 - English Proficiency (0 AU)', '', ''];
+ typeLists["GERP;AHSS;"]=['-----General Education in Art, Humanities and Social Sciences-----', 'CS8300 - Science Fiction Film (3 AU)', 'DD8002 - Ways Of Seeing (3 AU)', 'DD8008 - Faith & Art (3 AU) [94%]', 'DF2009 - History Of Film (3 AU)', 'DF8000 - Survey Of Experimental Film (3 AU) [58%]', 'DM2000 - Interactive I (3 AU)', 'DP2000 - Photo Imaging I (3 AU) [424%]', 'DP2001 - Digital Photography (3 AU) [648%]', 'DP2010 - Art & Ecology Workshop (3 AU)', 'DT2003 - 3d Modelling I (3 AU) [2750%]', 'DT2005 - Lighting & Rendering Pipelin (3 AU)', 'HC8005 - Dir Read Mod Chin Song Ly (3 AU)', 'HE9091 - Principles Of Economics (3 AU) [23%]', 'HL8001 - Madness In Literature & Film (3 AU) [95%]', 'HP8002 - Working In 21st Century (3 AU) [39%]', 'HP8003 - Are U Ok? Mental Health (3 AU) [358%]', 'HP8005 - Intro To Human Res Mgt (3 AU) [52%]', 'HP8006 - Psy Of Crisis Stress Mgt (3 AU) [157%]', 'HS8008 - Understand Culture & Glob (3 AU)', 'HY8002 - Logic And Critical Thinking (3 AU)', ''];
+ typeLists["GERP;BM;"]=['-----General Education in Business & Management-----', 'AB0301 - Legal & Ethical Iss In Sus (3 AU) [194%]', 'AB0501 - Green Marketing (3 AU) [45%]', 'AB0502 - Managing Sustainability (3 AU)', 'AB0603 - Bus Gone Green:Managerial Iss (3 AU) [75%]', 'BU8101 - Accounting:A User Perspec (3 AU) [53%]', 'BU8201 - Business Finance (3 AU) [220%]', 'BU8301 - Fundamentals Of Bus Law (3 AU) [259%]', 'BU8401 - Management Decision Tools (3 AU) [83%]', 'BU8501 - Marketing 21st Century (3 AU) [75%]', 'BU8502 - Marketing Com:An Integrated Ap (3 AU) [105%]', 'BU8601 - Fundamentals Of Mgt (3 AU) [98%]', 'CS8060 - Introduction To Advertising (3 AU) [221%]', 'EE8061 - Inno & Tech Management (3 AU)', 'MA8103 - Human Resource Management (3 AU) [54%]', 'MS8001 - Management With Humour (3 AU)', 'RE8011 - Fundamentals Of Management (3 AU)', 'RE8013 - Financial Management (3 AU)', ''];
+ typeLists["GERP;STS;"]=['-----General Education in Science, Technology & Society-----', 'AB8401 - Decision Making With Prog & An (3 AU)', 'BS1001 - Introductory Biology (3 AU)', 'BS8004 - Trad Chin Med:A Primer Co (3 AU)', 'BS8101 - Exploring The Sci Of Gd Eat Ex (3 AU)', 'CM8002 - Forensic Science (3 AU)', 'CM8022 - Appl Of Forensic Science (1 AU)', 'CV4107 - Eng Economics & Finance (3 AU) [65%]', 'EE8084 - Cyber Security (3 AU) [78%]', 'EE8085 - Electrificatn For The Built En (3 AU)', 'EE8086 - Astronomy-Strs,Gal & Cos (3 AU) [90%]', 'EE8094 - Impact Of Elect Rad On Humans (3 AU) [22%]', 'EE8095 - Innovation & Commercialization (3 AU)', 'ES8001 - Natural Hazards & Society (3 AU)', 'ES8005 - Environmental Earth System Sci (3 AU)', 'MA8005 - Aircraft Elect & Electron Cir (3 AU) [63%]', "MH8300 - It'S A Dis Dis Wld: Maths (3 AU)", 'SU3001 - Integrated Urban Management (3 AU)', ''];
+typeLists["GERP;LS;"]=['-----General Education in Liberal Studies-----', 'BS0001 - Biology & Society (3 AU)', 'BU8341 - Practical Ethics (3 AU) [111%]', 'BU8542 - Making The World A Betterplace (3 AU) [197%]', 'BU8543 - Tourism & Society (3 AU) [49%]', 'BU8641 - Howtobean Explorer Ofthe World (3 AU) [113%]', 'BU8642 - Leadership In The 21st Century (3 AU) [87%]', 'BU8643 - Cul Int:Mak The Wld Your Class (3 AU)', 'HL8025 - Soc Con Of Utopias & Dystopias (3 AU) [115%]', 'HP8002 - Working In 21st Century (3 AU) [39%]', 'MS8301 - Materials & Man (3 AU)', ''];
+typeLists["GERP;LA;"]=['-----General Education in Liberal Arts-----', 'BS0001 - Biology & Society (3 AU)', 'BS8101 - Exploring The Sci Of Gd Eat Ex (3 AU)', 'BU8341 - Practical Ethics (3 AU) [111%]', 'BU8542 - Making The World A Betterplace (3 AU) [197%]', 'BU8543 - Tourism & Society (3 AU) [49%]', "BU8544 - Consumers' Pur Of Hea,Bea & We (3 AU) [68%]", 'BU8641 - Howtobean Explorer Ofthe World (3 AU) [113%]', 'BU8642 - Leadership In The 21st Century (3 AU) [87%]', 'BU8643 - Cul Int:Mak The Wld Your Class (3 AU)', 'BU8644 - Smarter Bra?The Sci Of Dec Mak (3 AU) [68%]', 'CS8300 - Science Fiction Film (3 AU)', 'DD8002 - Ways Of Seeing (3 AU)', 'DD8008 - Faith & Art (3 AU) [94%]', 'DF2009 - History Of Film (3 AU)', 'DF8000 - Survey Of Experimental Film (3 AU) [58%]', 'DM2000 - Interactive I (3 AU)', 'DP2000 - Photo Imaging I (3 AU) [424%]', 'DP2001 - Digital Photography (3 AU) [648%]', 'DP2010 - Art & Ecology Workshop (3 AU)', 'DT2003 - 3d Modelling I (3 AU) [2750%]', 'DT2005 - Lighting & Rendering Pipelin (3 AU)', 'HC8005 - Dir Read Mod Chin Song Ly (3 AU)', 'HE9091 - Principles Of Economics (3 AU) [23%]', 'HG8002 - The Story Of English (3 AU) [25%]', 'HL8001 - Madness In Literature & Film (3 AU) [95%]', 'HL8025 - Soc Con Of Utopias & Dystopias (3 AU) [115%]', 'HP8002 - Working In 21st Century (3 AU) [39%]', 'HP8003 - Are U Ok? Mental Health (3 AU) [358%]', 'HP8005 - Intro To Human Res Mgt (3 AU) [52%]', 'HP8006 - Psy Of Crisis Stress Mgt (3 AU) [157%]', 'HS8008 - Understand Culture & Glob (3 AU)', 'HY8002 - Logic And Critical Thinking (3 AU)', 'MS8301 - Materials & Man (3 AU)', ''];
+typeLists["MLOAD;AHIS;"]=['-----Minor in Art History-----', 'DD1003 - Intro To Histories Of Art (3 AU)', 'DD2005 - Survey Of New Media (4 AU)', 'DD3005 - Sur Of Mod Art,1900-1945 (4 AU)', 'DD3006 - Art In Age Of Colonialism (4 AU)', 'DD3014 - Fr Mod To Pt-Mod:Art 1945-1985 (4 AU)', 'DD8002 - Ways Of Seeing (3 AU)', 'DD8008 - Faith & Art (3 AU) [94%]', 'DD8010 - Visualization Of Cult Heritage (3 AU)', 'DD8012 - Contemporary Curating (3 AU)', 'DF2009 - History Of Film (3 AU)', 'DF8000 - Survey Of Experimental Film (3 AU) [58%]', 'DP2002 - History Of Photography (3 AU)', 'DT2007 - History Of Animation (3 AU)', ''];
+typeLists["MLOAD;APY;"]=['-----Minor in Applied Physics-----', 'PH1104 - Mechanics (3 AU)', 'PH1105 - Optics, Vibrations & Waves (3 AU)', 'PH1801 - Foundations Of Physics I (3 AU)', 'PH2104 - Analytical Mechanics (4 AU)', 'PH3102 - Condensed Matter Physics I (4 AU)', 'PH3601 - Fab Of Micro-& Nanoelect Dev (4 AU)', 'PH3601 - Fab Of Micro-& Nanoelect Dev (4 AU)', 'PH3602 - Photonics (4 AU)', 'PH3602 - Photonics (4 AU)', ''];
+typeLists["MLOAD;CCW;"]=['-----Minor in Chinese Creative Writing-----', 'HF9101 - Intro To Chin Creative Writing (3 AU) [100%]', 'HF9201 - Creative Writing: Chin Prose (3 AU)', 'HF9601 - Chinese Crossmedia Writing (3 AU)', 'HF9801 - Adv Creative Writing:Chin Fict (3 AU)', ''];
+typeLists["MLOAD;CDA;"]=['-----Minor in Computing And Data Analysis-----', 'CE1003 - Intro Tocomputational Thinking (3 AU) [148%]', 'CE1005 - Digital Logic (3 AU) [12%]', 'CE1007 - Data Structures (3 AU) [9%]', 'CE2001 - Algorithms (3 AU)', 'CE2002 - Obj Oriented Des & Prog (3 AU)', 'CE2007 - Microprocessor-Based Sys Des (3 AU)', 'CZ1003 - Intro Tocomputational Thinking (3 AU) [248%]', 'CZ1005 - Digital Logic (3 AU) [21%]', 'CZ1007 - Data Structures (3 AU) [15%]', 'CZ2001 - Algorithms (3 AU)', 'CZ2002 - Object Oriented Des & Prog (3 AU) [3%]', 'CZ2004 - Human Computer Interaction (3 AU) [21%]', 'CZ2007 - Introduction To Databases (3 AU)', 'MH2500 - Probability & Intro To Stat (4 AU)', ''];
+typeLists["MLOAD;CHEM;"]=['-----Minor in Chemistry And Biological Chemistry-----', 'CM1021 - Basic Inorganic Chem With Lab (4 AU)', 'CM1031 - Basic Organic Chem Wi Lab (4 AU)', 'CM2011 - Analytical Chemistry (3 AU)', 'CM2021 - Inorganic & Bioinorg Chem (3 AU)', 'CM2031 - Organic & Bioorganic Chem (3 AU)', 'CM3011 - Chem Spectroscopy & App (3 AU)', 'CM3021 - Organometallic Chemistry (3 AU)', 'CM3031 - Organic React Mech & Syn (3 AU)', 'CM3041 - Phy & Biophy Chemistry 2 (3 AU)', ''];
+typeLists["MLOAD;CHIN;"]=['-----Minor in Chinese-----', 'HC1001 - Intro Study Of Lit & Cult (3 AU)', 'HC1002 - Introduction To Chin Lang (3 AU)', 'HC1050 - The Sci Of Chin Charact (3 AU)', 'HC2010 - Classical Chinese Fiction (3 AU)', 'HC2015 - Coming Of Age In Modern China (3 AU)', 'HC2030 - Pre-Qin Thought (3 AU)', 'HC2032 - Div & Int:Fro Chun To Wud (3 AU)', 'HC2040 - Understanding China (3 AU)', 'HC2053 - Varieties Of Chinese (3 AU)', 'HC2060 - Chinese Education In Sea (3 AU)', 'HC3011 - Studies Of Selected Poets (3 AU)', 'HC3014 - Cultural Studies Chin Cin (3 AU)', "HC3040 - China'S Reform & Econ Dev (3 AU)", 'HC4014 - Special Topics In Chi Lit (4 AU)', 'HC4015 - Special Topics In Classi (4 AU)', 'HC4016 - Theory & Practice (4 AU)', 'HC4031 - Interculturalism In Chin (4 AU)', 'HC4040 - Cross-Taiwan Straits Rela (4 AU)', 'HC4051 - Text, Rhetoric & Style (4 AU)', 'HC4055 - Chinese Language Acquisition (4 AU)', 'HC4063 - A Study Of Sinophone Culture (4 AU)', 'HC4064 - Transcult Chin Thea In Spore (4 AU)', ''];
+typeLists["MLOAD;CM;"]=['-----Minor in Computing-----', 'CE1003 - Intro Tocomputational Thinking (3 AU) [148%]', 'CE1005 - Digital Logic (3 AU) [12%]', 'CE1006 - Computer Organisation & Archit (3 AU) [1%]', 'CE1007 - Data Structures (3 AU) [9%]', 'CE2001 - Algorithms (3 AU)', 'CE2002 - Obj Oriented Des & Prog (3 AU)', 'CE2005 - Operating Systems (3 AU)', 'CE2006 - Software Engineering (3 AU)', 'CE2007 - Microprocessor-Based Sys Des (3 AU)', 'CE4003 - Computer Vision (3 AU)', 'CZ1003 - Intro Tocomputational Thinking (3 AU) [248%]', 'CZ1005 - Digital Logic (3 AU) [21%]', 'CZ1006 - Computer Organisation & Archit (3 AU)', 'CZ1007 - Data Structures (3 AU) [15%]', 'CZ2001 - Algorithms (3 AU)', 'CZ2002 - Object Oriented Des & Prog (3 AU) [3%]', 'CZ2004 - Human Computer Interaction (3 AU) [21%]', 'CZ2005 - Operating Systems (3 AU)', 'CZ2006 - Software Engineering (3 AU)', 'CZ2007 - Introduction To Databases (3 AU)', 'CZ3006 - Net Centric Computing (3 AU)', 'CZ4003 - Computer Vision (3 AU)', 'MH2500 - Probability & Intro To Stat (4 AU)', ''];
+typeLists["MLOAD;CS;"]=['-----Minor in Communication Studies-----', 'CS0201 - Foundations Of Comm Stud (3 AU)', 'CS0201 - Foundations Of Comm Stud (3 AU)', 'CS0204 - Basic Media Writing (3 AU)', 'CS0209 - Media Law, Ethics & Policy (3 AU)', 'CS2006 - Theo Of Vis Comm & Their App (3 AU) [271%]', 'CS2006 - Theo Of Vis Comm & Their App (3 AU) [271%]', 'CS2008 - Fundamentals Of Research (3 AU) [24%]', 'CS2021 - News Reporting & Writing (3 AU) [29%]', 'CS2029 - Broadcast Journalism:C&Ap (3 AU)', 'CS2054 - Interpersonal Comm (3 AU) [218%]', 'CS2056 - Psy & Communication (3 AU) [1300%]', 'CS2057 - Media Effects (3 AU)', 'CS2057 - Media Effects (3 AU)', 'CS2058 - Integrated Marketing Comm (3 AU)', 'CS2058 - Integrated Marketing Comm (3 AU)', 'CS2400 - Foundation Of Info Analytics (3 AU) [33%]', 'CS2401 - Info Analytics: Tools, Tech (3 AU)', 'CS2403 - Info Visualizatn & Presentn (3 AU)', 'CS2405 - Data Mining (3 AU)', 'CS4031 - Media Planning & Strateg (4 AU)', 'CS4037 - Audience Research Methods (4 AU)', 'CS4053 - Popular Cinema (4 AU)', 'CS4058 - Intercultural Comm (4 AU)', 'CS4058 - Intercultural Comm (4 AU)', ''];
+typeLists["MLOAD;CW;"]=['-----Minor in Creative Writing-----', 'HZ9101 - Intro To Creative Writing (3 AU) [102%]', 'HZ9201 - Creative Writing:Poetry (3 AU) [167%]', 'HZ9202 - Creative Writing:Fiction (3 AU) [247%]', 'HZ9203 - Creative Writing: Non Fiction (3 AU) [133%]', 'HZ9204 - Creative Writing:Playwrit (3 AU)', 'HZ9301 - Advanced Creative Writing (3 AU)', ''];
+typeLists["MLOAD;DRA;"]=['-----Minor in Drama And Performance-----', 'ADP16A - Intro To Theatre & Performance (3 AU) [31%]', 'ADP26B - Theatre For Young People (3 AU)', "ADP26C - Acting: The Actor'S Voice & Bo (3 AU)", 'ADP26D - Theatre & Technology (3 AU)', 'ADP26J - Traditional Thea:Styles & Con (3 AU)', ''];
+typeLists["MLOAD;ECHE;"]=['-----Minor in Early Childhood Education-----', 'AED16A - Pract & Iss In Early Child Edu (3 AU)', 'AED16B - Curr & Ass In Early Child Edu (3 AU)', ''];
+typeLists["MLOAD;ECON;"]=['-----Minor in Economics-----', 'HE2004 - Introductory Econometrics (3 AU)', 'HE2005 - Principles Econometrics (3 AU)', "HE2006 - Int'L Monetary Economics (3 AU)", 'HE2007 - Money & Banking (3 AU)', 'HE2008 - Public Finance (3 AU)', 'HE2009 - Industrial Organisation (3 AU)', 'HE2010 - Development Economics (3 AU)', 'HE2011 - Lab Econ & Lab Relations (3 AU)', 'HE2013 - International Trade (3 AU)', 'HE3001 - Mathematical Economics (3 AU)', 'HE3002 - Game Theo & App To Soc Sc (3 AU)', 'HE3003 - The Chinese Economy (3 AU)', 'HE3007 - Financial Economics (3 AU)', 'HE3013 - Urban Economics (3 AU)', 'HE3016 - Principles Of Math Finance (3 AU) [100%]', 'HE3024 - Intro To Applied Econ Pol Res (3 AU)', 'HE4002 - Advanced Macroeconomics (4 AU)', 'HE4005 - Growth Theory & Empirics (4 AU)', "HE4010 - S'Pore Eco In A Global Wo (4 AU)", 'HE4015 - Personnel Economics (4 AU)', 'HE4017 - Monetary Economics (4 AU)', 'HE4020 - Econometric Time Series A (4 AU)', 'HE4023 - Econ Of Organ & Corp Mgt (4 AU)', 'HE9091 - Principles Of Economics (3 AU) [23%]', ''];
+typeLists["MLOAD;EDU;"]=['-----Minor in Education Studies-----', 'AED23C - Cri Rea Ski For Effe Teac (2 AU) [60%]', 'AED28B - Critical Perspec On Edu (3 AU) [40%]', 'AED38A - Motivatin Pupils To Learn (3 AU) [287%]', 'AED38B - Fac Asynchron Online Dis (3 AU) [50%]', 'AED38C - Des Ict-Based Constr Act (2 AU) [45%]', ''];
+typeLists["MLOAD;ELIT;"]=['-----Minor in English Literature-----', 'HL1001 - Intro To The Study Of Lit (3 AU)', 'HL1002 - Survey Of E Literature 1 (3 AU)', 'HL2001 - Medieval Literature (3 AU)', 'HL2002 - Renaissance Literature (3 AU)', 'HL2004 - Sensibility & Romanticism (3 AU)', 'HL2006 - Modernism (3 AU)', 'HL2007 - Contemporary Lit & Cult (3 AU)', 'HL2011 - Representations Of Asia (3 AU)', 'HL2021 - Literature Of Empire (3 AU)', 'HL2022 - South Asian Literature (3 AU)', 'HL2024 - Approaches To Literature (3 AU)', 'HL2027 - Early American Literature (3 AU)', 'HL2029 - American Modernism (3 AU)', 'HL2041 - Asian Historical Fiction (3 AU)', "HL2042 - Children'S Literature (3 AU)", 'HL3001 - Film Theory (3 AU)', 'HL3002 - Film, Politics & Ethics (3 AU)', 'HL3011 - Sci Fic:Origins To Parody (3 AU)', 'HL3016 - Gend & Sexuality Studies (3 AU)', 'HL3017 - The Rise Of The Novel (3 AU)', 'HL3037 - Approaches To The Environ Hum (3 AU)', 'HL3038 - Theatre Of The Absurb (3 AU)', 'HL4010 - Feminist Studies (4 AU)', 'HL4013 - Adv Stud In Literature&Culture (4 AU)', 'HL4019 - Adv Stud In Victorian Lit (4 AU)', 'HL4023 - Adv Studies In American Lit (4 AU)', 'HL4028 - Science & Literature (4 AU)', 'HL4034 - British Asian Literature (4 AU)', 'HL4036 - Literature & Medicine (4 AU)', ''];
+typeLists["MLOAD;ENGY;"]=['-----Minor in Energy-----', 'EE8085 - Electrificatn For The Built En (3 AU)', 'EM9105 - Energy Resources Managemt (3 AU)', 'MA9001 - Introduction To Energy (3 AU)', 'MS8205 - Materials For Energy Conver (3 AU)', ''];
+typeLists["MLOAD;ENT;"]=['No Course found', ''];
+typeLists["MLOAD;ENUS;"]=['-----Minor in Environmental And Urban Studies-----', 'DP2010 - Art & Ecology Workshop (3 AU)', 'EM9104 - Air Quality Management (3 AU)', 'HG2020 - Language In Society (3 AU)', ''];
+typeLists["MLOAD;ENV;"]=['-----Minor in Environmental Management-----', 'EM9104 - Air Quality Management (3 AU)', 'EM9105 - Energy Resources Managemt (3 AU)', ''];
+typeLists["MLOAD;ENVS;"]=['-----Minor in Environmental Sustainability-----', 'EM9105 - Energy Resources Managemt (3 AU)', 'ES8001 - Natural Hazards & Society (3 AU)', 'ES8005 - Environmental Earth System Sci (3 AU)', 'HH4006 - The Green Earth (4 AU)', ''];
+typeLists["MLOAD;FIN;"]=['-----Minor in Finance-----', 'BF2201 - Investments (4 AU) [129%]', 'BF2209 - Derivative Securities (4 AU) [160%]', 'BF3204 - Financial Modelling (4 AU) [500%]', 'BF3207 - Alternative Investments (4 AU) [125%]', 'BU8201 - Business Finance (3 AU) [220%]', ''];
+typeLists["MLOAD;FS;"]=['-----Minor in Film Studies-----', 'CS4024 - Writing For Cinema & Tv (4 AU)', 'CS4053 - Popular Cinema (4 AU)', 'DF2005 - Writing For Film (3 AU) [250%]', 'DF2009 - History Of Film (3 AU)', 'DT2007 - History Of Animation (3 AU)', 'FL8001 - Introduction To Film Studies (3 AU)', 'HL3001 - Film Theory (3 AU)', 'HL3002 - Film, Politics & Ethics (3 AU)', 'HL3016 - Gend & Sexuality Studies (3 AU)', ''];
+typeLists["MLOAD;GA;"]=['-----Minor in Global Asia-----', 'DD3006 - Art In Age Of Colonialism (4 AU)', "HA3014 - Singapore'S Foreign Pol (3 AU)", 'HE3003 - The Chinese Economy (3 AU)', 'HH1002 - Asia-Pacific Glob His:Pre-1800 (3 AU)', 'HS1002 - Singapore Society In Tran (3 AU)', 'HY2003 - Chinese Philosophy (3 AU)', ''];
+typeLists["MLOAD;HIST;"]=['-----Minor in History-----', 'DF2009 - History Of Film (3 AU)', 'HH1001 - What Is History? (3 AU)', 'HH1002 - Asia-Pacific Glob His:Pre-1800 (3 AU)', 'HH1007 - The Making Of Civilizations (3 AU)', 'HH2020 - Science & War (3 AU)', 'HH2021 - Race,Gen,Class & Colonial Pow (3 AU)', 'HH2027 - Blood,Germs & Sick Bodies (3 AU)', 'HH3001 - Historiography:Theory & Method (3 AU)', 'HH3002 - Sci,Tech &Med In Mod East Asia (3 AU)', 'HH3009 - Comparative His Of Glo Migra (3 AU)', 'HH3019 - History Of The Body (3 AU)', 'HH3024 - Decolonisation & Democracy (3 AU)', 'HH3025 - The Cult,Soc&Econ His Of Footb (3 AU)', 'HH3031 - The Us & The Modern Middle Eas (3 AU)', 'HH3039 - Marit Asia In The Longue Duree (3 AU)', 'HH4006 - The Green Earth (4 AU)', 'HH4012 - Intellectual Hist Of Mod China (4 AU)', 'HH4022 - Colonial Medi Practices In Sg (4 AU)', 'HH4091 - Interdisciplinary History (4 AU) [50%]', 'HH4092 - World History (4 AU)', ''];
+typeLists["MLOAD;HPA;"]=['-----Minor in Public Administration-----', 'HA1001 - Introto Intnl Relations& Fo Po (3 AU)', 'HA1002 - Intro To Political Theory (3 AU)', 'HA2009 - The Making Of E-Government (3 AU)', 'HA2014 - Public Organisation & Mgt (3 AU)', 'HA3004 - United States And East Asia (3 AU)', 'HA3007 - Pub Budgeting & Fin Mgt (3 AU)', 'HA3013 - Manag Hum Res & Beh In The Pub (3 AU)', "HA3014 - Singapore'S Foreign Pol (3 AU)", 'HA3015 - Media & Politics (3 AU)', 'HA4006 - Special Topic In Public Admin (4 AU)', ''];
+typeLists["MLOAD;ICT;"]=['-----Minor in Information-Communication Technology-----', 'EE8061 - Inno & Tech Management (3 AU)', 'EE8084 - Cyber Security (3 AU) [78%]', ''];
+typeLists["MLOAD;LFSC;"]=['-----Minor in Life Sciences-----', 'BS1001 - Introductory Biology (3 AU)', 'BS1008 - Biostatistics (3 AU) [3%]', 'BS2001 - Physiology (3 AU)', 'BS2002 - Microbiology (3 AU)', ''];
+typeLists["MLOAD;LING;"]=['-----Minor in Linguistics And Multilingual Studies-----', 'HC2053 - Varieties Of Chinese (3 AU)', 'HC4051 - Text, Rhetoric & Style (4 AU)', 'HG1001 - Mind & Meaning (3 AU)', 'HG2001 - Morphology & Syntax (3 AU)', 'HG2002 - Semantics & Pragmatics (3 AU)', 'HG2017 - Father-&-Mother-Tongues (3 AU)', 'HG2021 - Intercultural Comm (3 AU)', 'HG2024 - X-Rated Ling:Lang,Sex & Desire (3 AU)', 'HG2031 - History Of English (3 AU)', 'HG2033 - Intro To Conversation Analysis (3 AU)', 'HG2034 - Structure Of Modern Eng (3 AU)', 'HG2094 - Word Of Mouth:Trans Of Oral Cu (3 AU)', 'HG3005 - Statistical Analysis (3 AU)', 'HG3015 - Psycholinguistics (3 AU)', 'HG3017 - Adv Study Lang & Lit  Infancy (3 AU)', 'HG3021 - Language Change (3 AU)', 'HG3022 - Sociolinguistics Of A Region (3 AU)', 'HG4022 - Forensic Linguistics (4 AU)', 'HG4041 - Theories Of Grammar (4 AU)', 'HG4046 - Dialectology & Lang Contact (4 AU)', 'HG4047 - Pragmatic Theory (4 AU)', 'HG4063 - Advanced World Englishes (4 AU)', 'HG4070 - Experimental Phonetics (4 AU)', 'LA9003 - Arabic Language Level 3 (3 AU) [28%]', 'LC9003 - Chinese Language Level 3 (3 AU) [6%]', 'LF9003 - French Language Level 3 (3 AU) [39%]', 'LF9004 - French Language Level 4 (3 AU) [100%]', 'LF9005 - French Language Level 5 (3 AU) [7%]', 'LG9003 - German Language Level 3 (3 AU) [67%]', 'LG9004 - German Language Level 4 (3 AU) [67%]', 'LJ9003 - Japanese Language Level 3 (3 AU) [72%]', 'LJ9004 - Japanese Language Level 4 (3 AU) [103%]', 'LJ9005 - Japanese Language Level 5 (3 AU) [87%]', 'LK9003 - Korean Language Level 3 (3 AU) [86%]', 'LK9004 - Korean Language Level 4 (3 AU) [41%]', 'LK9005 - Korean Language Level 5 (3 AU) [67%]', 'LK9006 - Korean Language Level 6 (3 AU) [33%]', 'LM9003 - Malay Language Level 3 (3 AU) [6%]', 'LS9003 - Spanish Language Level 3 (3 AU) [56%]', 'LS9004 - Spanish Language Level 4 (3 AU) [27%]', ''];
+typeLists["MLOAD;MATH;"]=['-----Minor in Mathematics-----', 'MH1100 - Calculus I (4 AU)', 'MH1200 - Linear Algebra I (4 AU)', 'MH1300 - Foundations Of Maths (4 AU)', 'MH1800 - Calculus For The Sci I (3 AU)', 'MH2100 - Calculus Iii (4 AU)', 'MH2200 - Groups & Symmetries (3 AU)', 'MH2500 - Probability & Intro To Stat (4 AU)', 'MH2801 - Complex Methods For The Sci (3 AU)', 'MH3101 - Complex Analysis (4 AU)', 'MH3210 - Number Theory (4 AU)', 'MH3300 - Graph Theory (4 AU)', 'MH3510 - Regression Analysis (4 AU)', 'MH3512 - Stochastic Processes (4 AU)', 'MH3600 - Knots & Surfaces (4 AU)', 'MH4200 - Abstract Algebra Ii (4 AU)', 'MH4311 - Cryptography (4 AU)', 'MH4320 - Computational Economics (4 AU)', 'MH4510 - Stat Lern & Data Mining (4 AU)', 'MH4513 - Survival Analysis (4 AU)', 'MH4700 - Numerical Analysis Ii (4 AU)', 'MH4701 - Mathematical Programming (4 AU)', 'MH4702 - Probabilistic Meth In Or (4 AU)', ''];
+typeLists["MLOAD;MUS;"]=['-----Minor in Music-----', 'AAI180 - Mus Prac I (Baro & Class) (3 AU)', 'AAI181 - Mus Prac Iii (Rom & Cen) (3 AU)', 'AAI182 - Foundations In Mus Stud I (3 AU)', 'AAI28C - Percussion (3 AU)', 'AAI38B - Studies In Japanese Music (3 AU)', 'AAI38D - Choir I (3 AU)', 'AAI38J - Band I (3 AU)', 'AAI38N - Stud In Indonesian Gamelan Ii (3 AU)', 'AAI48A - Studies In Chinese Music (3 AU)', 'AAI48B - Studies In Malay Music (3 AU)', 'AAI48D - Choir Iii (3 AU)', 'AAI48J - Band Iii (3 AU)', ''];
+typeLists["MLOAD;NBS;"]=['-----Minor in Business-----', 'BU8101 - Accounting:A User Perspec (3 AU) [53%]', 'BU8201 - Business Finance (3 AU) [220%]', 'BU8301 - Fundamentals Of Bus Law (3 AU) [259%]', 'BU8401 - Management Decision Tools (3 AU) [83%]', 'BU8501 - Marketing 21st Century (3 AU) [75%]', 'BU8502 - Marketing Com:An Integrated Ap (3 AU) [105%]', 'BU8601 - Fundamentals Of Mgt (3 AU) [98%]', 'BU9201 - Investments (3 AU)', ''];
+typeLists["MLOAD;PHIL;"]=['-----Minor in Philosophy-----', 'HY1001 - Introduction To Philosophy (3 AU) [4300%]', 'HY1002 - Logic & Paradoxes (3 AU)', 'HY2002 - Moral Philosophy (3 AU)', 'HY2003 - Chinese Philosophy (3 AU)', 'HY2008 - Environmental Ethics (3 AU) [367%]', 'HY2012 - Modern Philosophy:Reason & Exp (3 AU)', 'HY3001 - Existentialism:Frdom,Being,Dea (3 AU)', 'HY3010 - Philosophy Of Science (3 AU)', 'HY3011 - Minds & Machines (3 AU)', 'HY4002 - Knowledge And Reality (4 AU)', 'HY4113 - Special Top In Chinese Phil (4 AU)', 'HY4122 - Special Top In Philosophy Ii (4 AU)', 'HY4133 - Special Top In Chin Phil Iii (4 AU)', 'HY8002 - Logic And Critical Thinking (3 AU)', ''];
+typeLists["MLOAD;PHY;"]=['-----Minor in Physics-----', 'PH1104 - Mechanics (3 AU)', 'PH1105 - Optics, Vibrations & Waves (3 AU)', 'PH1801 - Foundations Of Physics I (3 AU)', 'PH1801 - Foundations Of Physics I (3 AU)', 'PH2103 - Thermal Physics (4 AU)', 'PH2103 - Thermal Physics (4 AU)', 'PH2104 - Analytical Mechanics (4 AU)', 'PH3101 - Quantum Mechanics Ii (4 AU)', 'PH3101 - Quantum Mechanics Ii (4 AU)', 'PH3102 - Condensed Matter Physics I (4 AU)', 'PH3502 - Chaotic Dynamical Systems (4 AU)', ''];
+typeLists["MLOAD;PPGA;"]=['-----Minor in Public Policy And Global Affairs-----', 'HA1001 - Introto Intnl Relations& Fo Po (3 AU)', 'HA1002 - Intro To Political Theory (3 AU)', 'HA1002 - Intro To Political Theory (3 AU)', 'HA1012 - Fundamentals Of Politics (3 AU)', 'HA2009 - The Making Of E-Government (3 AU)', 'HA2009 - The Making Of E-Government (3 AU)', 'HA2013 - Comparative Public Politics (3 AU)', 'HA2013 - Comparative Public Politics (3 AU)', 'HA2014 - Public Organisation & Mgt (3 AU)', 'HA2014 - Public Organisation & Mgt (3 AU)', 'HA2015 - China In Africa (3 AU)', 'HA2015 - China In Africa (3 AU)', 'HA2017 - Foreign Policy Analysis (3 AU)', 'HA2017 - Foreign Policy Analysis (3 AU)', 'HA2020 - Socio-Political Ana In Pub Pol (3 AU)', 'HA2020 - Socio-Political Ana In Pub Pol (3 AU)', 'HA2023 - Res Method In Social Sciences (3 AU)', 'HA3004 - United States And East Asia (3 AU)', 'HA3004 - United States And East Asia (3 AU)', 'HA3007 - Pub Budgeting & Fin Mgt (3 AU)', 'HA3007 - Pub Budgeting & Fin Mgt (3 AU)', 'HA3013 - Manag Hum Res & Beh In The Pub (3 AU)', 'HA3013 - Manag Hum Res & Beh In The Pub (3 AU)', "HA3014 - Singapore'S Foreign Pol (3 AU)", "HA3014 - Singapore'S Foreign Pol (3 AU)", 'HA3015 - Media & Politics (3 AU)', 'HA3015 - Media & Politics (3 AU)', 'HA4006 - Special Topic In Public Admin (4 AU)', 'HA4006 - Special Topic In Public Admin (4 AU)', 'HA4015 - Performance Mgt In The Pub Sec (4 AU)', 'HA4015 - Performance Mgt In The Pub Sec (4 AU)', 'HA4016 - Global Cities:Policy& Politics (4 AU)', 'HA4016 - Global Cities:Policy& Politics (4 AU)', 'HA4022 - Internl Politics Of The Asia-P (4 AU)', 'HA4024 - Environmental Change & Pol Des (4 AU)', ''];
+typeLists["MLOAD;PSY;"]=['-----Minor in Psychology-----', 'AED38A - Motivatin Pupils To Learn (3 AU) [287%]', 'HP1000 - Intro To Psychology (3 AU) [349%]', 'HP1100 - Fund Of Soc Sci Research (3 AU) [41%]', 'HP2200 - Biological Psychology (3 AU)', 'HP2500 - Personality & Indiv Diff (3 AU)', 'HP3101 - App Stat Meth For Psy Res (3 AU)', 'HP3201 - Evolutionary Psychology (3 AU) [4%]', "HP3204 - An Ape'S Guide To Human Lang (3 AU)", 'HP3603 - Sensation & Perception (3 AU)', 'HP3703 - Health Psychology (3 AU)', 'HP3704 - Intro To Clinical Neuro (3 AU)', 'HP3801 - Psychology In The Workpl (3 AU)', 'HP3802 - Personnel Psychology (3 AU)', 'HP3807 - Occupational Health Psychology (3 AU)', 'HP3901 - Cultural Psychology (3 AU)', ''];
+typeLists["MLOAD;RMI;"]=['-----Minor in Risk Management And Insurance-----', 'BR2202 - Insurance Law & Regulations (4 AU)', 'BR3207 - Cyber Risk Mgt & Insurance (4 AU)', 'BR3208 - Operational Risk Management (4 AU)', 'BU8201 - Business Finance (3 AU) [220%]', ''];
+typeLists["MLOAD;SC;"]=['-----Minor in Strategic Communication-----', 'CS0209 - Media Law, Ethics & Policy (3 AU)', 'CS4031 - Media Planning & Strateg (4 AU)', 'CS4058 - Intercultural Comm (4 AU)', ''];
+typeLists["MLOAD;SOC;"]=['-----Minor in Sociology-----', 'HS1001 - Person & Society (3 AU)', 'HS1002 - Singapore Society In Tran (3 AU)', 'HS1003 - Soc Prob In A Global Con (3 AU)', 'HS2001 - Classical Social Theory (3 AU)', 'HS2007 - Understanding Globalizat (3 AU)', 'HS2009 - Sociology Of The Life Cou (3 AU)', 'HS2026 - Deviance & Society (3 AU)', 'HS2028 - Graying Society (3 AU)', 'HS3001 - Contemporary Social Theo (3 AU)', 'HS3002 - Understanding Social Stat (3 AU)', 'HS3007 - Religion & Society (3 AU)', 'HS3016 - Societies In Compara Per (3 AU)', 'HS3054 - Social Psychology (3 AU)', ''];
+typeLists["MLOAD;SSCI;"]=['-----Minor in Sport Science-----', 'SS1101 - Human Anatomy & Physiology (3 AU)', 'SS1104 - Intro To Health & Wellness (3 AU) [243%]', 'SS2101 - Foundations Of Motor Behaviour (3 AU)', 'SS2102 - Intro To Sport Biomechanics (3 AU)', 'SS2103 - Sport Coaching: Found Of Coach (3 AU)', ''];
+typeLists["MLOAD;SYMT;"]=['-----Minor in Systems Management-----', 'MA4845 - Manufacturing Automation (3 AU)', 'MA4849 - Operations Research (3 AU)', 'MA4850 - Supply Chain & Logistics Mgt (3 AU)', ''];
+typeLists["MLOAD;STS;"]=['-----Minor in Science, Technology And Society-----', 'CS4043 - Spec Journalism;Sci&Health Rpt (4 AU)', 'HH3019 - History Of The Body (3 AU)', 'HY3010 - Philosophy Of Science (3 AU)', 'HY3012 - Philosophy Of Technology (3 AU)', 'ST9001 - Intro To Sci,Tech, & Soc (3 AU)', ''];
+typeLists["MLOAD;TRAN;"]=['-----Minor in Translation-----', 'HT9101 - Trans:His,Theories & Prin (3 AU) [72%]', 'HT9102 - Lang Foundation For Trans (3 AU) [40%]', 'HT9201 - Trans:Techniques & Pract (3 AU) [52%]', 'HT9302 - Literary Trans Into Chin Con (3 AU) [32%]', 'HT9401 - Trans:Appre,Criti & Eval (3 AU) [72%]', ''];
+typeLists["GLOAD;ACC;"]=['-----Unrestricted Electives in Accountancy-----', 'AB0901 - Principles Of Econ:A Spore Per (3 AU)', 'AB9101 - Bus Valuation: Fr Theory To Pr (3 AU) [18%]', 'AB9102 - Forensic Accountng & Fraud Inv (3 AU) [97%]', 'AB9601 - Negotiate To Get What You Want (4 AU) [93%]', 'AB9602 - Leadership In Organisatn (4 AU)', 'AB3601 - Strategic Management (4 AU)', 'AC2301 - Principles Of Taxation (4 AU) [50%]', 'AC2302 - Company Law & Corporate Gov (4 AU)', 'AC2312 - Company Law & Corporate Gov (4 AU)', 'AC2401 - Accounting Info Sys (4 AU)', 'AB1201 - Financial Management (3 AU)', 'AB1202 - Statistics & Analysis (3 AU)', 'AB1301 - Business Law (3 AU)', 'AB1401 - Tech Inno & Devt (3 AU)', 'AB1402 - Foundational Excel (1 AU)', 'AB1501 - Marketing (3 AU)', 'AB1601 - Org Behaviour & Design (3 AU)', 'AC1102 - Accounting Ii (4 AU)', ''];
+typeLists["GLOAD;ADM;"]=['-----Unrestricted Electives in Art, Design & Media-----', 'DA9009 - Exhibition Design (3 AU) [200%]', 'DA9012 - Media Art Nexus (3 AU)', 'DA9013 - Drawing & Sketching For Design (3 AU)', 'DD8002 - Ways Of Seeing (3 AU)', 'DD8008 - Faith & Art (3 AU) [94%]', 'DD8010 - Visualization Of Cult Heritage (3 AU)', 'DD8012 - Contemporary Curating (3 AU)', 'DD9009 - Design Thinking (3 AU) [100%]', 'DF8000 - Survey Of Experimental Film (3 AU) [58%]', 'DP2010 - Art & Ecology Workshop (3 AU)', 'DV9002 - Graphic Communication (3 AU) [88%]', 'DD3006 - Art In Age Of Colonialism (4 AU)', 'DD3012 - Research Mths In Art & Design (3 AU)', 'DD3014 - Fr Mod To Pt-Mod:Art 1945-1985 (4 AU)', 'DF3002 - Documentary Filmmaking (3 AU) [117%]', 'DF3005 - Audio Post-Productn For Film (3 AU)', 'DF3008 - Sound For Film (4 AU) [5%]', 'DM3000 - Web Design (4 AU)', 'DM3002 - Robotic & Kinetic Media (3 AU)', 'DM3012 - Open Source Studio (4 AU)', 'DT3004 - Rigging For Animation (3 AU)', 'DV3005 - Brand Design (3 AU)', 'DA2000 - Applied Drawing (3 AU)', 'DA2001 - Painting (3 AU)', 'DD2005 - Survey Of New Media (4 AU)', 'DD3005 - Sur Of Mod Art,1900-1945 (4 AU)', 'DF2000 - Digital Film Production I (3 AU)', 'DF2001 - Film Editing (3 AU)', 'DF2005 - Writing For Film (3 AU) [250%]', 'DF2008 - Issues In Film Practice (3 AU)', 'DF2009 - History Of Film (3 AU)', 'DM2000 - Interactive I (3 AU)', 'DM2008 - Prog For Art & Games (3 AU)', 'DP2000 - Photo Imaging I (3 AU) [424%]', 'DP2001 - Digital Photography (3 AU) [648%]', 'DP2002 - History Of Photography (3 AU)', 'DP2008 - Experimental Photography (3 AU)', 'DR2001 - Product Design I (3 AU)', 'DR2005 - Comp Aid Design Worksh I (3 AU)', 'DR2007 - Surface Design (3 AU)', 'DR2008 - User Experience In Design (3 AU)', 'DT2000 - Drawn Animation I (3 AU)', 'DT2001 - 3d Production (3 AU)', 'DT2003 - 3d Modelling I (3 AU) [2750%]', 'DT2004 - Graphic Storytelling (3 AU)', 'DT2005 - Lighting & Rendering Pipelin (3 AU)', 'DT2007 - History Of Animation (3 AU)', 'DT2009 - Storyboarding (3 AU)', 'DT2010 - Digital Compositing (3 AU)', 'DT2011 - Stop Motion (3 AU)', 'DT2012 - Digital Painting (3 AU) [300%]', 'DV2000 - Typography I (3 AU)', 'DV2001 - Visual Communication I (3 AU)', 'DV2008 - Interface Design (3 AU)', 'DV2009 - Design In Motion (3 AU)', 'DV2011 - Pattern,Art,Des & Architecture (3 AU)', 'DD1003 - Intro To Histories Of Art (3 AU)', ''];
+typeLists["GLOAD;BIE;"]=['-----Unrestricted Electives in Bioengineering Year 4-----', 'BG4215 - Biomedical Nanotechnology (3 AU)', 'BG4231 - Advanced Biomaterials (3 AU)', ''];
+typeLists["GLOAD;BS;"]=['-----Unrestricted Electives in Biological Sciences-----', 'BS8004 - Trad Chin Med:A Primer Co (3 AU)', 'BS8101 - Exploring The Sci Of Gd Eat Ex (3 AU)', 'BS4013 - Phy Sys:Ani Models For Drug De (3 AU)', 'BS4014 - Molecular Basis Of Diseases (3 AU)', 'BS3018 - Plant Biology (3 AU)', 'BS3021 - Bioimaging Techniques In Em (3 AU)', 'BS3024 - Evolution In Health & Disease (3 AU)', 'BS3344 - Macromolecular Crystallography (3 AU)', 'BS2001 - Physiology (3 AU)', 'BS2002 - Microbiology (3 AU)', 'BS2020 - Maths,Phys & B P  For Stru Bio (3 AU)', 'BS1001 - Introductory Biology (3 AU)', 'BS1002 - Biophysical Chemistry (3 AU)', 'BS1008 - Biostatistics (3 AU) [3%]', ''];
+typeLists["GLOAD;BUS;"]=['-----Unrestricted Electives in Business-----', 'BL9311 - Law Of Commercial Tran (4 AU)', 'BL9314 - Negotiation & Dispute Res (4 AU)', 'BU8101 - Accounting:A User Perspec (3 AU) [53%]', 'BU8201 - Business Finance (3 AU) [220%]', 'BU8301 - Fundamentals Of Bus Law (3 AU) [259%]', 'BU8341 - Practical Ethics (3 AU) [111%]', 'BU8401 - Management Decision Tools (3 AU) [83%]', 'BU8501 - Marketing 21st Century (3 AU) [75%]', 'BU8502 - Marketing Com:An Integrated Ap (3 AU) [105%]', 'BU8542 - Making The World A Betterplace (3 AU) [197%]', 'BU8543 - Tourism & Society (3 AU) [49%]', "BU8544 - Consumers' Pur Of Hea,Bea & We (3 AU) [68%]", 'BU8601 - Fundamentals Of Mgt (3 AU) [98%]', 'BU8641 - Howtobean Explorer Ofthe World (3 AU) [113%]', 'BU8642 - Leadership In The 21st Century (3 AU) [87%]', 'BU8643 - Cul Int:Mak The Wld Your Class (3 AU)', 'BU8644 - Smarter Bra?The Sci Of Dec Mak (3 AU) [68%]', 'BU9201 - Investments (3 AU)', 'BA3201 - Life Contingencies & Demo (4 AU)', 'BA3203 - Actuar Asp Of Asset Val (4 AU)', 'BC3407 - R & Python For Bus Analytics (4 AU)', 'BF3201 - Corporate Finance & Strategy (4 AU) [250%]', 'BF3203 - Equity Securities (4 AU)', 'BF3204 - Financial Modelling (4 AU) [500%]', 'BF3207 - Alternative Investments (4 AU) [125%]', 'BF3211 - Comm Trading & Risk Mgt (3 AU)', 'BH3601 - Talent Development &Management (4 AU)', 'BH3603 - Cultural Intelligence A W (4 AU)', 'BM3502 - Global Business Strategy (4 AU)', 'BM3505 - Services Marketing (4 AU)', 'BM3506 - Strategic Brand Mgt (4 AU)', 'BR3207 - Cyber Risk Mgt & Insurance (4 AU)', 'BR3208 - Operational Risk Management (4 AU)', 'AD2101 - Management Accounting (4 AU)', 'BA2202 - Mathematics Of Finance (4 AU)', 'BA2203 - Statistical Modelling (4 AU)', 'BC2402 - Design & Dev Databases (4 AU)', 'BC2406 - Analytics I:Visual&Predict Tec (4 AU)', 'BC3405 - Lean Operations & Analytics (4 AU)', 'BE2501 - Intl Business Environment (4 AU) [33%]', 'BE2601 - Mgt Principles, Skills & Compe (4 AU) [100%]', 'BF2201 - Investments (4 AU) [129%]', 'BF2206 - Wealth Management (4 AU) [180%]', 'BF2207 - International Finance (4 AU)', 'BF2209 - Derivative Securities (4 AU) [160%]', 'BF2213 - Introduction To Compliance (4 AU)', 'BF2301 - International Tax & Tradg Law (3 AU)', 'BH2601 - Strategic Hr Mgt & Consulting (4 AU)', 'BH2603 - Talent Sourcing & Acquisition (4 AU)', 'BM2501 - Market Behaviour (4 AU) [40%]', 'BM2502 - Market Intelligence (4 AU)', 'BM2505 - Marketing Channels (4 AU)', 'BM2506 - Digital Marketing (4 AU) [64%]', 'BR2202 - Insurance Law & Regulations (4 AU)', 'BT2403 - Services Operations Mgt (4 AU)', 'AD1101 - Financial Accounting (4 AU) [100%]', 'BE1401 - Bus Operations & Process (4 AU)', ''];
+typeLists["GLOAD;CBE;"]=['-----Unrestricted Electives in Chemical & Biomolecular Engineering-----', 'CH9203 - Food Process Engineering (5 AU)', 'CH9221 - Food Industry Seminar Series (3 AU)', 'CH4250 - Polymers For Nanotechnology (3 AU)', 'CH4306 - Bioanalytical Techniques (3 AU)', ''];
+typeLists["GLOAD;CE;"]=['-----Unrestricted Electives in Computer Engineering Year 4-----', 'CE4003 - Computer Vision (3 AU)', 'CE4016 - Advanced Topics In Algorithms (3 AU)', 'CE4022 - Personal Mobile Networks (3 AU)', 'CE4023 - Advanced Computer Netwks (3 AU)', 'CE4031 - Database System Principles (3 AU)', 'CE4032 - Data Analytics & Mining (3 AU)', 'CE4042 - Neural Network & Deep Learning (3 AU)', 'CE4045 - Natural Lang Processing (3 AU)', 'CE4062 - Computer Security (3 AU)', 'CE4064 - Security Management (3 AU)', 'CE4068 - Application Security (3 AU)', '', '-----Unrestricted Electives in Computer Engineering Year 3-----', 'CE3001 - Advanced Computer Architecture (3 AU)', 'CE3002 - Sensor Interfacing & Con (3 AU)', 'CE3005 - Computer Networks (3 AU)', 'CE3006 - Digital Communications (3 AU)', 'CE3007 - Digital Signal Processing (3 AU)', '', '-----Unrestricted Electives in Computer Engineering Year 2-----', 'CE2001 - Algorithms (3 AU)', 'CE2002 - Obj Oriented Des & Prog (3 AU)', 'CE2004 - Circuits & Signal Analysis (3 AU)', 'CE2005 - Operating Systems (3 AU)', 'CE2006 - Software Engineering (3 AU)', 'CE2007 - Microprocessor-Based Sys Des (3 AU)', '', '-----Unrestricted Electives in Computer Engineering Year 1-----', 'CE1003 - Intro Tocomputational Thinking (3 AU) [148%]', 'CE1005 - Digital Logic (3 AU) [12%]', 'CE1006 - Computer Organisation & Archit (3 AU) [1%]', 'CE1007 - Data Structures (3 AU) [9%]', 'CE1011 - Engineering Mathematics I (3 AU) [10%]', 'CE1012 - Engineering Mathematics Ii (3 AU)', ''];
+typeLists["GLOAD;CEE;"]=['-----Unrestricted Electives in Civil Engineering-----', 'EM9104 - Air Quality Management (3 AU)', 'EM9105 - Energy Resources Managemt (3 AU)', 'SU3001 - Integrated Urban Management (3 AU)', ''];
+typeLists["GLOAD;CHEM;"]=['-----Unrestricted Electives in Chemistry and Biological Chemistry-----', 'CM8002 - Forensic Science (3 AU)', 'CM8022 - Appl Of Forensic Science (1 AU)', 'CM9001 - Conceptual Chemistry With Lab (4 AU)', 'CM9081 - Medicinal Chemistry (3 AU)', 'CM9083 - Heterocyclic Chemistry (3 AU)', 'CM9092 - Polymer Chemistry (3 AU)', 'CM9101 - Food Chemistry & Nutrition (3 AU)', 'CM4012 - Structural Determination (3 AU)', 'CM4013 - Current Top In Analytical Chem (3 AU)', 'CM4017 - Biomedical Imaging & Sensing (3 AU)', 'CM4043 - Molecular Modell:Prin& Ap (3 AU)', 'CM3011 - Chem Spectroscopy & App (3 AU)', 'CM3021 - Organometallic Chemistry (3 AU)', 'CM3031 - Organic React Mech & Syn (3 AU)', 'CM3041 - Phy & Biophy Chemistry 2 (3 AU)', 'CM2011 - Analytical Chemistry (3 AU)', 'CM2021 - Inorganic & Bioinorg Chem (3 AU)', 'CM2031 - Organic & Bioorganic Chem (3 AU)', 'CM2061 - Chem & Bio Chem Lab I (3 AU)', 'CM1021 - Basic Inorganic Chem With Lab (4 AU)', 'CM1031 - Basic Organic Chem Wi Lab (4 AU)', ''];
+typeLists["GLOAD;CHIN;"]=['-----Unrestricted Electives in Chinese-----', 'HC1001 - Intro Study Of Lit & Cult (3 AU)', 'HC1002 - Introduction To Chin Lang (3 AU)', 'HC1050 - The Sci Of Chin Charact (3 AU)', 'HC2010 - Classical Chinese Fiction (3 AU)', 'HC2015 - Coming Of Age In Modern China (3 AU)', 'HC2030 - Pre-Qin Thought (3 AU)', 'HC2032 - Div & Int:Fro Chun To Wud (3 AU)', 'HC2040 - Understanding China (3 AU)', 'HC2053 - Varieties Of Chinese (3 AU)', 'HC2060 - Chinese Education In Sea (3 AU)', 'HC3011 - Studies Of Selected Poets (3 AU)', 'HC3014 - Cultural Studies Chin Cin (3 AU)', "HC3040 - China'S Reform & Econ Dev (3 AU)", 'HC3051 - Sociolinguistics (3 AU)', 'HC4014 - Special Topics In Chi Lit (4 AU)', 'HC4015 - Special Topics In Classi (4 AU)', 'HC4016 - Theory & Practice (4 AU)', 'HC4020 - Lit Criticism & Critical Theo (4 AU)', 'HC4031 - Interculturalism In Chin (4 AU)', 'HC4040 - Cross-Taiwan Straits Rela (4 AU)', 'HC4051 - Text, Rhetoric & Style (4 AU)', 'HC4055 - Chinese Language Acquisition (4 AU)', 'HC4063 - A Study Of Sinophone Culture (4 AU)', 'HC4064 - Transcult Chin Thea In Spore (4 AU)', 'HF9101 - Intro To Chin Creative Writing (3 AU) [100%]', 'HF9201 - Creative Writing: Chin Prose (3 AU)', 'HF9601 - Chinese Crossmedia Writing (3 AU)', 'HF9801 - Adv Creative Writing:Chin Fict (3 AU)', 'HT9101 - Trans:His,Theories & Prin (3 AU) [72%]', 'HT9102 - Lang Foundation For Trans (3 AU) [40%]', 'HT9201 - Trans:Techniques & Pract (3 AU) [52%]', 'HT9302 - Literary Trans Into Chin Con (3 AU) [32%]', 'HT9401 - Trans:Appre,Criti & Eval (3 AU) [72%]', ''];
+typeLists["GLOAD;CS;"]=['-----Unrestricted Electives in Communication Studies-----', 'CS8060 - Introduction To Advertising (3 AU) [221%]', 'CS8300 - Science Fiction Film (3 AU)', 'FL8001 - Introduction To Film Studies (3 AU)', 'CS4011 - News Copy Editing (4 AU)', 'CS4018 - Specia Journ:Busin & Econ (4 AU)', 'CS4023 - Advanced Photojournalism (4 AU)', 'CS4024 - Writing For Cinema & Tv (4 AU)', 'CS4026 - Docu Fil & Tv:Conce &Appl (4 AU)', 'CS4027 - Narra Fil & Tv:Conc & App (4 AU)', 'CS4029 - Advert Creativ & Copywri (4 AU) [5%]', 'CS4031 - Media Planning & Strateg (4 AU)', 'CS4032 - Communication Campaigns (4 AU)', 'CS4037 - Audience Research Methods (4 AU)', 'CS4043 - Spec Journalism;Sci&Health Rpt (4 AU)', 'CS4050 - Bay Dat Ana & Its Application (4 AU)', 'CS4053 - Popular Cinema (4 AU)', 'CS4058 - Intercultural Comm (4 AU)', 'CS4074 - Consumer Behavior (4 AU) [500%]', 'CS4083 - Television Practicum (3 AU) [23%]', 'CS4085 - Film Festival (3 AU)', 'CS4087 - Online Magazine Practicum (3 AU)', 'CS4090 - Goi Overs For Advan Repor (4 AU)', 'CS4091 - News Practicum (3 AU)', 'CS4093 - Overseas Film Festivals Pract (3 AU)', 'CS4095 - Inter Strategic Comm Mgt (4 AU)', 'CS4150 - Health Communication (4 AU)', 'CS4183 - Television Practicum (4 AU)', 'CS4185 - Film Festival (4 AU)', 'CS4187 - Online Magazine Practicum (4 AU)', 'CS4191 - News Practicum (4 AU)', 'CS4193 - Overseas Film Festivals Pract (4 AU)', 'CS4311 - Promoting Sustainability (4 AU)', 'CS2403 - Info Visualizatn & Presentn (3 AU)', 'CS0201 - Foundations Of Comm Stud (3 AU)', 'CS0204 - Basic Media Writing (3 AU)', 'CS0209 - Media Law, Ethics & Policy (3 AU)', 'CS2006 - Theo Of Vis Comm & Their App (3 AU) [271%]', 'CS2008 - Fundamentals Of Research (3 AU) [24%]', 'CS2021 - News Reporting & Writing (3 AU) [29%]', 'CS2023 - Print & Digital Publications (3 AU)', 'CS2024 - Web Design & Technologies (3 AU)', 'CS2025 - Image & Sound Production (3 AU)', 'CS2029 - Broadcast Journalism:C&Ap (3 AU)', 'CS2030 - Audio In Media (3 AU) [14%]', 'CS2034 - Korean Cinema In The Glo Con (3 AU)', 'CS2044 - Photojournalism (3 AU)', 'CS2054 - Interpersonal Comm (3 AU) [218%]', 'CS2056 - Psy & Communication (3 AU) [1300%]', 'CS2057 - Media Effects (3 AU)', 'CS2058 - Integrated Marketing Comm (3 AU)', 'CS2064 - Television Practicum (3 AU) [320%]', 'CS2066 - Film Festival Practicum (3 AU)', 'CS2068 - Online Magazine Practicum (3 AU)', 'CS2071 - News Practicum (3 AU) [100%]', 'CS2073 - Overseas Film Festival Pract (3 AU)', 'CS2101 - Public Relations Writing (3 AU) [75%]', 'CS2164 - Television Practicum (4 AU)', 'CS2166 - Film Festival Practicum (4 AU)', 'CS2168 - Online Magazine Practicum (4 AU)', 'CS2171 - News Practicum (4 AU)', 'CS2173 - Overseas Film Festival Pract (4 AU)', 'CS2400 - Foundation Of Info Analytics (3 AU) [33%]', 'CS2401 - Info Analytics: Tools, Tech (3 AU)', 'CS2405 - Data Mining (3 AU)', ''];
+typeLists["GLOAD;CSC;"]=['-----Unrestricted Electives in Computer Science Year 4-----', 'CZ4003 - Computer Vision (3 AU)', 'CZ4016 - Advanced Topics In  Algorithms (3 AU)', 'CZ4022 - Personal Mobile Networks (3 AU)', 'CZ4023 - Adv Computer Networks (3 AU)', 'CZ4031 - Database System Principles (3 AU)', 'CZ4032 - Data Analytics & Mining (3 AU)', 'CZ4042 - Neural Network & Deep Learning (3 AU)', 'CZ4045 - Natural Lang Processing (3 AU)', 'CZ4062 - Computer Security (3 AU)', 'CZ4064 - Security Management (3 AU)', 'CZ4068 - Application Security (3 AU)', '', '-----Unrestricted Electives in Computer Science Year 3-----', 'CZ3001 - Advanced Computer Architecture (3 AU)', 'CZ3002 - Advanced Software Engineering (3 AU)', 'CZ3003 - Software Sys Analysis & Design (3 AU)', 'CZ3005 - Artificial Intelligence (3 AU)', 'CZ3006 - Net Centric Computing (3 AU)', 'CZ3007 - Compiler Techniques (3 AU)', '', '-----Unrestricted Electives in Computer Science Year 2-----', 'CZ2001 - Algorithms (3 AU)', 'CZ2002 - Object Oriented Des & Prog (3 AU) [3%]', 'CZ2003 - Computer Graphics & Visual (3 AU)', 'CZ2004 - Human Computer Interaction (3 AU) [21%]', 'CZ2005 - Operating Systems (3 AU)', 'CZ2006 - Software Engineering (3 AU)', 'CZ2007 - Introduction To Databases (3 AU)', '', '-----Unrestricted Electives in Computer Science Year 1-----', 'CZ1003 - Intro Tocomputational Thinking (3 AU) [248%]', 'CZ1005 - Digital Logic (3 AU) [21%]', 'CZ1006 - Computer Organisation & Archit (3 AU)', 'CZ1007 - Data Structures (3 AU) [15%]', 'CZ1011 - Engineering Mathematics I (3 AU) [4%]', 'CZ1012 - Engineering Mathematics Ii (3 AU) [1%]', ''];
+typeLists["GLOAD;ECON;"]=['-----Unrestricted Electives in Economics-----', 'HE2004 - Introductory Econometrics (3 AU)', 'HE2005 - Principles Econometrics (3 AU)', "HE2006 - Int'L Monetary Economics (3 AU)", 'HE2007 - Money & Banking (3 AU)', 'HE2008 - Public Finance (3 AU)', 'HE2009 - Industrial Organisation (3 AU)', 'HE2010 - Development Economics (3 AU)', 'HE2011 - Lab Econ & Lab Relations (3 AU)', 'HE2013 - International Trade (3 AU)', 'HE3001 - Mathematical Economics (3 AU)', 'HE3002 - Game Theo & App To Soc Sc (3 AU)', 'HE3003 - The Chinese Economy (3 AU)', 'HE3007 - Financial Economics (3 AU)', 'HE3013 - Urban Economics (3 AU)', 'HE3016 - Principles Of Math Finance (3 AU) [100%]', 'HE3024 - Intro To Applied Econ Pol Res (3 AU)', 'HE4002 - Advanced Macroeconomics (4 AU)', 'HE4005 - Growth Theory & Empirics (4 AU)', "HE4010 - S'Pore Eco In A Global Wo (4 AU)", 'HE4015 - Personnel Economics (4 AU)', 'HE4017 - Monetary Economics (4 AU)', 'HE4020 - Econometric Time Series A (4 AU)', 'HE4023 - Econ Of Organ & Corp Mgt (4 AU)', 'HE9091 - Principles Of Economics (3 AU) [23%]', ''];
+typeLists["GLOAD;EEE;"]=['-----Unrestricted Electives in Electrical & Electronic Engineering-----', 'EE8061 - Inno & Tech Management (3 AU)', 'EE8084 - Cyber Security (3 AU) [78%]', 'EE8085 - Electrificatn For The Built En (3 AU)', 'EE8086 - Astronomy-Strs,Gal & Cos (3 AU) [90%]', 'EE8094 - Impact Of Elect Rad On Humans (3 AU) [22%]', 'EE8095 - Innovation & Commercialization (3 AU)', ''];
+typeLists["GLOAD;EESS;"]=['-----Unrestricted Electives in Environmental Earth Systems Science-----', 'ES8001 - Natural Hazards & Society (3 AU)', 'ES8005 - Environmental Earth System Sci (3 AU)', 'ES4301 - Conservatn Bio & Biodiversity (3 AU)', 'ES4303 - Marine & Aquatic Ecology (3 AU)', 'ES4902 - Geophysical Data Analysis (3 AU)', 'ES3003 - Introduction To Geochemistry (4 AU)', 'ES3302 - Tropical Ecology (3 AU)', 'ES3306 - Global Change Ecology (3 AU)', 'ES2802 - Gis & The Earth System (3 AU)', ''];
+typeLists["GLOAD;ELH;"]=['-----Unrestricted Electives in English-----', 'HL1001 - Intro To The Study Of Lit (3 AU)', 'HL1002 - Survey Of E Literature 1 (3 AU)', 'HL1007 - Classical Literature (3 AU)', 'HL2001 - Medieval Literature (3 AU)', 'HL2002 - Renaissance Literature (3 AU)', 'HL2004 - Sensibility & Romanticism (3 AU)', 'HL2006 - Modernism (3 AU)', 'HL2007 - Contemporary Lit & Cult (3 AU)', 'HL2011 - Representations Of Asia (3 AU)', 'HL2021 - Literature Of Empire (3 AU)', 'HL2022 - South Asian Literature (3 AU)', 'HL2024 - Approaches To Literature (3 AU)', 'HL2027 - Early American Literature (3 AU)', 'HL2029 - American Modernism (3 AU)', 'HL2041 - Asian Historical Fiction (3 AU)', "HL2042 - Children'S Literature (3 AU)", 'HL3001 - Film Theory (3 AU)', 'HL3002 - Film, Politics & Ethics (3 AU)', 'HL3011 - Sci Fic:Origins To Parody (3 AU)', 'HL3016 - Gend & Sexuality Studies (3 AU)', 'HL3017 - The Rise Of The Novel (3 AU)', 'HL3037 - Approaches To The Environ Hum (3 AU)', 'HL3038 - Theatre Of The Absurb (3 AU)', 'HL4010 - Feminist Studies (4 AU)', 'HL4013 - Adv Stud In Literature&Culture (4 AU)', 'HL4019 - Adv Stud In Victorian Lit (4 AU)', 'HL4023 - Adv Studies In American Lit (4 AU)', 'HL4028 - Science & Literature (4 AU)', 'HL4034 - British Asian Literature (4 AU)', 'HL4036 - Literature & Medicine (4 AU)', 'HZ9101 - Intro To Creative Writing (3 AU) [102%]', 'HZ9201 - Creative Writing:Poetry (3 AU) [167%]', 'HZ9202 - Creative Writing:Fiction (3 AU) [247%]', 'HZ9203 - Creative Writing: Non Fiction (3 AU) [133%]', 'HZ9204 - Creative Writing:Playwrit (3 AU)', 'HZ9301 - Advanced Creative Writing (3 AU)', ''];
+typeLists["GLOAD;HIST;"]=['-----Unrestricted Electives in History-----', 'HH1001 - What Is History? (3 AU)', 'HH1002 - Asia-Pacific Glob His:Pre-1800 (3 AU)', 'HH1007 - The Making Of Civilizations (3 AU)', 'HH2020 - Science & War (3 AU)', 'HH2021 - Race,Gen,Class & Colonial Pow (3 AU)', 'HH2027 - Blood,Germs & Sick Bodies (3 AU)', 'HH3001 - Historiography:Theory & Method (3 AU)', 'HH3002 - Sci,Tech &Med In Mod East Asia (3 AU)', 'HH3009 - Comparative His Of Glo Migra (3 AU)', 'HH3019 - History Of The Body (3 AU)', 'HH3024 - Decolonisation & Democracy (3 AU)', 'HH3025 - The Cult,Soc&Econ His Of Footb (3 AU)', 'HH3031 - The Us & The Modern Middle Eas (3 AU)', 'HH3039 - Marit Asia In The Longue Duree (3 AU)', 'HH4006 - The Green Earth (4 AU)', 'HH4012 - Intellectual Hist Of Mod China (4 AU)', 'HH4021 - Public & Applied History (4 AU) [100%]', 'HH4022 - Colonial Medi Practices In Sg (4 AU)', 'HH4091 - Interdisciplinary History (4 AU) [50%]', 'HH4092 - World History (4 AU)', ''];
+typeLists["GLOAD;LMS;"]=['-----Unrestricted Electives in Linguistics & Multilingual Studies-----', 'HG1001 - Mind & Meaning (3 AU)', 'HG2001 - Morphology & Syntax (3 AU)', 'HG2002 - Semantics & Pragmatics (3 AU)', 'HG2017 - Father-&-Mother-Tongues (3 AU)', 'HG2020 - Language In Society (3 AU)', 'HG2021 - Intercultural Comm (3 AU)', 'HG2024 - X-Rated Ling:Lang,Sex & Desire (3 AU)', 'HG2031 - History Of English (3 AU)', 'HG2033 - Intro To Conversation Analysis (3 AU)', 'HG2034 - Structure Of Modern Eng (3 AU)', 'HG2094 - Word Of Mouth:Trans Of Oral Cu (3 AU)', 'HG3005 - Statistical Analysis (3 AU)', 'HG3015 - Psycholinguistics (3 AU)', 'HG3017 - Adv Study Lang & Lit  Infancy (3 AU)', 'HG3021 - Language Change (3 AU)', 'HG3022 - Sociolinguistics Of A Region (3 AU)', 'HG4022 - Forensic Linguistics (4 AU)', 'HG4041 - Theories Of Grammar (4 AU)', 'HG4046 - Dialectology & Lang Contact (4 AU)', 'HG4047 - Pragmatic Theory (4 AU)', 'HG4063 - Advanced World Englishes (4 AU)', 'HG4070 - Experimental Phonetics (4 AU)', ''];
+typeLists["GLOAD;MAT;"]=['-----Unrestricted Electives in Materials Engineering-----', 'MS8001 - Management With Humour (3 AU)', 'MS8205 - Materials For Energy Conver (3 AU)', 'MS8301 - Materials & Man (3 AU)', 'MS4601 - Prin Of Semiconductor Dev (3 AU)', 'MS4610 - Advanced Biomaterials (3 AU)', 'MS4620 - Polymer Technology (3 AU)', 'MS4631 - Corrosion Engineering (3 AU)', 'MS4640 - Advanced Analysis Of Mat (3 AU)', 'MS4650 - Functional Nanostructure Mat (3 AU)', 'MS4651 - Thim Film Technology (3 AU)', 'MS4660 - Fund Of Intel Ppt In Mse (3 AU)', ''];
+typeLists["GLOAD;MATH;"]=['-----Unrestricted Electives in Mathematical Sciences-----', "MH8300 - It'S A Dis Dis Wld: Maths (3 AU)", 'MH9100 - Adv Investigatn In Cal I (1 AU)', 'MH9102 - Adv Invest Calculus Iii (1 AU)', 'MH9200 - Adv Invest In Lin Alge I (1 AU)', 'MH4200 - Abstract Algebra Ii (4 AU)', 'MH4311 - Cryptography (4 AU)', 'MH4320 - Computational Economics (4 AU)', 'MH4510 - Stat Lern & Data Mining (4 AU)', 'MH4511 - Sampling & Survey (4 AU)', 'MH4513 - Survival Analysis (4 AU)', 'MH4700 - Numerical Analysis Ii (4 AU)', 'MH4701 - Mathematical Programming (4 AU)', 'MH4702 - Probabilistic Meth In Or (4 AU)', 'MH3101 - Complex Analysis (4 AU)', 'MH3210 - Number Theory (4 AU)', 'MH3300 - Graph Theory (4 AU)', 'MH3510 - Regression Analysis (4 AU)', 'MH3512 - Stochastic Processes (4 AU)', 'MH3600 - Knots & Surfaces (4 AU)', 'MH2100 - Calculus Iii (4 AU)', 'MH2200 - Groups & Symmetries (3 AU)', 'MH2401 - Algorithms & Computing Iii (2 AU)', 'MH2500 - Probability & Intro To Stat (4 AU)', 'MH2801 - Complex Methods For The Sci (3 AU)', 'MH1100 - Calculus I (4 AU)', 'MH1200 - Linear Algebra I (4 AU)', 'MH1300 - Foundations Of Maths (4 AU)', 'MH1800 - Calculus For The Sci I (3 AU)', 'MH1812 - Discrete Mathematics (3 AU) [17%]', ''];
+typeLists["GLOAD;ME;"]=['-----Unrestricted Electives in Mechanical Engineering-----', 'MA9001 - Introduction To Energy (3 AU)', 'MA4845 - Manufacturing Automation (3 AU)', 'MA4849 - Operations Research (3 AU)', 'MA4850 - Supply Chain & Logistics Mgt (3 AU)', 'MA3179 - Product Development Chall (3 AU)', ''];
+typeLists["GLOAD;MS;"]=['-----Unrestricted Electives in Maritime Studies Year 1-----', 'MT1002 - Intro To Maritime Indust (2 AU)', ''];
+typeLists["GLOAD;NIE;"]=['-----Unrestricted Electives in National Institute of Education-----', 'AAA08A - Art As Commodity (3 AU) [21%]', 'AAA08B - Fashion & Des:Wear As A Sec Sk (3 AU) [59%]', 'AAA08C - Expressive Drawing (3 AU) [60%]', 'AAA08D - Abstract Painting (3 AU) [47%]', 'AAA18D - Life Drawing (3 AU) [43%]', 'AAA18E - Drawing (3 AU) [65%]', 'AAA18G - Tabletop Game Design I (3 AU) [67%]', 'AAA18H - Painting With Oil & Acrylic (3 AU) [43%]', 'AAA18J - Painting With Watercolour (3 AU) [63%]', 'AAA18L - Silkscreen Printing (3 AU) [70%]', 'AAA18M - Batik (3 AU) [83%]', 'AAA18Q - Printmaking (3 AU) [37%]', 'AAA18R - Sculpture (3 AU) [50%]', 'AAA28H - Traditional & Creative Chin Pa (3 AU)', 'AAA28R - Ceramics I (3 AU) [273%]', 'AAA28S - Ceramics Ii (3 AU) [160%]', 'AAG23H - Introduction To Gis (3 AU)', 'AAH18C - Topics In Military History (3 AU) [160%]', 'AAI180 - Mus Prac I (Baro & Class) (3 AU)', 'AAI181 - Mus Prac Iii (Rom & Cen) (3 AU)', 'AAI182 - Foundations In Mus Stud I (3 AU)', 'AAI28A - Improvisation (3 AU)', 'AAI28C - Percussion (3 AU)', 'AAI38B - Studies In Japanese Music (3 AU)', 'AAI38C - Classical Guitar I (3 AU)', 'AAI38D - Choir I (3 AU)', 'AAI38G - Voice (3 AU)', 'AAI38J - Band I (3 AU)', 'AAI38N - Stud In Indonesian Gamelan Ii (3 AU)', 'AAI48A - Studies In Chinese Music (3 AU)', 'AAI48B - Studies In Malay Music (3 AU)', 'AAI48D - Choir Iii (3 AU)', 'AAI48J - Band Iii (3 AU)', 'AAI48L - Advanced Conducting (3 AU)', 'AAL28B - Globalisation (3 AU)', 'AAL28D - Govt & Politics Of Spore (3 AU)', 'AAU08A - Theatre Games: Engage Thr Play (3 AU)', 'AAU28B - Intro Drama Thru Imag & Play (3 AU) [33%]', 'AAU28C - 21st Cent Learn Thru Thea & Dr (3 AU) [33%]', 'AAU28D - Voice Studies & Productn (3 AU) [48%]', 'ACL18A - Teaching Soc Stud To Sec Stu (3 AU)', 'ADP16A - Intro To Theatre & Performance (3 AU) [31%]', 'ADP26B - Theatre For Young People (3 AU)', "ADP26C - Acting: The Actor'S Voice & Bo (3 AU)", 'ADP26D - Theatre & Technology (3 AU)', 'ADP26J - Traditional Thea:Styles & Con (3 AU)', 'AED16A - Pract & Iss In Early Child Edu (3 AU)', 'AED16B - Curr & Ass In Early Child Edu (3 AU)', 'AED23C - Cri Rea Ski For Effe Teac (2 AU) [60%]', 'AED28B - Critical Perspec On Edu (3 AU) [40%]', 'AED28D - Basic Counselling Skills (3 AU) [387%]', 'AED38A - Motivatin Pupils To Learn (3 AU) [287%]', 'AED38B - Fac Asynchron Online Dis (3 AU) [50%]', 'AED38C - Des Ict-Based Constr Act (2 AU) [45%]', 'AGE18A - Physics Of Gemstones (3 AU)', 'AGQ28B - Everyday Science In Foods (3 AU) [353%]', 'AGQ28C - Food & Society (3 AU) [160%]', ''];
+typeLists["GLOAD;NTC;"]=['-----Unrestricted Electives in Nanyang Technopreneurship Centre-----', 'ET9121 - Intro To Entrepreneurship (3 AU) [21%]', 'ET9122 - E-Startups & Social Med Stra (3 AU) [48%]', ''];
+typeLists["GLOAD;PHIL;"]=['-----Unrestricted Electives in Philosophy-----', 'HY1001 - Introduction To Philosophy (3 AU) [4300%]', 'HY1002 - Logic & Paradoxes (3 AU)', 'HY2002 - Moral Philosophy (3 AU)', 'HY2003 - Chinese Philosophy (3 AU)', 'HY2008 - Environmental Ethics (3 AU) [367%]', 'HY2012 - Modern Philosophy:Reason & Exp (3 AU)', 'HY2015 - Happiness (3 AU)', 'HY3001 - Existentialism:Frdom,Being,Dea (3 AU)', 'HY3010 - Philosophy Of Science (3 AU)', 'HY3011 - Minds & Machines (3 AU)', 'HY3012 - Philosophy Of Technology (3 AU)', 'HY4002 - Knowledge And Reality (4 AU)', 'HY4013 - Language And Being (4 AU)', 'HY4113 - Special Top In Chinese Phil (4 AU)', 'HY4122 - Special Top In Philosophy Ii (4 AU)', 'HY4133 - Special Top In Chin Phil Iii (4 AU)', 'HY8002 - Logic And Critical Thinking (3 AU)', ''];
+typeLists["GLOAD;PHY;"]=['-----Unrestricted Electives in Physics and Applied Physics Year 4-----', 'PH4402 - Condensed Matter Physics Ii (4 AU)', 'PH4403 - Surfaces & Interfaces (4 AU)', 'PH4408 - Nuclear Physics (3 AU)', 'PH4411 - Intro To Exp Particle Physics (3 AU)', 'PH4501 - Statistical Mechanics Ii (4 AU)', 'PH4507 - Topics In Physics (3 AU)', 'PH4604 - Topics In Applied Physics (3 AU)', 'PH4607 - Biomedical Imaging & Sensing (3 AU)', '', '-----Unrestricted Electives in Physics and Applied Physics Year 3-----', 'PH3101 - Quantum Mechanics Ii (4 AU)', 'PH3102 - Condensed Matter Physics I (4 AU)', 'PH3403 - Cosmology (3 AU)', 'PH3404 - Phy Of Class & Quantum Info (3 AU)', 'PH3405 - Supercond, Superfluid&Bose-Ein (3 AU)', 'PH3502 - Chaotic Dynamical Systems (4 AU)', 'PH3601 - Fab Of Micro-& Nanoelect Dev (4 AU)', 'PH3602 - Photonics (4 AU)', '', '-----Unrestricted Electives in Physics and Applied Physics Year 2-----', 'PH2103 - Thermal Physics (4 AU)', 'PH2104 - Analytical Mechanics (4 AU)', 'PH2198 - Physics Laboratory Iia (2 AU)', '', '-----Unrestricted Electives in Physics and Applied Physics Year 1-----', 'PH1104 - Mechanics (3 AU)', 'PH1105 - Optics, Vibrations & Waves (3 AU)', 'PH117S - Relativity & Quantum Physics (3 AU)', 'PH1801 - Foundations Of Physics I (3 AU)', ''];
+typeLists["GLOAD;PPGA;"]=['-----Unrestricted Electives in Public Policy And Global Affairs-----', 'HA1001 - Introto Intnl Relations& Fo Po (3 AU)', 'HA1002 - Intro To Political Theory (3 AU)', 'HA1012 - Fundamentals Of Politics (3 AU)', 'HA2009 - The Making Of E-Government (3 AU)', 'HA2013 - Comparative Public Politics (3 AU)', 'HA2014 - Public Organisation & Mgt (3 AU)', 'HA2015 - China In Africa (3 AU)', 'HA2017 - Foreign Policy Analysis (3 AU)', 'HA2020 - Socio-Political Ana In Pub Pol (3 AU)', 'HA2023 - Res Method In Social Sciences (3 AU)', 'HA3004 - United States And East Asia (3 AU)', 'HA3007 - Pub Budgeting & Fin Mgt (3 AU)', 'HA3013 - Manag Hum Res & Beh In The Pub (3 AU)', "HA3014 - Singapore'S Foreign Pol (3 AU)", 'HA3015 - Media & Politics (3 AU)', 'HA4006 - Special Topic In Public Admin (4 AU)', 'HA4015 - Performance Mgt In The Pub Sec (4 AU)', 'HA4016 - Global Cities:Policy& Politics (4 AU)', 'HA4022 - Internl Politics Of The Asia-P (4 AU)', 'HA4024 - Environmental Change & Pol Des (4 AU)', 'HA4025 - Des & Cond Qualitative Res (4 AU)', 'HA4026 - Selec Top In Health Care & Age (4 AU)', ''];
+typeLists["GLOAD;PSY;"]=['-----Unrestricted Electives in Psychology-----', 'HP1000 - Intro To Psychology (3 AU) [349%]', 'HP1100 - Fund Of Soc Sci Research (3 AU) [41%]', 'HP2200 - Biological Psychology (3 AU)', 'HP2500 - Personality & Indiv Diff (3 AU)', 'HP3101 - App Stat Meth For Psy Res (3 AU)', 'HP3201 - Evolutionary Psychology (3 AU) [4%]', "HP3204 - An Ape'S Guide To Human Lang (3 AU)", 'HP3603 - Sensation & Perception (3 AU)', 'HP3703 - Health Psychology (3 AU)', 'HP3704 - Intro To Clinical Neuro (3 AU)', 'HP3801 - Psychology In The Workpl (3 AU)', 'HP3802 - Personnel Psychology (3 AU)', 'HP3807 - Occupational Health Psychology (3 AU)', 'HP3901 - Cultural Psychology (3 AU)', 'HP4002 - Qualitative Methods In Psy (4 AU)', 'HP4021 - Lab In Human & Animal Neuro (4 AU)', 'HP4041 - Lab In Social Psychology (4 AU)', 'HP4061 - Lab In Cognitive Psychology (4 AU)', 'HP4081 - Lab In Industrial & Organ Psy (4 AU)', 'HP4102 - Trauma Psychology & Crisis Mgt (4 AU)', 'HP4103 - The Forensic Psychology (4 AU)', 'HP4104 - Evi-Based Practice In Clin Psy (4 AU)', 'HP4107 - Industrial-Org Psy In Prac (4 AU)', 'HP4222 - Comp Physiology Of Soc Inter (4 AU)', 'HP4274 - The Last Dance (4 AU)', ''];
+typeLists["GLOAD;SOC;"]=['-----Unrestricted Electives in Sociology-----', 'HS1001 - Person & Society (3 AU)', 'HS1002 - Singapore Society In Tran (3 AU)', 'HS1003 - Soc Prob In A Global Con (3 AU)', 'HS2001 - Classical Social Theory (3 AU)', 'HS2007 - Understanding Globalizat (3 AU)', 'HS2009 - Sociology Of The Life Cou (3 AU)', 'HS2013 - Migration & Multiculturalism (3 AU)', 'HS2026 - Deviance & Society (3 AU)', 'HS2028 - Graying Society (3 AU)', 'HS3001 - Contemporary Social Theo (3 AU)', 'HS3002 - Understanding Social Stat (3 AU)', 'HS3007 - Religion & Society (3 AU)', 'HS3016 - Societies In Compara Per (3 AU)', 'HS3054 - Social Psychology (3 AU)', 'HS4015 - Sociology Of Reproduction (4 AU)', 'HS4021 - Postcolonial Sexuality (4 AU)', 'HS4023 - Sociology Of Risk & Crisis (4 AU)', 'HS4028 - Migration & Deve In A Global W (4 AU)', 'HS4030 - Social Science Fiction (4 AU)', 'HS4011 - The Self In Southeast Asia (4 AU)', ''];
+typeLists["GLOAD;SOH;"]=['-----Unrestricted Electives in Humanities-----', 'HW9018 - Effective Com In The Glob Wkpl (2 AU)', 'LA9001 - Arabic Language Level 1 (3 AU) [29%]', 'LA9002 - Arabic Language Level 2 (3 AU) [33%]', 'LA9003 - Arabic Language Level 3 (3 AU) [28%]', 'LC9001 - Chinese Language Level 1 (3 AU) [65%]', 'LC9002 - Chinese Language Level 2 (3 AU) [89%]', 'LC9003 - Chinese Language Level 3 (3 AU) [6%]', 'LC9101 - Advanced Practical Chinese (3 AU) [67%]', 'LF9001 - French Language Level 1 (3 AU) [51%]', 'LF9002 - French Language Level 2 (3 AU) [43%]', 'LF9003 - French Language Level 3 (3 AU) [39%]', 'LF9004 - French Language Level 4 (3 AU) [100%]', 'LF9005 - French Language Level 5 (3 AU) [7%]', 'LG9001 - German Language Level 1 (3 AU) [70%]', 'LG9002 - German Language Level 2 (3 AU) [96%]', 'LG9003 - German Language Level 3 (3 AU) [67%]', 'LG9004 - German Language Level 4 (3 AU) [67%]', 'LH9001 - Hindi Language Level 1 (3 AU) [39%]', 'LI9001 - Italian Language Level 1 (3 AU) [29%]', 'LI9002 - Italian Language Level 2 (3 AU) [95%]', 'LJ9001 - Japanese Language Level 1 (3 AU) [105%]', 'LJ9002 - Japanese Language Level 2 (3 AU) [117%]', 'LJ9003 - Japanese Language Level 3 (3 AU) [72%]', 'LJ9004 - Japanese Language Level 4 (3 AU) [103%]', 'LJ9005 - Japanese Language Level 5 (3 AU) [87%]', 'LK9001 - Korean Language Level 1 (3 AU) [143%]', 'LK9002 - Korean Language Level 2 (3 AU) [91%]', 'LK9003 - Korean Language Level 3 (3 AU) [86%]', 'LK9004 - Korean Language Level 4 (3 AU) [41%]', 'LK9005 - Korean Language Level 5 (3 AU) [67%]', 'LK9006 - Korean Language Level 6 (3 AU) [33%]', 'LL9001 - Singapore Sign Language Lev 1 (3 AU) [462%]', 'LL9002 - Singapore Sign Language Lev 2 (3 AU) [133%]', 'LM9001 - Malay Language Level 1 (3 AU) [100%]', 'LM9002 - Malay Language Level 2 (3 AU) [60%]', 'LM9003 - Malay Language Level 3 (3 AU) [6%]', 'LN9001 - Swedish Language Level 1 (3 AU) [28%]', 'LN9002 - Swedish Language Level 2 (3 AU) [22%]', 'LR9001 - Russian Language Level 1 (3 AU) [89%]', 'LR9002 - Russian Language Level 2 (3 AU) [83%]', 'LS9001 - Spanish Language Level 1 (3 AU) [106%]', 'LS9002 - Spanish Language Level 2 (3 AU) [61%]', 'LS9003 - Spanish Language Level 3 (3 AU) [56%]', 'LS9004 - Spanish Language Level 4 (3 AU) [27%]', 'LT9001 - Thai Language Level 1 (3 AU) [43%]', 'LT9002 - Thai Language Level 2 (3 AU) [61%]', 'LV9001 - Vietnamese Language Level 1 (3 AU) [7%]', 'LX9001 - Latin Language Level 1 (3 AU) [161%]', ''];
+typeLists["GLOAD;SPS;"]=['-----Unrestricted Electives in Physical and Mathematical Sciences-----', 'CH9201 - Food Chemistry (5 AU)', ''];
+typeLists["GLOAD;SSM;"]=['-----Unrestricted Electives in Sport Science & Management-----', 'SS9001 - Condition For Phy Fitness (3 AU) [62%]', 'SS9002 - Principles Of Strength Train (3 AU) [98%]', 'SS9003 - Intro To Pilates Matwk & Ha Yo (3 AU) [510%]', 'SS9101 - Badminton (3 AU) [268%]', 'SS9102 - Tennis (3 AU) [115%]', 'SS9103 - Squash (3 AU) [75%]', 'SS9104 - Basketball (3 AU) [130%]', 'SS9105 - Volleyball (3 AU) [230%]', 'SS9106 - Netball (3 AU) [283%]', 'SS9107 - Table Tennis (3 AU) [213%]', 'SS9202 - Soccer (3 AU) [74%]', 'SS9203 - Hockey (3 AU) [89%]', 'SS9204 - Floorball (3 AU) [152%]', 'SS9205 - Rugby (3 AU) [55%]', 'SS9206 - Tchoukball (3 AU) [172%]', 'SS9303 - Intro To Hip-Hop & Its Dances (3 AU)', 'SS9304 - Intro To Modern Jazz Dance (3 AU) [79%]', 'SS2101 - Foundations Of Motor Behaviour (3 AU)', 'SS2102 - Intro To Sport Biomechanics (3 AU)', 'SS2103 - Sport Coaching: Found Of Coach (3 AU)', 'SS1101 - Human Anatomy & Physiology (3 AU)', 'SS1104 - Intro To Health & Wellness (3 AU) [243%]', ''];
+typeLists["GLOAD;SSS;"]=['-----Unrestricted Electives in Social Sciences-----', 'HN9010 - Spore: Imagining The Next 50 Y (3 AU) [137%]', 'HU1001 - Intro To Geo & Urban Planning (3 AU)', 'ST9001 - Intro To Sci,Tech, & Soc (3 AU)', ''];
+
+
+
+
+
+
+ /* CountryChange() is called from the onchange event of a select element.
+ * param selectObj - the select object which fired the on change event.
+ */
+
+function isLetter(str) {
+  return str.length === 1 && str.match(/[a-z]/i);
+}
+
+
+ function countryChange(selectObj) {
+ // get the index of the selected option
+ var idx = selectObj.selectedIndex;
+ // get the value of the selected option
+ var which = selectObj.options[idx].value;
+ // use the selected option value to retrieve the list of items from the typeLists array
+ cList = typeLists[which];
+ // get the country select element via its known id
+ var cSelect = document.getElementById("country");
+ // remove the current options from the country select
+ var len=cSelect.options.length;
+ while (cSelect.options.length > 0) {
+ cSelect.remove(0);
+ }
+ var newOption;
+ // create new options
+ for (var i=0; i<cList.length; i++) {
+ newOption = document.createElement("option");
+
+ newOption.value =cList[i].substring(0,6).toLowerCase();
+   // assumes option string and value are the same
+ newOption.text=cList[i];
+ // add the new option
+ try {
+ cSelect.add(newOption);  // this will fail in DOM browsers but is needed for IE
+ }
+ catch (e) {
+ cSelect.appendChild(newOption);
+ }
+ }
+ }
+//]]>
+</script>
+<script>
+function subj_select(form,subj)
+       {
+        var i=0;
+        var j=0;
+        var ans;
+
+
+        if (subj !="" && subj !="-----g")
+        {
+          while (i<11)
+          {
+		       if (form.elements[i].value=="")
+			      {
+             form.elements[i].value=subj;
+             return;
+            }
+			     else if (form.elements[i].value.toLowerCase()==subj)
+			     {alert(subj+" has already been added!");
+				    return;}
+	         i++;
+	        }
+        	alert("Exceeded number of course allowed. Please remove some.");
+		      return;
+       }
+      }
+
+</script>
+
+
+
+            {% endblock %}
+            <div><p>{{ result }}</p>
+            </div>
+        </div>
+    </div>
+
+    </form>
+
+
+
+
+
+
+</section>
+
+</div>
+{% endblock %}

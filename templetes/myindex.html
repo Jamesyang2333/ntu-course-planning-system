@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block body_block %}
+    <section id="services">
+<div class="hero-unit">
+    <h1>{{ myindex_name }}</h1>
+
+{% if myindex %}
+    <div id="expectedindexes">
+    {% if expectedindexes %}
+    <ul>
+        {% for expectedindex in expectedindexes %}
+        <li>
+            <a href="/forum/{{ myindex_name_url }}/?expectedindex_id={{expectedindex.expectedindex}}">{{expectedindex.expectedindex}}</a>
+
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    {% endif %}
+
+    </div>
+
+
+    <a href="/forum/{{ myindex_name_url }}/add_expectedindex/">Add a index</a>
+
+</div>
+    </section>
+
+{% else %}
+	The specified myindex {{ myindex_name }} does not exist!</div>
+{% endif %}
+
+
+
+
+{% endblock %}

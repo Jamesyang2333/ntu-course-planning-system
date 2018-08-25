@@ -1,0 +1,70 @@
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1169px) {
+}
+
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+.logo h4 {
+  font-size: 15px;
+  padding: 30px 0;
+}
+/* ============== circle progress-bar ============= */
+.demo1 span, .demo4 span {
+  display: block;
+  margin-bottom: 20px;
+}
+.demo2.jqudemo2 .col-sm-6.col-md-3.text-center {
+  margin-bottom: 30px;
+}
+.demo3.jqudemo3 .progress-circular input {
+  right: 33%;
+}
+.demo3.jqudemo3 span {
+  margin-bottom: 40px;
+  display: block;
+}
+
+}
+
+/* small mobile :320px. */
+@media (max-width: 767px) {
+.container {width:300px}
+.section-padding {
+  padding-bottom: 0;
+}
+.logo h4 {
+  font-size: 16px;
+  padding: 18px 0;
+  text-align: center;
+}
+.mainmenu a {padding: 15px 10px;}
+/* ============== circle progress-bar ============= */
+.jqudemo3 .progress-circle {
+  display: block;
+  left: 18%;
+}
+.demo1 span, .demo4.jqudemo3 span {
+  display: block;
+  margin-bottom: 20px;
+}
+.demo3.jqudemo3 span {
+  display: block;
+  margin-bottom: 40px;
+}
+p.css3progress {
+  margin-bottom: 0;
+}
+.demo1.jqudemo1 span,.jqudemo4.demo4 span {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+}
+ 
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+.progress-circular input {
+  right: 38%;
+}
+}

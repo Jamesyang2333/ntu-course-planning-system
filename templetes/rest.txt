@@ -1,0 +1,9 @@
+<ul class="nav navbar-nav navbar-right">
+
+                    {% if user.is_authenticated %}
+                        <li><p class="navbar-text">Welcome {{ user.username }} !</p></li>
+                        <li><a type="button" class="btn btn-default navbar-btn" href="/logout/">Sign out</a></li>
+                    {% else %}
+                        <li><a type="button" class="btn btn-default navbar-btn" href="/register/">Register</a></li>
+                        <li><a type="button" class="btn btn-default navbar-btn" href="/login/">Sign in</a></li>
+                    {% endif %}

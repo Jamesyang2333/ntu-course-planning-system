@@ -1,0 +1,1705 @@
+{% extends 'timetable.html' %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% block body_block %}
+    <div class="container">
+
+   <section style="padding-bottom: 0px;padding-top: 10%">
+        <div class="row">
+    <div class="alert alert-info alert-warning" id="myAlert">
+    <a href="#" class="close">&times;</a>
+    <strong>{{ outcome }}</strong> {{ suggestion }}
+
+<script>
+$(document).ready(function(){
+    $(".close").click(function(){
+        $("#myAlert").alert("close");
+    });
+});
+</script>
+            </div>
+    </section>
+
+
+
+
+<section style="padding-top:0%">
+    <div class="row" >
+
+        <div class="col-md-2  ">
+        <div class="panel-default panel" style="background-color: #F0E5DF;border-color: #F0E5DF">
+    <div class="panel-body">
+
+
+
+                    <form action="/timetable/search/" method="post">
+
+                    <label>Courses:</label>
+                        {% csrf_token %}
+
+                    <p><input class="form-control" type="text" id='a' name="text" value="{{ a }}"></p>
+                    <p><input class="form-control" type="text" id='b' name="text" value="{{ b }}"></p>
+                    <p><input class="form-control" type="text" id='c' name="text" value="{{ c }}"></p>
+                    <p><input class="form-control" type="text" id='d' name="text" value="{{ d }}"></p>
+                    <p><input class="form-control" type="text" id='e' name="text" value="{{ e }}"></p>
+                    <p><input class="form-control" type="text" id='f' name="text" value="{{ f }}"></p>
+                    <p><input class="form-control" type="text" id='g' name="text" value="{{ g }}"></p>
+                    <p><input class="form-control" type="text" id='h' name="text" value="{{ h }}"></p>
+                    <p><input class="form-control" type="text" id='i' name="text" value="{{ i }}"></p>
+                    <p><input class="form-control" type="text" id='j' name="text" value="{{ j }}"></p>
+
+
+
+                    <label>Time not available:</label>
+
+                        <div class="checkbox" style="font-size: small;height:250px;overflow:scroll;background-color: #FFFFFF">
+                            <table class="table table-bordered" >
+                                <tr>
+
+                                    <td>M</td>
+                                    <td>T</td>
+                                    <td>W</td>
+                                    <td>T</td>
+                                    <td>F</td>
+
+                                </tr>
+                    <tr>
+                        <script>
+                            $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+                        </script>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 8:30-9:30" id="0" value="00"  aria-label="..."  {{check00}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 8:30-9:30" id="12" value="12"  aria-label="..."  {{check12}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 8:30-9:30" id="24" value="24"  aria-label="..."  {{check24}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 8:30-9:30" id="36" value="36"  aria-label="..."  {{check36}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 8:30-9:30" id="48" value="48"  aria-label="..."  {{check48}}>
+                    </label></td>
+
+                    </tr>
+                                <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 9:30-10:30" id="1" value="01"  aria-label="..."  {{check01}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 9:30-10:30" id="13" value="13"  aria-label="..."  {{check13}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 9:30-10:30" id="25" value="25"  aria-label="..."  {{check25}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 9:30-10:30" id="37" value="37"  aria-label="..."  {{check37}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 9:30-10:30" id="49" value="49"  aria-label="..."  {{check49}}>
+                    </label></td>
+
+                    </tr>
+                            <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 10:30-11:30" id="2" value="02"  aria-label="..."  {{check02}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 10:30-11:30" id="14" value="14"  aria-label="..."  {{check14}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 10:30-11:30" id="26" value="26"  aria-label="..."  {{check26}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 10:30-11:30" id="38" value="38"  aria-label="..."  {{check38}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 10:30-11:30" id="50" value="50"  aria-label="..."  {{check50}}>
+                    </label></td>
+
+                    </tr>
+                                <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 11:30-12:30" id="3" value="03"  aria-label="..."  {{check03}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 11:30-12:30" id="15" value="15"  aria-label="..."  {{check15}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 11:30-12:30" id="27" value="27"  aria-label="..."  {{check27}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 11:30-12:30" id="39" value="39"  aria-label="..."  {{check39}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 11:30-12:30" id="51" value="51"  aria-label="..."  {{check51}}>
+                    </label></td>
+
+                    </tr>
+
+                            <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 12:30-13:30" id="4" value="04"  aria-label="..."  {{check04}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 12:30-13:30" id="16" value="16"  aria-label="..."  {{check16}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 12:30-13:30" id="28" value="28"  aria-label="..."  {{check28}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 12:30-13:30" id="40" value="40"  aria-label="..."  {{check40}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 12:30-13:30" id="52" value="52"  aria-label="..."  {{check52}}>
+                    </label></td>
+
+                    </tr>
+
+
+                                <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 13:30-14:30" id="5" value="05"  aria-label="..."  {{check05}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 13:30-14:30" id="17" value="17"  aria-label="..."  {{check17}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 13:30-14:30" id="29" value="29"  aria-label="..."  {{check29}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 13:30-14:30" id="41" value="41"  aria-label="..."  {{check41}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 13:30-14:30" id="53" value="53"  aria-label="..."  {{check53}}>
+                    </label></td>
+
+                    </tr>
+
+
+                            <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 14:30-15:30" id="6" value="06"  aria-label="..."  {{check06}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 14:30-15:30" id="18" value="18"  aria-label="..."  {{check18}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 14:30-15:30" id="30" value="30"  aria-label="..."  {{check30}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 14:30-15:30" id="42" value="42"  aria-label="..."  {{check42}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 14:30-15:30" id="54" value="54"  aria-label="..."  {{check54}}>
+                    </label></td>
+
+                    </tr>
+
+                                <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 16:30-16:30" id="7" value="07"  aria-label="..."  {{check07}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 16:30-16:30" id="19" value="19"  aria-label="..."  {{check19}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 16:30-16:30" id="31" value="31"  aria-label="..."  {{check31}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 16:30-16:30" id="43" value="43"  aria-label="..."  {{check43}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 16:30-16:30" id="55" value="55"  aria-label="..."  {{check55}}>
+                    </label></td>
+
+                    </tr>
+
+
+
+                            <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 16:30-17:30" id="8" value="08"  aria-label="..."  {{check08}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 16:30-17:30" id="20" value="20"  aria-label="..."  {{check20}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 16:30-17:30" id="32" value="32"  aria-label="..."  {{check32}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 16:30-17:30" id="44" value="44"  aria-label="..."  {{check44}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 16:30-17:30" id="56" value="56"  aria-label="..."  {{check56}}>
+                    </label></td>
+
+                    </tr>
+
+                                <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 17:30-18:30" id="9" value="09"  aria-label="..."  {{check09}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 17:30-18:30" id="21" value="21"  aria-label="..."  {{check21}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 17:30-18:30" id="33" value="33"  aria-label="..."  {{check33}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 17:30-18:30" id="45" value="45"  aria-label="..."  {{check45}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 17:30-18:30" id="57" value="57"  aria-label="..."  {{check57}}>
+                    </label></td>
+
+                    </tr>
+
+                            <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 18:30-19:30" id="10" value="10"  aria-label="..."  {{check10}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 18:30-19:30" id="22" value="22"  aria-label="..."  {{check22}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 18:30-19:30" id="34" value="34"  aria-label="..."  {{check34}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 18:30-19:30" id="46" value="46"  aria-label="..."  {{check46}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 18:30-19:30" id="58" value="58"  aria-label="..."  {{check58}}>
+                    </label></td>
+                    </tr>
+
+                            <tr>
+
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Monday 19:30-20:30" id="11" value="11"  aria-label="..."  {{check11}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tuesday 19:30-20:30" id="23" value="23"  aria-label="..."  {{check23}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Wednesday 19:30-20:30" id="35" value="35"  aria-label="..."  {{check35}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Thursday 19:30-20:30" id="47" value="47"  aria-label="..."  {{check47}}>
+                    </label></td>
+                    <td><label>
+                        <input type="checkbox"   name="checkbox" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Friday 19:30-20:30" id="59" value="59"  aria-label="..."  {{check59}}>
+                    </label></td>
+                    </tr>
+
+
+
+
+                            </table>
+                            </div>
+
+
+
+                    <p><input class="btn btn-default" type="submit" value="PLAN"></p>
+                    </form>
+
+                    {% block lastpage %}
+                        <a type="button" class="btn btn-default" href="#" onClick="history.back(-1);">BACK</a>
+                        {% endblock %}
+
+
+
+
+</div>
+        </div>
+        </div>
+        <div class="col-md-10" >
+        <div class="panel-default panel" style="background-color: #F0E5DF;border-color: #F0E5DF">
+    <div class="panel-body">
+
+
+
+{% block display_block %}
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        {{ 1course0 }}{{ 1course1 }}{{ 1course2 }}{{ 1course3 }}{{ 1course4 }}{{ 1course5 }}{{ 1course6 }}{{ 1course7 }}{{ 1course8 }}{{ 1course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    <div style={{ 1font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>Time/Day</td>
+                                <td  bgcolor={{ 1edge }}>Monday</td>
+                                <td  bgcolor={{ 1edge }}>Tuesday</td>
+                                <td  bgcolor={{ 1edge }}>Wednesday</td>
+                                <td  bgcolor={{ 1edge }}>Thursday</td>
+                                <td  bgcolor={{ 1edge }}>Friday</td>
+                                <td  bgcolor={{ 1edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>8:30-9:30</td>
+                                <td  bgcolor={{ 1color00 }}>{{ 1content00 }}</td>
+                                <td  bgcolor={{ 1color12 }}>{{ 1content12 }}</td>
+                                <td  bgcolor={{ 1color24 }}>{{ 1content24 }}</td>
+                                <td  bgcolor={{ 1color36 }}>{{ 1content36 }}</td>
+                                <td  bgcolor={{ 1color48 }}>{{ 1content48 }}</td>
+                                <td  bgcolor={{ 1color60 }}>{{ 1content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>9:30-10:30</td>
+                                <td  bgcolor={{ 1color01 }}>{{ 1content01 }}</td>
+                                <td  bgcolor={{ 1color13 }}>{{ 1content13 }}</td>
+                                <td  bgcolor={{ 1color25 }}>{{ 1content25 }}</td>
+                                <td  bgcolor={{ 1color37 }}>{{ 1content37 }}</td>
+                                <td  bgcolor={{ 1color49 }}>{{ 1content49 }}</td>
+                                <td  bgcolor={{ 1color61 }}>{{ 1content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>10:30-11:30</td>
+                                <td  bgcolor={{ 1color02 }}>{{ 1content02 }}</td>
+                                <td  bgcolor={{ 1color14 }}>{{ 1content14 }}</td>
+                                <td  bgcolor={{ 1color26 }}>{{ 1content26 }}</td>
+                                <td  bgcolor={{ 1color38 }}>{{ 1content38 }}</td>
+                                <td  bgcolor={{ 1color50 }}>{{ 1content50 }}</td>
+                                <td  bgcolor={{ 1color62 }}>{{ 1content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>11:30-12:30</td>
+                                <td  bgcolor={{ 1color03 }}>{{ 1content03 }}</td>
+                                <td  bgcolor={{ 1color15 }}>{{ 1content15 }}</td>
+                                <td  bgcolor={{ 1color27 }}>{{ 1content27 }}</td>
+                                <td  bgcolor={{ 1color39 }}>{{ 1content39 }}</td>
+                                <td  bgcolor={{ 1color51 }}>{{ 1content51 }}</td>
+                                <td  bgcolor={{ 1color63 }}>{{ 1content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>12:30-13:30</td>
+                                <td  bgcolor={{ 1color04 }}>{{ 1content04 }}</td>
+                                <td  bgcolor={{ 1color16 }}>{{ 1content16 }}</td>
+                                <td  bgcolor={{ 1color28 }}>{{ 1content28 }}</td>
+                                <td  bgcolor={{ 1color40 }}>{{ 1content40 }}</td>
+                                <td  bgcolor={{ 1color52 }}>{{ 1content52 }}</td>
+                                <td  bgcolor={{ 1color64 }}>{{ 1content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>13:30-14:30</td>
+                                <td  bgcolor={{ 1color05 }}>{{ 1content05 }}</td>
+                                <td  bgcolor={{ 1color17 }}>{{ 1content17 }}</td>
+                                <td  bgcolor={{ 1color29 }}>{{ 1content29 }}</td>
+                                <td  bgcolor={{ 1color41 }}>{{ 1content41 }}</td>
+                                <td  bgcolor={{ 1color53 }}>{{ 1content53 }}</td>
+                                <td  bgcolor={{ 1color65 }}>{{ 1content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>14:30-15:30</td>
+                                <td  bgcolor={{ 1color06 }}>{{ 1content06 }}</td>
+                                <td  bgcolor={{ 1color18 }}>{{ 1content18 }}</td>
+                                <td  bgcolor={{ 1color30 }}>{{ 1content30 }}</td>
+                                <td  bgcolor={{ 1color42 }}>{{ 1content42 }}</td>
+                                <td  bgcolor={{ 1color54 }}>{{ 1content54 }}</td>
+                                <td  bgcolor={{ 1color66 }}>{{ 1content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>15:30-16:30</td>
+                                <td  bgcolor={{ 1color07 }}>{{ 1content07 }}</td>
+                                <td  bgcolor={{ 1color19 }}>{{ 1content19 }}</td>
+                                <td  bgcolor={{ 1color31 }}>{{ 1content31 }}</td>
+                                <td  bgcolor={{ 1color43 }}>{{ 1content43 }}</td>
+                                <td  bgcolor={{ 1color55 }}>{{ 1content55 }}</td>
+                                <td  bgcolor={{ 1color67 }}>{{ 1content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>16:30-17:30</td>
+                                <td  bgcolor={{ 1color08 }}>{{ 1content08 }}</td>
+                                <td  bgcolor={{ 1color20 }}>{{ 1content20 }}</td>
+                                <td  bgcolor={{ 1color32 }}>{{ 1content32 }}</td>
+                                <td  bgcolor={{ 1color44 }}>{{ 1content44 }}</td>
+                                <td  bgcolor={{ 1color56 }}>{{ 1content56 }}</td>
+                                <td  bgcolor={{ 1color68 }}>{{ 1content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>17:30-18:30</td>
+                                <td  bgcolor={{ 1color09 }}>{{ 1content09 }}</td>
+                                <td  bgcolor={{ 1color21 }}>{{ 1content21 }}</td>
+                                <td  bgcolor={{ 1color33 }}>{{ 1content33 }}</td>
+                                <td  bgcolor={{ 1color45 }}>{{ 1content45 }}</td>
+                                <td  bgcolor={{ 1color57 }}>{{ 1content57 }}</td>
+                                <td  bgcolor={{ 1color69 }}>{{ 1content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>18:30-19:30</td>
+                                <td  bgcolor={{ 1color10 }}>{{ 1content10 }}</td>
+                                <td  bgcolor={{ 1color22 }}>{{ 1content22 }}</td>
+                                <td  bgcolor={{ 1color34 }}>{{ 1content34 }}</td>
+                                <td  bgcolor={{ 1color46 }}>{{ 1content46 }}</td>
+                                <td  bgcolor={{ 1color58 }}>{{ 1content58 }}</td>
+                                <td  bgcolor={{ 1color70 }}>{{ 1content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 1edge }}>19:30-20:30</td>
+                                <td  bgcolor={{ 1color11 }}>{{ 1content11 }}</td>
+                                <td  bgcolor={{ 1color23 }}>{{ 1content23 }}</td>
+                                <td  bgcolor={{ 1color35 }}>{{ 1content35 }}</td>
+                                <td  bgcolor={{ 1color47 }}>{{ 1content47 }}</td>
+                                <td  bgcolor={{ 1color59 }}>{{ 1content59 }}</td>
+                                <td  bgcolor={{ 1color71 }}>{{ 1content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        {{ 2course0 }}{{ 2course1 }}{{ 2course2 }}{{ 2course3 }}{{ 2course4 }}{{ 2course5 }}{{ 2course6 }}{{ 2course7 }}{{ 2course8 }}{{ 2course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+<div style={{ 2font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>Time/Day</td>
+                                <td  bgcolor={{ 2edge }}>Monday</td>
+                                <td  bgcolor={{ 2edge }}>Tuesday</td>
+                                <td  bgcolor={{ 2edge }}>Wednesday</td>
+                                <td  bgcolor={{ 2edge }}>Thursday</td>
+                                <td  bgcolor={{ 2edge }}>Friday</td>
+                                <td  bgcolor={{ 2edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>8:30-9:30</td>
+                                <td  bgcolor={{ 2color00 }}>{{ 2content00 }}</td>
+                                <td  bgcolor={{ 2color12 }}>{{ 2content12 }}</td>
+                                <td  bgcolor={{ 2color24 }}>{{ 2content24 }}</td>
+                                <td  bgcolor={{ 2color36 }}>{{ 2content36 }}</td>
+                                <td  bgcolor={{ 2color48 }}>{{ 2content48 }}</td>
+                                <td  bgcolor={{ 2color60 }}>{{ 2content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>9:30-10:30</td>
+                                <td  bgcolor={{ 2color01 }}>{{ 2content01 }}</td>
+                                <td  bgcolor={{ 2color13 }}>{{ 2content13 }}</td>
+                                <td  bgcolor={{ 2color25 }}>{{ 2content25 }}</td>
+                                <td  bgcolor={{ 2color37 }}>{{ 2content37 }}</td>
+                                <td  bgcolor={{ 2color49 }}>{{ 2content49 }}</td>
+                                <td  bgcolor={{ 2color61 }}>{{ 2content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>10:30-11:30</td>
+                                <td  bgcolor={{ 2color02 }}>{{ 2content02 }}</td>
+                                <td  bgcolor={{ 2color14 }}>{{ 2content14 }}</td>
+                                <td  bgcolor={{ 2color26 }}>{{ 2content26 }}</td>
+                                <td  bgcolor={{ 2color38 }}>{{ 2content38 }}</td>
+                                <td  bgcolor={{ 2color50 }}>{{ 2content50 }}</td>
+                                <td  bgcolor={{ 2color62 }}>{{ 2content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>11:30-12:30</td>
+                                <td  bgcolor={{ 2color03 }}>{{ 2content03 }}</td>
+                                <td  bgcolor={{ 2color15 }}>{{ 2content15 }}</td>
+                                <td  bgcolor={{ 2color27 }}>{{ 2content27 }}</td>
+                                <td  bgcolor={{ 2color39 }}>{{ 2content39 }}</td>
+                                <td  bgcolor={{ 2color51 }}>{{ 2content51 }}</td>
+                                <td  bgcolor={{ 2color63 }}>{{ 2content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>12:30-13:30</td>
+                                <td  bgcolor={{ 2color04 }}>{{ 2content04 }}</td>
+                                <td  bgcolor={{ 2color16 }}>{{ 2content16 }}</td>
+                                <td  bgcolor={{ 2color28 }}>{{ 2content28 }}</td>
+                                <td  bgcolor={{ 2color40 }}>{{ 2content40 }}</td>
+                                <td  bgcolor={{ 2color52 }}>{{ 2content52 }}</td>
+                                <td  bgcolor={{ 2color64 }}>{{ 2content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>13:30-14:30</td>
+                                <td  bgcolor={{ 2color05 }}>{{ 2content05 }}</td>
+                                <td  bgcolor={{ 2color17 }}>{{ 2content17 }}</td>
+                                <td  bgcolor={{ 2color29 }}>{{ 2content29 }}</td>
+                                <td  bgcolor={{ 2color41 }}>{{ 2content41 }}</td>
+                                <td  bgcolor={{ 2color53 }}>{{ 2content53 }}</td>
+                                <td  bgcolor={{ 2color65 }}>{{ 2content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>14:30-15:30</td>
+                                <td  bgcolor={{ 2color06 }}>{{ 2content06 }}</td>
+                                <td  bgcolor={{ 2color18 }}>{{ 2content18 }}</td>
+                                <td  bgcolor={{ 2color30 }}>{{ 2content30 }}</td>
+                                <td  bgcolor={{ 2color42 }}>{{ 2content42 }}</td>
+                                <td  bgcolor={{ 2color54 }}>{{ 2content54 }}</td>
+                                <td  bgcolor={{ 2color66 }}>{{ 2content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>15:30-16:30</td>
+                                <td  bgcolor={{ 2color07 }}>{{ 2content07 }}</td>
+                                <td  bgcolor={{ 2color19 }}>{{ 2content19 }}</td>
+                                <td  bgcolor={{ 2color31 }}>{{ 2content31 }}</td>
+                                <td  bgcolor={{ 2color43 }}>{{ 2content43 }}</td>
+                                <td  bgcolor={{ 2color55 }}>{{ 2content55 }}</td>
+                                <td  bgcolor={{ 2color67 }}>{{ 2content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>16:30-17:30</td>
+                                <td  bgcolor={{ 2color08 }}>{{ 2content08 }}</td>
+                                <td  bgcolor={{ 2color20 }}>{{ 2content20 }}</td>
+                                <td  bgcolor={{ 2color32 }}>{{ 2content32 }}</td>
+                                <td  bgcolor={{ 2color44 }}>{{ 2content44 }}</td>
+                                <td  bgcolor={{ 2color56 }}>{{ 2content56 }}</td>
+                                <td  bgcolor={{ 2color68 }}>{{ 2content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>17:30-18:30</td>
+                                <td  bgcolor={{ 2color09 }}>{{ 2content09 }}</td>
+                                <td  bgcolor={{ 2color21 }}>{{ 2content21 }}</td>
+                                <td  bgcolor={{ 2color33 }}>{{ 2content33 }}</td>
+                                <td  bgcolor={{ 2color45 }}>{{ 2content45 }}</td>
+                                <td  bgcolor={{ 2color57 }}>{{ 2content57 }}</td>
+                                <td  bgcolor={{ 2color69 }}>{{ 2content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>18:30-19:30</td>
+                                <td  bgcolor={{ 2color10 }}>{{ 2content10 }}</td>
+                                <td  bgcolor={{ 2color22 }}>{{ 2content22 }}</td>
+                                <td  bgcolor={{ 2color34 }}>{{ 2content34 }}</td>
+                                <td  bgcolor={{ 2color46 }}>{{ 2content46 }}</td>
+                                <td  bgcolor={{ 2color58 }}>{{ 2content58 }}</td>
+                                <td  bgcolor={{ 2color70 }}>{{ 2content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 2edge }}>19:30-20:30</td>
+                                <td  bgcolor={{ 2color11 }}>{{ 2content11 }}</td>
+                                <td  bgcolor={{ 2color23 }}>{{ 2content23 }}</td>
+                                <td  bgcolor={{ 2color35 }}>{{ 2content35 }}</td>
+                                <td  bgcolor={{ 2color47 }}>{{ 2content47 }}</td>
+                                <td  bgcolor={{ 2color59 }}>{{ 2content59 }}</td>
+                                <td  bgcolor={{ 2color71 }}>{{ 2content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        {{ 3course0 }}{{ 3course1 }}{{ 3course2 }}{{ 3course3 }}{{ 3course4 }}{{ 3course5 }}{{ 3course6 }}{{ 3course7 }}{{ 3course8 }}{{ 3course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body">
+<div style={{ 3font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>Time/Day</td>
+                                <td  bgcolor={{ 3edge }}>Monday</td>
+                                <td  bgcolor={{ 3edge }}>Tuesday</td>
+                                <td  bgcolor={{ 3edge }}>Wednesday</td>
+                                <td  bgcolor={{ 3edge }}>Thursday</td>
+                                <td  bgcolor={{ 3edge }}>Friday</td>
+                                <td  bgcolor={{ 3edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>8:30-9:30</td>
+                                <td  bgcolor={{ 3color00 }}>{{ 3content00 }}</td>
+                                <td  bgcolor={{ 3color12 }}>{{ 3content12 }}</td>
+                                <td  bgcolor={{ 3color24 }}>{{ 3content24 }}</td>
+                                <td  bgcolor={{ 3color36 }}>{{ 3content36 }}</td>
+                                <td  bgcolor={{ 3color48 }}>{{ 3content48 }}</td>
+                                <td  bgcolor={{ 3color60 }}>{{ 3content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>9:30-10:30</td>
+                                <td  bgcolor={{ 3color01 }}>{{ 3content01 }}</td>
+                                <td  bgcolor={{ 3color13 }}>{{ 3content13 }}</td>
+                                <td  bgcolor={{ 3color25 }}>{{ 3content25 }}</td>
+                                <td  bgcolor={{ 3color37 }}>{{ 3content37 }}</td>
+                                <td  bgcolor={{ 3color49 }}>{{ 3content49 }}</td>
+                                <td  bgcolor={{ 3color61 }}>{{ 3content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>10:30-11:30</td>
+                                <td  bgcolor={{ 3color02 }}>{{ 3content02 }}</td>
+                                <td  bgcolor={{ 3color14 }}>{{ 3content14 }}</td>
+                                <td  bgcolor={{ 3color26 }}>{{ 3content26 }}</td>
+                                <td  bgcolor={{ 3color38 }}>{{ 3content38 }}</td>
+                                <td  bgcolor={{ 3color50 }}>{{ 3content50 }}</td>
+                                <td  bgcolor={{ 3color62 }}>{{ 3content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>11:30-12:30</td>
+                                <td  bgcolor={{ 3color03 }}>{{ 3content03 }}</td>
+                                <td  bgcolor={{ 3color15 }}>{{ 3content15 }}</td>
+                                <td  bgcolor={{ 3color27 }}>{{ 3content27 }}</td>
+                                <td  bgcolor={{ 3color39 }}>{{ 3content39 }}</td>
+                                <td  bgcolor={{ 3color51 }}>{{ 3content51 }}</td>
+                                <td  bgcolor={{ 3color63 }}>{{ 3content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>12:30-13:30</td>
+                                <td  bgcolor={{ 3color04 }}>{{ 3content04 }}</td>
+                                <td  bgcolor={{ 3color16 }}>{{ 3content16 }}</td>
+                                <td  bgcolor={{ 3color28 }}>{{ 3content28 }}</td>
+                                <td  bgcolor={{ 3color40 }}>{{ 3content40 }}</td>
+                                <td  bgcolor={{ 3color52 }}>{{ 3content52 }}</td>
+                                <td  bgcolor={{ 3color64 }}>{{ 3content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>13:30-14:30</td>
+                                <td  bgcolor={{ 3color05 }}>{{ 3content05 }}</td>
+                                <td  bgcolor={{ 3color17 }}>{{ 3content17 }}</td>
+                                <td  bgcolor={{ 3color29 }}>{{ 3content29 }}</td>
+                                <td  bgcolor={{ 3color41 }}>{{ 3content41 }}</td>
+                                <td  bgcolor={{ 3color53 }}>{{ 3content53 }}</td>
+                                <td  bgcolor={{ 3color65 }}>{{ 3content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>14:30-15:30</td>
+                                <td  bgcolor={{ 3color06 }}>{{ 3content06 }}</td>
+                                <td  bgcolor={{ 3color18 }}>{{ 3content18 }}</td>
+                                <td  bgcolor={{ 3color30 }}>{{ 3content30 }}</td>
+                                <td  bgcolor={{ 3color42 }}>{{ 3content42 }}</td>
+                                <td  bgcolor={{ 3color54 }}>{{ 3content54 }}</td>
+                                <td  bgcolor={{ 3color66 }}>{{ 3content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>15:30-16:30</td>
+                                <td  bgcolor={{ 3color07 }}>{{ 3content07 }}</td>
+                                <td  bgcolor={{ 3color19 }}>{{ 3content19 }}</td>
+                                <td  bgcolor={{ 3color31 }}>{{ 3content31 }}</td>
+                                <td  bgcolor={{ 3color43 }}>{{ 3content43 }}</td>
+                                <td  bgcolor={{ 3color55 }}>{{ 3content55 }}</td>
+                                <td  bgcolor={{ 3color67 }}>{{ 3content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>16:30-17:30</td>
+                                <td  bgcolor={{ 3color08 }}>{{ 3content08 }}</td>
+                                <td  bgcolor={{ 3color20 }}>{{ 3content20 }}</td>
+                                <td  bgcolor={{ 3color32 }}>{{ 3content32 }}</td>
+                                <td  bgcolor={{ 3color44 }}>{{ 3content44 }}</td>
+                                <td  bgcolor={{ 3color56 }}>{{ 3content56 }}</td>
+                                <td  bgcolor={{ 3color68 }}>{{ 3content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>17:30-18:30</td>
+                                <td  bgcolor={{ 3color09 }}>{{ 3content09 }}</td>
+                                <td  bgcolor={{ 3color21 }}>{{ 3content21 }}</td>
+                                <td  bgcolor={{ 3color33 }}>{{ 3content33 }}</td>
+                                <td  bgcolor={{ 3color45 }}>{{ 3content45 }}</td>
+                                <td  bgcolor={{ 3color57 }}>{{ 3content57 }}</td>
+                                <td  bgcolor={{ 3color69 }}>{{ 3content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>18:30-19:30</td>
+                                <td  bgcolor={{ 3color10 }}>{{ 3content10 }}</td>
+                                <td  bgcolor={{ 3color22 }}>{{ 3content22 }}</td>
+                                <td  bgcolor={{ 3color34 }}>{{ 3content34 }}</td>
+                                <td  bgcolor={{ 3color46 }}>{{ 3content46 }}</td>
+                                <td  bgcolor={{ 3color58 }}>{{ 3content58 }}</td>
+                                <td  bgcolor={{ 3color70 }}>{{ 3content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor={{ 3edge }}>19:30-20:30</td>
+                                <td  bgcolor={{ 3color11 }}>{{ 3content11 }}</td>
+                                <td  bgcolor={{ 3color23 }}>{{ 3content23 }}</td>
+                                <td  bgcolor={{ 3color35 }}>{{ 3content35 }}</td>
+                                <td  bgcolor={{ 3color47 }}>{{ 3content47 }}</td>
+                                <td  bgcolor={{ 3color59 }}>{{ 3content59 }}</td>
+                                <td  bgcolor={{ 3color71 }}>{{ 3content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>                  </div>
+                </div>
+              </div>
+                <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFour">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                         {{ 4course0 }} {{ 4course1 }} {{ 4course2 }} {{ 4course3 }} {{ 4course4 }} {{ 4course5 }} {{ 4course6 }} {{ 4course7 }} {{ 4course8 }} {{ 4course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div class="panel-body">
+<div style= {{ 4font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>Time/Day</td>
+                                <td  bgcolor= {{ 4edge }}>Monday</td>
+                                <td  bgcolor= {{ 4edge }}>Tuesday</td>
+                                <td  bgcolor= {{ 4edge }}>Wednesday</td>
+                                <td  bgcolor= {{ 4edge }}>Thursday</td>
+                                <td  bgcolor= {{ 4edge }}>Friday</td>
+                                <td  bgcolor= {{ 4edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>8:30-9:30</td>
+                                <td  bgcolor= {{ 4color00 }}> {{ 4content00 }}</td>
+                                <td  bgcolor= {{ 4color12 }}> {{ 4content12 }}</td>
+                                <td  bgcolor= {{ 4color24 }}> {{ 4content24 }}</td>
+                                <td  bgcolor= {{ 4color36 }}> {{ 4content36 }}</td>
+                                <td  bgcolor= {{ 4color48 }}> {{ 4content48 }}</td>
+                                <td  bgcolor= {{ 4color60 }}> {{ 4content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>9:30-10:30</td>
+                                <td  bgcolor= {{ 4color01 }}> {{ 4content01 }}</td>
+                                <td  bgcolor= {{ 4color13 }}> {{ 4content13 }}</td>
+                                <td  bgcolor= {{ 4color25 }}> {{ 4content25 }}</td>
+                                <td  bgcolor= {{ 4color37 }}> {{ 4content37 }}</td>
+                                <td  bgcolor= {{ 4color49 }}> {{ 4content49 }}</td>
+                                <td  bgcolor= {{ 4color61 }}> {{ 4content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>10:30-11:30</td>
+                                <td  bgcolor= {{ 4color02 }}> {{ 4content02 }}</td>
+                                <td  bgcolor= {{ 4color14 }}> {{ 4content14 }}</td>
+                                <td  bgcolor= {{ 4color26 }}> {{ 4content26 }}</td>
+                                <td  bgcolor= {{ 4color38 }}> {{ 4content38 }}</td>
+                                <td  bgcolor= {{ 4color50 }}> {{ 4content50 }}</td>
+                                <td  bgcolor= {{ 4color62 }}> {{ 4content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>11:30-12:30</td>
+                                <td  bgcolor= {{ 4color03 }}> {{ 4content03 }}</td>
+                                <td  bgcolor= {{ 4color15 }}> {{ 4content15 }}</td>
+                                <td  bgcolor= {{ 4color27 }}> {{ 4content27 }}</td>
+                                <td  bgcolor= {{ 4color39 }}> {{ 4content39 }}</td>
+                                <td  bgcolor= {{ 4color51 }}> {{ 4content51 }}</td>
+                                <td  bgcolor= {{ 4color63 }}> {{ 4content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>12:30-13:30</td>
+                                <td  bgcolor= {{ 4color04 }}> {{ 4content04 }}</td>
+                                <td  bgcolor= {{ 4color16 }}> {{ 4content16 }}</td>
+                                <td  bgcolor= {{ 4color28 }}> {{ 4content28 }}</td>
+                                <td  bgcolor= {{ 4color40 }}> {{ 4content40 }}</td>
+                                <td  bgcolor= {{ 4color52 }}> {{ 4content52 }}</td>
+                                <td  bgcolor= {{ 4color64 }}> {{ 4content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>13:30-14:30</td>
+                                <td  bgcolor= {{ 4color05 }}> {{ 4content05 }}</td>
+                                <td  bgcolor= {{ 4color17 }}> {{ 4content17 }}</td>
+                                <td  bgcolor= {{ 4color29 }}> {{ 4content29 }}</td>
+                                <td  bgcolor= {{ 4color41 }}> {{ 4content41 }}</td>
+                                <td  bgcolor= {{ 4color53 }}> {{ 4content53 }}</td>
+                                <td  bgcolor= {{ 4color65 }}> {{ 4content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>14:30-15:30</td>
+                                <td  bgcolor= {{ 4color06 }}> {{ 4content06 }}</td>
+                                <td  bgcolor= {{ 4color18 }}> {{ 4content18 }}</td>
+                                <td  bgcolor= {{ 4color30 }}> {{ 4content30 }}</td>
+                                <td  bgcolor= {{ 4color42 }}> {{ 4content42 }}</td>
+                                <td  bgcolor= {{ 4color54 }}> {{ 4content54 }}</td>
+                                <td  bgcolor= {{ 4color66 }}> {{ 4content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>15:30-16:30</td>
+                                <td  bgcolor= {{ 4color07 }}> {{ 4content07 }}</td>
+                                <td  bgcolor= {{ 4color19 }}> {{ 4content19 }}</td>
+                                <td  bgcolor= {{ 4color31 }}> {{ 4content31 }}</td>
+                                <td  bgcolor= {{ 4color43 }}> {{ 4content43 }}</td>
+                                <td  bgcolor= {{ 4color55 }}> {{ 4content55 }}</td>
+                                <td  bgcolor= {{ 4color67 }}> {{ 4content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>16:30-17:30</td>
+                                <td  bgcolor= {{ 4color08 }}> {{ 4content08 }}</td>
+                                <td  bgcolor= {{ 4color20 }}> {{ 4content20 }}</td>
+                                <td  bgcolor= {{ 4color32 }}> {{ 4content32 }}</td>
+                                <td  bgcolor= {{ 4color44 }}> {{ 4content44 }}</td>
+                                <td  bgcolor= {{ 4color56 }}> {{ 4content56 }}</td>
+                                <td  bgcolor= {{ 4color68 }}> {{ 4content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>17:30-18:30</td>
+                                <td  bgcolor= {{ 4color09 }}> {{ 4content09 }}</td>
+                                <td  bgcolor= {{ 4color21 }}> {{ 4content21 }}</td>
+                                <td  bgcolor= {{ 4color33 }}> {{ 4content33 }}</td>
+                                <td  bgcolor= {{ 4color45 }}> {{ 4content45 }}</td>
+                                <td  bgcolor= {{ 4color57 }}> {{ 4content57 }}</td>
+                                <td  bgcolor= {{ 4color69 }}> {{ 4content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>18:30-19:30</td>
+                                <td  bgcolor= {{ 4color10 }}> {{ 4content10 }}</td>
+                                <td  bgcolor= {{ 4color22 }}> {{ 4content22 }}</td>
+                                <td  bgcolor= {{ 4color34 }}> {{ 4content34 }}</td>
+                                <td  bgcolor= {{ 4color46 }}> {{ 4content46 }}</td>
+                                <td  bgcolor= {{ 4color58 }}> {{ 4content58 }}</td>
+                                <td  bgcolor= {{ 4color70 }}> {{ 4content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 4edge }}>19:30-20:30</td>
+                                <td  bgcolor= {{ 4color11 }}> {{ 4content11 }}</td>
+                                <td  bgcolor= {{ 4color23 }}> {{ 4content23 }}</td>
+                                <td  bgcolor= {{ 4color35 }}> {{ 4content35 }}</td>
+                                <td  bgcolor= {{ 4color47 }}> {{ 4content47 }}</td>
+                                <td  bgcolor= {{ 4color59 }}> {{ 4content59 }}</td>
+                                <td  bgcolor= {{ 4color71 }}> {{ 4content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>                  </div>
+                </div>
+              </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFive">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                         {{ 5course0 }} {{ 5course1 }} {{ 5course2 }} {{ 5course3 }} {{ 5course4 }} {{ 5course5 }} {{ 5course6 }} {{ 5course7 }} {{ 5course8 }} {{ 5course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                  <div class="panel-body">
+<div style= {{ 5font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>Time/Day</td>
+                                <td  bgcolor= {{ 5edge }}>Monday</td>
+                                <td  bgcolor= {{ 5edge }}>Tuesday</td>
+                                <td  bgcolor= {{ 5edge }}>Wednesday</td>
+                                <td  bgcolor= {{ 5edge }}>Thursday</td>
+                                <td  bgcolor= {{ 5edge }}>Friday</td>
+                                <td  bgcolor= {{ 5edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>8:30-9:30</td>
+                                <td  bgcolor= {{ 5color00 }}> {{ 5content00 }}</td>
+                                <td  bgcolor= {{ 5color12 }}> {{ 5content12 }}</td>
+                                <td  bgcolor= {{ 5color24 }}> {{ 5content24 }}</td>
+                                <td  bgcolor= {{ 5color36 }}> {{ 5content36 }}</td>
+                                <td  bgcolor= {{ 5color48 }}> {{ 5content48 }}</td>
+                                <td  bgcolor= {{ 5color60 }}> {{ 5content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>9:30-10:30</td>
+                                <td  bgcolor= {{ 5color01 }}> {{ 5content01 }}</td>
+                                <td  bgcolor= {{ 5color13 }}> {{ 5content13 }}</td>
+                                <td  bgcolor= {{ 5color25 }}> {{ 5content25 }}</td>
+                                <td  bgcolor= {{ 5color37 }}> {{ 5content37 }}</td>
+                                <td  bgcolor= {{ 5color49 }}> {{ 5content49 }}</td>
+                                <td  bgcolor= {{ 5color61 }}> {{ 5content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>10:30-11:30</td>
+                                <td  bgcolor= {{ 5color02 }}> {{ 5content02 }}</td>
+                                <td  bgcolor= {{ 5color14 }}> {{ 5content14 }}</td>
+                                <td  bgcolor= {{ 5color26 }}> {{ 5content26 }}</td>
+                                <td  bgcolor= {{ 5color38 }}> {{ 5content38 }}</td>
+                                <td  bgcolor= {{ 5color50 }}> {{ 5content50 }}</td>
+                                <td  bgcolor= {{ 5color62 }}> {{ 5content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>11:30-12:30</td>
+                                <td  bgcolor= {{ 5color03 }}> {{ 5content03 }}</td>
+                                <td  bgcolor= {{ 5color15 }}> {{ 5content15 }}</td>
+                                <td  bgcolor= {{ 5color27 }}> {{ 5content27 }}</td>
+                                <td  bgcolor= {{ 5color39 }}> {{ 5content39 }}</td>
+                                <td  bgcolor= {{ 5color51 }}> {{ 5content51 }}</td>
+                                <td  bgcolor= {{ 5color63 }}> {{ 5content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>12:30-13:30</td>
+                                <td  bgcolor= {{ 5color04 }}> {{ 5content04 }}</td>
+                                <td  bgcolor= {{ 5color16 }}> {{ 5content16 }}</td>
+                                <td  bgcolor= {{ 5color28 }}> {{ 5content28 }}</td>
+                                <td  bgcolor= {{ 5color40 }}> {{ 5content40 }}</td>
+                                <td  bgcolor= {{ 5color52 }}> {{ 5content52 }}</td>
+                                <td  bgcolor= {{ 5color64 }}> {{ 5content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>13:30-14:30</td>
+                                <td  bgcolor= {{ 5color05 }}> {{ 5content05 }}</td>
+                                <td  bgcolor= {{ 5color17 }}> {{ 5content17 }}</td>
+                                <td  bgcolor= {{ 5color29 }}> {{ 5content29 }}</td>
+                                <td  bgcolor= {{ 5color41 }}> {{ 5content41 }}</td>
+                                <td  bgcolor= {{ 5color53 }}> {{ 5content53 }}</td>
+                                <td  bgcolor= {{ 5color65 }}> {{ 5content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>14:30-15:30</td>
+                                <td  bgcolor= {{ 5color06 }}> {{ 5content06 }}</td>
+                                <td  bgcolor= {{ 5color18 }}> {{ 5content18 }}</td>
+                                <td  bgcolor= {{ 5color30 }}> {{ 5content30 }}</td>
+                                <td  bgcolor= {{ 5color42 }}> {{ 5content42 }}</td>
+                                <td  bgcolor= {{ 5color54 }}> {{ 5content54 }}</td>
+                                <td  bgcolor= {{ 5color66 }}> {{ 5content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>15:30-16:30</td>
+                                <td  bgcolor= {{ 5color07 }}> {{ 5content07 }}</td>
+                                <td  bgcolor= {{ 5color19 }}> {{ 5content19 }}</td>
+                                <td  bgcolor= {{ 5color31 }}> {{ 5content31 }}</td>
+                                <td  bgcolor= {{ 5color43 }}> {{ 5content43 }}</td>
+                                <td  bgcolor= {{ 5color55 }}> {{ 5content55 }}</td>
+                                <td  bgcolor= {{ 5color67 }}> {{ 5content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>16:30-17:30</td>
+                                <td  bgcolor= {{ 5color08 }}> {{ 5content08 }}</td>
+                                <td  bgcolor= {{ 5color20 }}> {{ 5content20 }}</td>
+                                <td  bgcolor= {{ 5color32 }}> {{ 5content32 }}</td>
+                                <td  bgcolor= {{ 5color44 }}> {{ 5content44 }}</td>
+                                <td  bgcolor= {{ 5color56 }}> {{ 5content56 }}</td>
+                                <td  bgcolor= {{ 5color68 }}> {{ 5content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>17:30-18:30</td>
+                                <td  bgcolor= {{ 5color09 }}> {{ 5content09 }}</td>
+                                <td  bgcolor= {{ 5color21 }}> {{ 5content21 }}</td>
+                                <td  bgcolor= {{ 5color33 }}> {{ 5content33 }}</td>
+                                <td  bgcolor= {{ 5color45 }}> {{ 5content45 }}</td>
+                                <td  bgcolor= {{ 5color57 }}> {{ 5content57 }}</td>
+                                <td  bgcolor= {{ 5color69 }}> {{ 5content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>18:30-19:30</td>
+                                <td  bgcolor= {{ 5color10 }}> {{ 5content10 }}</td>
+                                <td  bgcolor= {{ 5color22 }}> {{ 5content22 }}</td>
+                                <td  bgcolor= {{ 5color34 }}> {{ 5content34 }}</td>
+                                <td  bgcolor= {{ 5color46 }}> {{ 5content46 }}</td>
+                                <td  bgcolor= {{ 5color58 }}> {{ 5content58 }}</td>
+                                <td  bgcolor= {{ 5color70 }}> {{ 5content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 5edge }}>19:30-20:30</td>
+                                <td  bgcolor= {{ 5color11 }}> {{ 5content11 }}</td>
+                                <td  bgcolor= {{ 5color23 }}> {{ 5content23 }}</td>
+                                <td  bgcolor= {{ 5color35 }}> {{ 5content35 }}</td>
+                                <td  bgcolor= {{ 5color47 }}> {{ 5content47 }}</td>
+                                <td  bgcolor= {{ 5color59 }}> {{ 5content59 }}</td>
+                                <td  bgcolor= {{ 5color71 }}> {{ 5content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>                  </div>
+                </div>
+              </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSix">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                         {{ 6course0 }} {{ 6course1 }} {{ 6course2 }} {{ 6course3 }} {{ 6course4 }} {{ 6course5 }} {{ 6course6 }} {{ 6course7 }} {{ 6course8 }} {{ 6course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                  <div class="panel-body">
+<div style= {{ 6font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>Time/Day</td>
+                                <td  bgcolor= {{ 6edge }}>Monday</td>
+                                <td  bgcolor= {{ 6edge }}>Tuesday</td>
+                                <td  bgcolor= {{ 6edge }}>Wednesday</td>
+                                <td  bgcolor= {{ 6edge }}>Thursday</td>
+                                <td  bgcolor= {{ 6edge }}>Friday</td>
+                                <td  bgcolor= {{ 6edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>8:30-9:30</td>
+                                <td  bgcolor= {{ 6color00 }}> {{ 6content00 }}</td>
+                                <td  bgcolor= {{ 6color12 }}> {{ 6content12 }}</td>
+                                <td  bgcolor= {{ 6color24 }}> {{ 6content24 }}</td>
+                                <td  bgcolor= {{ 6color36 }}> {{ 6content36 }}</td>
+                                <td  bgcolor= {{ 6color48 }}> {{ 6content48 }}</td>
+                                <td  bgcolor= {{ 6color60 }}> {{ 6content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>9:30-10:30</td>
+                                <td  bgcolor= {{ 6color01 }}> {{ 6content01 }}</td>
+                                <td  bgcolor= {{ 6color13 }}> {{ 6content13 }}</td>
+                                <td  bgcolor= {{ 6color25 }}> {{ 6content25 }}</td>
+                                <td  bgcolor= {{ 6color37 }}> {{ 6content37 }}</td>
+                                <td  bgcolor= {{ 6color49 }}> {{ 6content49 }}</td>
+                                <td  bgcolor= {{ 6color61 }}> {{ 6content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>10:30-11:30</td>
+                                <td  bgcolor= {{ 6color02 }}> {{ 6content02 }}</td>
+                                <td  bgcolor= {{ 6color14 }}> {{ 6content14 }}</td>
+                                <td  bgcolor= {{ 6color26 }}> {{ 6content26 }}</td>
+                                <td  bgcolor= {{ 6color38 }}> {{ 6content38 }}</td>
+                                <td  bgcolor= {{ 6color50 }}> {{ 6content50 }}</td>
+                                <td  bgcolor= {{ 6color62 }}> {{ 6content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>11:30-12:30</td>
+                                <td  bgcolor= {{ 6color03 }}> {{ 6content03 }}</td>
+                                <td  bgcolor= {{ 6color15 }}> {{ 6content15 }}</td>
+                                <td  bgcolor= {{ 6color27 }}> {{ 6content27 }}</td>
+                                <td  bgcolor= {{ 6color39 }}> {{ 6content39 }}</td>
+                                <td  bgcolor= {{ 6color51 }}> {{ 6content51 }}</td>
+                                <td  bgcolor= {{ 6color63 }}> {{ 6content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>12:30-13:30</td>
+                                <td  bgcolor= {{ 6color04 }}> {{ 6content04 }}</td>
+                                <td  bgcolor= {{ 6color16 }}> {{ 6content16 }}</td>
+                                <td  bgcolor= {{ 6color28 }}> {{ 6content28 }}</td>
+                                <td  bgcolor= {{ 6color40 }}> {{ 6content40 }}</td>
+                                <td  bgcolor= {{ 6color52 }}> {{ 6content52 }}</td>
+                                <td  bgcolor= {{ 6color64 }}> {{ 6content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>13:30-14:30</td>
+                                <td  bgcolor= {{ 6color05 }}> {{ 6content05 }}</td>
+                                <td  bgcolor= {{ 6color17 }}> {{ 6content17 }}</td>
+                                <td  bgcolor= {{ 6color29 }}> {{ 6content29 }}</td>
+                                <td  bgcolor= {{ 6color41 }}> {{ 6content41 }}</td>
+                                <td  bgcolor= {{ 6color53 }}> {{ 6content53 }}</td>
+                                <td  bgcolor= {{ 6color65 }}> {{ 6content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>14:30-15:30</td>
+                                <td  bgcolor= {{ 6color06 }}> {{ 6content06 }}</td>
+                                <td  bgcolor= {{ 6color18 }}> {{ 6content18 }}</td>
+                                <td  bgcolor= {{ 6color30 }}> {{ 6content30 }}</td>
+                                <td  bgcolor= {{ 6color42 }}> {{ 6content42 }}</td>
+                                <td  bgcolor= {{ 6color54 }}> {{ 6content54 }}</td>
+                                <td  bgcolor= {{ 6color66 }}> {{ 6content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>15:30-16:30</td>
+                                <td  bgcolor= {{ 6color07 }}> {{ 6content07 }}</td>
+                                <td  bgcolor= {{ 6color19 }}> {{ 6content19 }}</td>
+                                <td  bgcolor= {{ 6color31 }}> {{ 6content31 }}</td>
+                                <td  bgcolor= {{ 6color43 }}> {{ 6content43 }}</td>
+                                <td  bgcolor= {{ 6color55 }}> {{ 6content55 }}</td>
+                                <td  bgcolor= {{ 6color67 }}> {{ 6content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>16:30-17:30</td>
+                                <td  bgcolor= {{ 6color08 }}> {{ 6content08 }}</td>
+                                <td  bgcolor= {{ 6color20 }}> {{ 6content20 }}</td>
+                                <td  bgcolor= {{ 6color32 }}> {{ 6content32 }}</td>
+                                <td  bgcolor= {{ 6color44 }}> {{ 6content44 }}</td>
+                                <td  bgcolor= {{ 6color56 }}> {{ 6content56 }}</td>
+                                <td  bgcolor= {{ 6color68 }}> {{ 6content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>17:30-18:30</td>
+                                <td  bgcolor= {{ 6color09 }}> {{ 6content09 }}</td>
+                                <td  bgcolor= {{ 6color21 }}> {{ 6content21 }}</td>
+                                <td  bgcolor= {{ 6color33 }}> {{ 6content33 }}</td>
+                                <td  bgcolor= {{ 6color45 }}> {{ 6content45 }}</td>
+                                <td  bgcolor= {{ 6color57 }}> {{ 6content57 }}</td>
+                                <td  bgcolor= {{ 6color69 }}> {{ 6content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>18:30-19:30</td>
+                                <td  bgcolor= {{ 6color10 }}> {{ 6content10 }}</td>
+                                <td  bgcolor= {{ 6color22 }}> {{ 6content22 }}</td>
+                                <td  bgcolor= {{ 6color34 }}> {{ 6content34 }}</td>
+                                <td  bgcolor= {{ 6color46 }}> {{ 6content46 }}</td>
+                                <td  bgcolor= {{ 6color58 }}> {{ 6content58 }}</td>
+                                <td  bgcolor= {{ 6color70 }}> {{ 6content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 6edge }}>19:30-20:30</td>
+                                <td  bgcolor= {{ 6color11 }}> {{ 6content11 }}</td>
+                                <td  bgcolor= {{ 6color23 }}> {{ 6content23 }}</td>
+                                <td  bgcolor= {{ 6color35 }}> {{ 6content35 }}</td>
+                                <td  bgcolor= {{ 6color47 }}> {{ 6content47 }}</td>
+                                <td  bgcolor= {{ 6color59 }}> {{ 6content59 }}</td>
+                                <td  bgcolor= {{ 6color71 }}> {{ 6content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>                  </div>
+                </div>
+              </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSeven">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                         {{ 7course0 }} {{ 7course1 }} {{ 7course2 }} {{ 7course3 }} {{ 7course4 }} {{ 7course5 }} {{ 7course6 }} {{ 7course7 }} {{ 7course8 }} {{ 7course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                  <div class="panel-body">
+<div style= {{ 7font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>Time/Day</td>
+                                <td  bgcolor= {{ 7edge }}>Monday</td>
+                                <td  bgcolor= {{ 7edge }}>Tuesday</td>
+                                <td  bgcolor= {{ 7edge }}>Wednesday</td>
+                                <td  bgcolor= {{ 7edge }}>Thursday</td>
+                                <td  bgcolor= {{ 7edge }}>Friday</td>
+                                <td  bgcolor= {{ 7edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>8:30-9:30</td>
+                                <td  bgcolor= {{ 7color00 }}> {{ 7content00 }}</td>
+                                <td  bgcolor= {{ 7color12 }}> {{ 7content12 }}</td>
+                                <td  bgcolor= {{ 7color24 }}> {{ 7content24 }}</td>
+                                <td  bgcolor= {{ 7color36 }}> {{ 7content36 }}</td>
+                                <td  bgcolor= {{ 7color48 }}> {{ 7content48 }}</td>
+                                <td  bgcolor= {{ 7color60 }}> {{ 7content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>9:30-10:30</td>
+                                <td  bgcolor= {{ 7color01 }}> {{ 7content01 }}</td>
+                                <td  bgcolor= {{ 7color13 }}> {{ 7content13 }}</td>
+                                <td  bgcolor= {{ 7color25 }}> {{ 7content25 }}</td>
+                                <td  bgcolor= {{ 7color37 }}> {{ 7content37 }}</td>
+                                <td  bgcolor= {{ 7color49 }}> {{ 7content49 }}</td>
+                                <td  bgcolor= {{ 7color61 }}> {{ 7content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>10:30-11:30</td>
+                                <td  bgcolor= {{ 7color02 }}> {{ 7content02 }}</td>
+                                <td  bgcolor= {{ 7color14 }}> {{ 7content14 }}</td>
+                                <td  bgcolor= {{ 7color26 }}> {{ 7content26 }}</td>
+                                <td  bgcolor= {{ 7color38 }}> {{ 7content38 }}</td>
+                                <td  bgcolor= {{ 7color50 }}> {{ 7content50 }}</td>
+                                <td  bgcolor= {{ 7color62 }}> {{ 7content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>11:30-12:30</td>
+                                <td  bgcolor= {{ 7color03 }}> {{ 7content03 }}</td>
+                                <td  bgcolor= {{ 7color15 }}> {{ 7content15 }}</td>
+                                <td  bgcolor= {{ 7color27 }}> {{ 7content27 }}</td>
+                                <td  bgcolor= {{ 7color39 }}> {{ 7content39 }}</td>
+                                <td  bgcolor= {{ 7color51 }}> {{ 7content51 }}</td>
+                                <td  bgcolor= {{ 7color63 }}> {{ 7content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>12:30-13:30</td>
+                                <td  bgcolor= {{ 7color04 }}> {{ 7content04 }}</td>
+                                <td  bgcolor= {{ 7color16 }}> {{ 7content16 }}</td>
+                                <td  bgcolor= {{ 7color28 }}> {{ 7content28 }}</td>
+                                <td  bgcolor= {{ 7color40 }}> {{ 7content40 }}</td>
+                                <td  bgcolor= {{ 7color52 }}> {{ 7content52 }}</td>
+                                <td  bgcolor= {{ 7color64 }}> {{ 7content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>13:30-14:30</td>
+                                <td  bgcolor= {{ 7color05 }}> {{ 7content05 }}</td>
+                                <td  bgcolor= {{ 7color17 }}> {{ 7content17 }}</td>
+                                <td  bgcolor= {{ 7color29 }}> {{ 7content29 }}</td>
+                                <td  bgcolor= {{ 7color41 }}> {{ 7content41 }}</td>
+                                <td  bgcolor= {{ 7color53 }}> {{ 7content53 }}</td>
+                                <td  bgcolor= {{ 7color65 }}> {{ 7content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>14:30-15:30</td>
+                                <td  bgcolor= {{ 7color06 }}> {{ 7content06 }}</td>
+                                <td  bgcolor= {{ 7color18 }}> {{ 7content18 }}</td>
+                                <td  bgcolor= {{ 7color30 }}> {{ 7content30 }}</td>
+                                <td  bgcolor= {{ 7color42 }}> {{ 7content42 }}</td>
+                                <td  bgcolor= {{ 7color54 }}> {{ 7content54 }}</td>
+                                <td  bgcolor= {{ 7color66 }}> {{ 7content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>15:30-16:30</td>
+                                <td  bgcolor= {{ 7color07 }}> {{ 7content07 }}</td>
+                                <td  bgcolor= {{ 7color19 }}> {{ 7content19 }}</td>
+                                <td  bgcolor= {{ 7color31 }}> {{ 7content31 }}</td>
+                                <td  bgcolor= {{ 7color43 }}> {{ 7content43 }}</td>
+                                <td  bgcolor= {{ 7color55 }}> {{ 7content55 }}</td>
+                                <td  bgcolor= {{ 7color67 }}> {{ 7content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>16:30-17:30</td>
+                                <td  bgcolor= {{ 7color08 }}> {{ 7content08 }}</td>
+                                <td  bgcolor= {{ 7color20 }}> {{ 7content20 }}</td>
+                                <td  bgcolor= {{ 7color32 }}> {{ 7content32 }}</td>
+                                <td  bgcolor= {{ 7color44 }}> {{ 7content44 }}</td>
+                                <td  bgcolor= {{ 7color56 }}> {{ 7content56 }}</td>
+                                <td  bgcolor= {{ 7color68 }}> {{ 7content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>17:30-18:30</td>
+                                <td  bgcolor= {{ 7color09 }}> {{ 7content09 }}</td>
+                                <td  bgcolor= {{ 7color21 }}> {{ 7content21 }}</td>
+                                <td  bgcolor= {{ 7color33 }}> {{ 7content33 }}</td>
+                                <td  bgcolor= {{ 7color45 }}> {{ 7content45 }}</td>
+                                <td  bgcolor= {{ 7color57 }}> {{ 7content57 }}</td>
+                                <td  bgcolor= {{ 7color69 }}> {{ 7content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>18:30-19:30</td>
+                                <td  bgcolor= {{ 7color10 }}> {{ 7content10 }}</td>
+                                <td  bgcolor= {{ 7color22 }}> {{ 7content22 }}</td>
+                                <td  bgcolor= {{ 7color34 }}> {{ 7content34 }}</td>
+                                <td  bgcolor= {{ 7color46 }}> {{ 7content46 }}</td>
+                                <td  bgcolor= {{ 7color58 }}> {{ 7content58 }}</td>
+                                <td  bgcolor= {{ 7color70 }}> {{ 7content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 7edge }}>19:30-20:30</td>
+                                <td  bgcolor= {{ 7color11 }}> {{ 7content11 }}</td>
+                                <td  bgcolor= {{ 7color23 }}> {{ 7content23 }}</td>
+                                <td  bgcolor= {{ 7color35 }}> {{ 7content35 }}</td>
+                                <td  bgcolor= {{ 7color47 }}> {{ 7content47 }}</td>
+                                <td  bgcolor= {{ 7color59 }}> {{ 7content59 }}</td>
+                                <td  bgcolor= {{ 7color71 }}> {{ 7content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>                  </div>
+                </div>
+              </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingEight">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                         {{ 8course0 }} {{ 8course1 }} {{ 8course2 }} {{ 8course3 }} {{ 8course4 }} {{ 8course5 }} {{ 8course6 }} {{ 8course7 }} {{ 8course8 }} {{ 8course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                  <div class="panel-body">
+<div style= {{ 8font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>Time/Day</td>
+                                <td  bgcolor= {{ 8edge }}>Monday</td>
+                                <td  bgcolor= {{ 8edge }}>Tuesday</td>
+                                <td  bgcolor= {{ 8edge }}>Wednesday</td>
+                                <td  bgcolor= {{ 8edge }}>Thursday</td>
+                                <td  bgcolor= {{ 8edge }}>Friday</td>
+                                <td  bgcolor= {{ 8edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>8:30-9:30</td>
+                                <td  bgcolor= {{ 8color00 }}> {{ 8content00 }}</td>
+                                <td  bgcolor= {{ 8color12 }}> {{ 8content12 }}</td>
+                                <td  bgcolor= {{ 8color24 }}> {{ 8content24 }}</td>
+                                <td  bgcolor= {{ 8color36 }}> {{ 8content36 }}</td>
+                                <td  bgcolor= {{ 8color48 }}> {{ 8content48 }}</td>
+                                <td  bgcolor= {{ 8color60 }}> {{ 8content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>9:30-10:30</td>
+                                <td  bgcolor= {{ 8color01 }}> {{ 8content01 }}</td>
+                                <td  bgcolor= {{ 8color13 }}> {{ 8content13 }}</td>
+                                <td  bgcolor= {{ 8color25 }}> {{ 8content25 }}</td>
+                                <td  bgcolor= {{ 8color37 }}> {{ 8content37 }}</td>
+                                <td  bgcolor= {{ 8color49 }}> {{ 8content49 }}</td>
+                                <td  bgcolor= {{ 8color61 }}> {{ 8content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>10:30-11:30</td>
+                                <td  bgcolor= {{ 8color02 }}> {{ 8content02 }}</td>
+                                <td  bgcolor= {{ 8color14 }}> {{ 8content14 }}</td>
+                                <td  bgcolor= {{ 8color26 }}> {{ 8content26 }}</td>
+                                <td  bgcolor= {{ 8color38 }}> {{ 8content38 }}</td>
+                                <td  bgcolor= {{ 8color50 }}> {{ 8content50 }}</td>
+                                <td  bgcolor= {{ 8color62 }}> {{ 8content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>11:30-12:30</td>
+                                <td  bgcolor= {{ 8color03 }}> {{ 8content03 }}</td>
+                                <td  bgcolor= {{ 8color15 }}> {{ 8content15 }}</td>
+                                <td  bgcolor= {{ 8color27 }}> {{ 8content27 }}</td>
+                                <td  bgcolor= {{ 8color39 }}> {{ 8content39 }}</td>
+                                <td  bgcolor= {{ 8color51 }}> {{ 8content51 }}</td>
+                                <td  bgcolor= {{ 8color63 }}> {{ 8content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>12:30-13:30</td>
+                                <td  bgcolor= {{ 8color04 }}> {{ 8content04 }}</td>
+                                <td  bgcolor= {{ 8color16 }}> {{ 8content16 }}</td>
+                                <td  bgcolor= {{ 8color28 }}> {{ 8content28 }}</td>
+                                <td  bgcolor= {{ 8color40 }}> {{ 8content40 }}</td>
+                                <td  bgcolor= {{ 8color52 }}> {{ 8content52 }}</td>
+                                <td  bgcolor= {{ 8color64 }}> {{ 8content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>13:30-14:30</td>
+                                <td  bgcolor= {{ 8color05 }}> {{ 8content05 }}</td>
+                                <td  bgcolor= {{ 8color17 }}> {{ 8content17 }}</td>
+                                <td  bgcolor= {{ 8color29 }}> {{ 8content29 }}</td>
+                                <td  bgcolor= {{ 8color41 }}> {{ 8content41 }}</td>
+                                <td  bgcolor= {{ 8color53 }}> {{ 8content53 }}</td>
+                                <td  bgcolor= {{ 8color65 }}> {{ 8content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>14:30-15:30</td>
+                                <td  bgcolor= {{ 8color06 }}> {{ 8content06 }}</td>
+                                <td  bgcolor= {{ 8color18 }}> {{ 8content18 }}</td>
+                                <td  bgcolor= {{ 8color30 }}> {{ 8content30 }}</td>
+                                <td  bgcolor= {{ 8color42 }}> {{ 8content42 }}</td>
+                                <td  bgcolor= {{ 8color54 }}> {{ 8content54 }}</td>
+                                <td  bgcolor= {{ 8color66 }}> {{ 8content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>15:30-16:30</td>
+                                <td  bgcolor= {{ 8color07 }}> {{ 8content07 }}</td>
+                                <td  bgcolor= {{ 8color19 }}> {{ 8content19 }}</td>
+                                <td  bgcolor= {{ 8color31 }}> {{ 8content31 }}</td>
+                                <td  bgcolor= {{ 8color43 }}> {{ 8content43 }}</td>
+                                <td  bgcolor= {{ 8color55 }}> {{ 8content55 }}</td>
+                                <td  bgcolor= {{ 8color67 }}> {{ 8content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>16:30-17:30</td>
+                                <td  bgcolor= {{ 8color08 }}> {{ 8content08 }}</td>
+                                <td  bgcolor= {{ 8color20 }}> {{ 8content20 }}</td>
+                                <td  bgcolor= {{ 8color32 }}> {{ 8content32 }}</td>
+                                <td  bgcolor= {{ 8color44 }}> {{ 8content44 }}</td>
+                                <td  bgcolor= {{ 8color56 }}> {{ 8content56 }}</td>
+                                <td  bgcolor= {{ 8color68 }}> {{ 8content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>17:30-18:30</td>
+                                <td  bgcolor= {{ 8color09 }}> {{ 8content09 }}</td>
+                                <td  bgcolor= {{ 8color21 }}> {{ 8content21 }}</td>
+                                <td  bgcolor= {{ 8color33 }}> {{ 8content33 }}</td>
+                                <td  bgcolor= {{ 8color45 }}> {{ 8content45 }}</td>
+                                <td  bgcolor= {{ 8color57 }}> {{ 8content57 }}</td>
+                                <td  bgcolor= {{ 8color69 }}> {{ 8content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>18:30-19:30</td>
+                                <td  bgcolor= {{ 8color10 }}> {{ 8content10 }}</td>
+                                <td  bgcolor= {{ 8color22 }}> {{ 8content22 }}</td>
+                                <td  bgcolor= {{ 8color34 }}> {{ 8content34 }}</td>
+                                <td  bgcolor= {{ 8color46 }}> {{ 8content46 }}</td>
+                                <td  bgcolor= {{ 8color58 }}> {{ 8content58 }}</td>
+                                <td  bgcolor= {{ 8color70 }}> {{ 8content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 8edge }}>19:30-20:30</td>
+                                <td  bgcolor= {{ 8color11 }}> {{ 8content11 }}</td>
+                                <td  bgcolor= {{ 8color23 }}> {{ 8content23 }}</td>
+                                <td  bgcolor= {{ 8color35 }}> {{ 8content35 }}</td>
+                                <td  bgcolor= {{ 8color47 }}> {{ 8content47 }}</td>
+                                <td  bgcolor= {{ 8color59 }}> {{ 8content59 }}</td>
+                                <td  bgcolor= {{ 8color71 }}> {{ 8content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>                  </div>
+                </div>
+              </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingNine">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                         {{ 9course0 }} {{ 9course1 }} {{ 9course2 }} {{ 9course3 }} {{ 9course4 }} {{ 9course5 }} {{ 9course6 }} {{ 9course7 }} {{ 9course8 }} {{ 9course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                  <div class="panel-body">
+<div style= {{ 9font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>Time/Day</td>
+                                <td  bgcolor= {{ 9edge }}>Monday</td>
+                                <td  bgcolor= {{ 9edge }}>Tuesday</td>
+                                <td  bgcolor= {{ 9edge }}>Wednesday</td>
+                                <td  bgcolor= {{ 9edge }}>Thursday</td>
+                                <td  bgcolor= {{ 9edge }}>Friday</td>
+                                <td  bgcolor= {{ 9edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>8:30-9:30</td>
+                                <td  bgcolor= {{ 9color00 }}> {{ 9content00 }}</td>
+                                <td  bgcolor= {{ 9color12 }}> {{ 9content12 }}</td>
+                                <td  bgcolor= {{ 9color24 }}> {{ 9content24 }}</td>
+                                <td  bgcolor= {{ 9color36 }}> {{ 9content36 }}</td>
+                                <td  bgcolor= {{ 9color48 }}> {{ 9content48 }}</td>
+                                <td  bgcolor= {{ 9color60 }}> {{ 9content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>9:30-10:30</td>
+                                <td  bgcolor= {{ 9color01 }}> {{ 9content01 }}</td>
+                                <td  bgcolor= {{ 9color13 }}> {{ 9content13 }}</td>
+                                <td  bgcolor= {{ 9color25 }}> {{ 9content25 }}</td>
+                                <td  bgcolor= {{ 9color37 }}> {{ 9content37 }}</td>
+                                <td  bgcolor= {{ 9color49 }}> {{ 9content49 }}</td>
+                                <td  bgcolor= {{ 9color61 }}> {{ 9content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>10:30-11:30</td>
+                                <td  bgcolor= {{ 9color02 }}> {{ 9content02 }}</td>
+                                <td  bgcolor= {{ 9color14 }}> {{ 9content14 }}</td>
+                                <td  bgcolor= {{ 9color26 }}> {{ 9content26 }}</td>
+                                <td  bgcolor= {{ 9color38 }}> {{ 9content38 }}</td>
+                                <td  bgcolor= {{ 9color50 }}> {{ 9content50 }}</td>
+                                <td  bgcolor= {{ 9color62 }}> {{ 9content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>11:30-12:30</td>
+                                <td  bgcolor= {{ 9color03 }}> {{ 9content03 }}</td>
+                                <td  bgcolor= {{ 9color15 }}> {{ 9content15 }}</td>
+                                <td  bgcolor= {{ 9color27 }}> {{ 9content27 }}</td>
+                                <td  bgcolor= {{ 9color39 }}> {{ 9content39 }}</td>
+                                <td  bgcolor= {{ 9color51 }}> {{ 9content51 }}</td>
+                                <td  bgcolor= {{ 9color63 }}> {{ 9content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>12:30-13:30</td>
+                                <td  bgcolor= {{ 9color04 }}> {{ 9content04 }}</td>
+                                <td  bgcolor= {{ 9color16 }}> {{ 9content16 }}</td>
+                                <td  bgcolor= {{ 9color28 }}> {{ 9content28 }}</td>
+                                <td  bgcolor= {{ 9color40 }}> {{ 9content40 }}</td>
+                                <td  bgcolor= {{ 9color52 }}> {{ 9content52 }}</td>
+                                <td  bgcolor= {{ 9color64 }}> {{ 9content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>13:30-14:30</td>
+                                <td  bgcolor= {{ 9color05 }}> {{ 9content05 }}</td>
+                                <td  bgcolor= {{ 9color17 }}> {{ 9content17 }}</td>
+                                <td  bgcolor= {{ 9color29 }}> {{ 9content29 }}</td>
+                                <td  bgcolor= {{ 9color41 }}> {{ 9content41 }}</td>
+                                <td  bgcolor= {{ 9color53 }}> {{ 9content53 }}</td>
+                                <td  bgcolor= {{ 9color65 }}> {{ 9content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>14:30-15:30</td>
+                                <td  bgcolor= {{ 9color06 }}> {{ 9content06 }}</td>
+                                <td  bgcolor= {{ 9color18 }}> {{ 9content18 }}</td>
+                                <td  bgcolor= {{ 9color30 }}> {{ 9content30 }}</td>
+                                <td  bgcolor= {{ 9color42 }}> {{ 9content42 }}</td>
+                                <td  bgcolor= {{ 9color54 }}> {{ 9content54 }}</td>
+                                <td  bgcolor= {{ 9color66 }}> {{ 9content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>15:30-16:30</td>
+                                <td  bgcolor= {{ 9color07 }}> {{ 9content07 }}</td>
+                                <td  bgcolor= {{ 9color19 }}> {{ 9content19 }}</td>
+                                <td  bgcolor= {{ 9color31 }}> {{ 9content31 }}</td>
+                                <td  bgcolor= {{ 9color43 }}> {{ 9content43 }}</td>
+                                <td  bgcolor= {{ 9color55 }}> {{ 9content55 }}</td>
+                                <td  bgcolor= {{ 9color67 }}> {{ 9content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>16:30-17:30</td>
+                                <td  bgcolor= {{ 9color08 }}> {{ 9content08 }}</td>
+                                <td  bgcolor= {{ 9color20 }}> {{ 9content20 }}</td>
+                                <td  bgcolor= {{ 9color32 }}> {{ 9content32 }}</td>
+                                <td  bgcolor= {{ 9color44 }}> {{ 9content44 }}</td>
+                                <td  bgcolor= {{ 9color56 }}> {{ 9content56 }}</td>
+                                <td  bgcolor= {{ 9color68 }}> {{ 9content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>17:30-18:30</td>
+                                <td  bgcolor= {{ 9color09 }}> {{ 9content09 }}</td>
+                                <td  bgcolor= {{ 9color21 }}> {{ 9content21 }}</td>
+                                <td  bgcolor= {{ 9color33 }}> {{ 9content33 }}</td>
+                                <td  bgcolor= {{ 9color45 }}> {{ 9content45 }}</td>
+                                <td  bgcolor= {{ 9color57 }}> {{ 9content57 }}</td>
+                                <td  bgcolor= {{ 9color69 }}> {{ 9content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>18:30-19:30</td>
+                                <td  bgcolor= {{ 9color10 }}> {{ 9content10 }}</td>
+                                <td  bgcolor= {{ 9color22 }}> {{ 9content22 }}</td>
+                                <td  bgcolor= {{ 9color34 }}> {{ 9content34 }}</td>
+                                <td  bgcolor= {{ 9color46 }}> {{ 9content46 }}</td>
+                                <td  bgcolor= {{ 9color58 }}> {{ 9content58 }}</td>
+                                <td  bgcolor= {{ 9color70 }}> {{ 9content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 9edge }}>19:30-20:30</td>
+                                <td  bgcolor= {{ 9color11 }}> {{ 9content11 }}</td>
+                                <td  bgcolor= {{ 9color23 }}> {{ 9content23 }}</td>
+                                <td  bgcolor= {{ 9color35 }}> {{ 9content35 }}</td>
+                                <td  bgcolor= {{ 9color47 }}> {{ 9content47 }}</td>
+                                <td  bgcolor= {{ 9color59 }}> {{ 9content59 }}</td>
+                                <td  bgcolor= {{ 9color71 }}> {{ 9content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>                  </div>
+                </div>
+              </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTen">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                         {{ 10course0 }} {{ 10course1 }} {{ 10course2 }} {{ 10course3 }} {{ 10course4 }} {{ 10course5 }} {{ 10course6 }} {{ 10course7 }} {{ 10course8 }} {{ 10course9 }}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+                  <div class="panel-body">
+<div style= {{ 10font_color }}>
+                        <table class="table table-bordered" style="table-layout:fixed">
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>Time/Day</td>
+                                <td  bgcolor= {{ 10edge }}>Monday</td>
+                                <td  bgcolor= {{ 10edge }}>Tuesday</td>
+                                <td  bgcolor= {{ 10edge }}>Wednesday</td>
+                                <td  bgcolor= {{ 10edge }}>Thursday</td>
+                                <td  bgcolor= {{ 10edge }}>Friday</td>
+                                <td  bgcolor= {{ 10edge }}>Saturday</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>8:30-9:30</td>
+                                <td  bgcolor= {{ 10color00 }}> {{ 10content00 }}</td>
+                                <td  bgcolor= {{ 10color12 }}> {{ 10content12 }}</td>
+                                <td  bgcolor= {{ 10color24 }}> {{ 10content24 }}</td>
+                                <td  bgcolor= {{ 10color36 }}> {{ 10content36 }}</td>
+                                <td  bgcolor= {{ 10color48 }}> {{ 10content48 }}</td>
+                                <td  bgcolor= {{ 10color60 }}> {{ 10content60 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>9:30-10:30</td>
+                                <td  bgcolor= {{ 10color01 }}> {{ 10content01 }}</td>
+                                <td  bgcolor= {{ 10color13 }}> {{ 10content13 }}</td>
+                                <td  bgcolor= {{ 10color25 }}> {{ 10content25 }}</td>
+                                <td  bgcolor= {{ 10color37 }}> {{ 10content37 }}</td>
+                                <td  bgcolor= {{ 10color49 }}> {{ 10content49 }}</td>
+                                <td  bgcolor= {{ 10color61 }}> {{ 10content61 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>10:30-11:30</td>
+                                <td  bgcolor= {{ 10color02 }}> {{ 10content02 }}</td>
+                                <td  bgcolor= {{ 10color14 }}> {{ 10content14 }}</td>
+                                <td  bgcolor= {{ 10color26 }}> {{ 10content26 }}</td>
+                                <td  bgcolor= {{ 10color38 }}> {{ 10content38 }}</td>
+                                <td  bgcolor= {{ 10color50 }}> {{ 10content50 }}</td>
+                                <td  bgcolor= {{ 10color62 }}> {{ 10content62 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>11:30-12:30</td>
+                                <td  bgcolor= {{ 10color03 }}> {{ 10content03 }}</td>
+                                <td  bgcolor= {{ 10color15 }}> {{ 10content15 }}</td>
+                                <td  bgcolor= {{ 10color27 }}> {{ 10content27 }}</td>
+                                <td  bgcolor= {{ 10color39 }}> {{ 10content39 }}</td>
+                                <td  bgcolor= {{ 10color51 }}> {{ 10content51 }}</td>
+                                <td  bgcolor= {{ 10color63 }}> {{ 10content63 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>12:30-13:30</td>
+                                <td  bgcolor= {{ 10color04 }}> {{ 10content04 }}</td>
+                                <td  bgcolor= {{ 10color16 }}> {{ 10content16 }}</td>
+                                <td  bgcolor= {{ 10color28 }}> {{ 10content28 }}</td>
+                                <td  bgcolor= {{ 10color40 }}> {{ 10content40 }}</td>
+                                <td  bgcolor= {{ 10color52 }}> {{ 10content52 }}</td>
+                                <td  bgcolor= {{ 10color64 }}> {{ 10content64 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>13:30-14:30</td>
+                                <td  bgcolor= {{ 10color05 }}> {{ 10content05 }}</td>
+                                <td  bgcolor= {{ 10color17 }}> {{ 10content17 }}</td>
+                                <td  bgcolor= {{ 10color29 }}> {{ 10content29 }}</td>
+                                <td  bgcolor= {{ 10color41 }}> {{ 10content41 }}</td>
+                                <td  bgcolor= {{ 10color53 }}> {{ 10content53 }}</td>
+                                <td  bgcolor= {{ 10color65 }}> {{ 10content65 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>14:30-15:30</td>
+                                <td  bgcolor= {{ 10color06 }}> {{ 10content06 }}</td>
+                                <td  bgcolor= {{ 10color18 }}> {{ 10content18 }}</td>
+                                <td  bgcolor= {{ 10color30 }}> {{ 10content30 }}</td>
+                                <td  bgcolor= {{ 10color42 }}> {{ 10content42 }}</td>
+                                <td  bgcolor= {{ 10color54 }}> {{ 10content54 }}</td>
+                                <td  bgcolor= {{ 10color66 }}> {{ 10content66 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>15:30-16:30</td>
+                                <td  bgcolor= {{ 10color07 }}> {{ 10content07 }}</td>
+                                <td  bgcolor= {{ 10color19 }}> {{ 10content19 }}</td>
+                                <td  bgcolor= {{ 10color31 }}> {{ 10content31 }}</td>
+                                <td  bgcolor= {{ 10color43 }}> {{ 10content43 }}</td>
+                                <td  bgcolor= {{ 10color55 }}> {{ 10content55 }}</td>
+                                <td  bgcolor= {{ 10color67 }}> {{ 10content67 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>16:30-17:30</td>
+                                <td  bgcolor= {{ 10color08 }}> {{ 10content08 }}</td>
+                                <td  bgcolor= {{ 10color20 }}> {{ 10content20 }}</td>
+                                <td  bgcolor= {{ 10color32 }}> {{ 10content32 }}</td>
+                                <td  bgcolor= {{ 10color44 }}> {{ 10content44 }}</td>
+                                <td  bgcolor= {{ 10color56 }}> {{ 10content56 }}</td>
+                                <td  bgcolor= {{ 10color68 }}> {{ 10content68 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>17:30-18:30</td>
+                                <td  bgcolor= {{ 10color09 }}> {{ 10content09 }}</td>
+                                <td  bgcolor= {{ 10color21 }}> {{ 10content21 }}</td>
+                                <td  bgcolor= {{ 10color33 }}> {{ 10content33 }}</td>
+                                <td  bgcolor= {{ 10color45 }}> {{ 10content45 }}</td>
+                                <td  bgcolor= {{ 10color57 }}> {{ 10content57 }}</td>
+                                <td  bgcolor= {{ 10color69 }}> {{ 10content69 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>18:30-19:30</td>
+                                <td  bgcolor= {{ 10color10 }}> {{ 10content10 }}</td>
+                                <td  bgcolor= {{ 10color22 }}> {{ 10content22 }}</td>
+                                <td  bgcolor= {{ 10color34 }}> {{ 10content34 }}</td>
+                                <td  bgcolor= {{ 10color46 }}> {{ 10content46 }}</td>
+                                <td  bgcolor= {{ 10color58 }}> {{ 10content58 }}</td>
+                                <td  bgcolor= {{ 10color70 }}> {{ 10content70 }}</td>
+                            </tr>
+                            <tr>
+                                <td  bgcolor= {{ 10edge }}>19:30-20:30</td>
+                                <td  bgcolor= {{ 10color11 }}> {{ 10content11 }}</td>
+                                <td  bgcolor= {{ 10color23 }}> {{ 10content23 }}</td>
+                                <td  bgcolor= {{ 10color35 }}> {{ 10content35 }}</td>
+                                <td  bgcolor= {{ 10color47 }}> {{ 10content47 }}</td>
+                                <td  bgcolor= {{ 10color59 }}> {{ 10content59 }}</td>
+                                <td  bgcolor= {{ 10color71 }}> {{ 10content71 }}</td>
+                            </tr>
+                        </table>
+                    </div>                  </div>
+                </div>
+              </div>
+
+            </div>
+
+{% endblock %}
+            <div><p>{{ result }}</p>
+            </div>
+
+    </div>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+    </div>
+
+
+
+{% endblock %}
+
+
+
+

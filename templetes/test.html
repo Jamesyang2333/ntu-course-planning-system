@@ -1,0 +1,416 @@
+<html class="gr__wish_wis_ntu_edu_sg"><head></head><body onload="window.focus()" topmargin="0" data-gr-c-s-loaded="true"><form action="AUS_STARS_PLANNER.time_table" method="post">
+
+
+<title>Planner</title>
+<link rel="stylesheet" type="text/css" href="/graphics/css/gui2.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/graphics/css/print.css" media="print">
+
+		<script language="JavaScript">
+		<!-- Begin
+		function StartNewWin(page) {
+		OpenWin = this.open(page, "CtrlWindow", "toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes");
+		}
+		// End -->
+		</script>
+
+
+
+<div id="ui_container" class="student">
+<div id="ui_student_header_container">
+<div id="ui_header_title_container">
+<div id="ui_print_img">
+<img id="ntubwlogo" src="/graphics/css//NTU_BW_LOGO_150DPI.gif" width="160px" alt="" border="0">
+</div>
+<p id="ui_header_title1">STARS Planner</p>
+<p id="ui_header_title2">Academic Year 2018,Semester 1</p>
+</div>
+</div>
+<div id="ui_nav_container">
+<p id="ui_nav_left"></p>
+<p id="ui_nav_right">
+&nbsp;
+<a class="navline" href="javascript:self.close()" onmouseover="window.status='Exit and close window'; return true;" onmouseout="window.status='';return true;">Close</a>
+</p></div>
+<div id="ui_body_container">
+<script>
+function subj_select(form,subj)
+       {
+        var i=0;
+        var j=0;
+        var ans;
+
+
+        if (subj !="")
+        {
+          while (i<13)
+          {
+		       if (form.elements[i].value=="")
+			      {
+             form.elements[i].value=subj;
+             return;
+            }
+			     else if (form.elements[i].value==subj)
+			     {alert(subj+" has already been added!");
+				    return;}
+	         i++;
+	        }
+        	alert("Exceeded number of course allowed. Please remove some.");
+		      return;
+       }
+      }
+
+</script>
+<script>
+function clear_all(form) {
+        var i=0;
+        var j=0;
+        var ans;
+        while (i<13) {
+         form.elements[i].value="";
+         i++;
+	      }
+		    return;
+	      }
+
+</script>
+<script>
+function clear_last(form) {
+        var i=0;
+        var clearnum;
+        var ans="N";
+        while (i<13) {
+         if (form.elements[i].value!="")
+          {
+          clearnum=i; ans="Y";
+          }
+         i++;
+	      }
+	      if (ans=="Y")
+	      {
+	       form.elements[clearnum].value="";
+	      }
+		    return;
+	      }
+
+</script>
+<br><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr valign="top"><td>
+<table>
+<tbody><tr valign="top">
+<td align="center" width="100">
+<b><font color="#000080"> &nbsp; &nbsp; &nbsp; &nbsp; Course <br> &nbsp; &nbsp; &nbsp; &nbsp; Codes</font></b>
+</td></tr>
+<tr><td align="right">
+<b><font color="#000080">1.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">2.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">3.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">4.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">5.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">6.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">7.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">8.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">9.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">10.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">11.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">12.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+<b><font color="#000080">13.</font></b>
+<font color="#000080">
+<input type="text" name="subj_code" size="7" maxlength="6">
+<br>
+</font>
+</td></tr>
+<tr><td align="right">
+<input style="width:80px" type="button" value="Plan" onclick="this.form.action='AUS_STARS_PLANNER.planner'; submit()">
+</td></tr>
+<tr><td align="right">
+<input style="width:80px" type="button" value="Undo All" onclick="this.form.action=clear_all(this.form)">
+</td></tr>
+<tr><td align="right">
+<input style="width:80px" type="button" value="Undo Last" onclick="this.form.action=clear_last(this.form)">
+</td></tr>
+</tbody></table>
+</td>
+
+<td valign="top" span="" class="smallText2">
+<b><font color="#000080" size="-2">Instructions :</font></b><font color="#000080" size="-2">
+To facilitate your planning and registering your course selection into STARS, you may wish to use the timetable planner.
+<br>
+Now, you can also add course(s) into STARS via this planner.
+You are still required to use STARS to drop or change course(s) registered.
+<br>
+<b>Steps :</b>
+Key in course code(s) on the left or select it from the drop-down list below and click on <b>Plan</b>.
+<br>
+<br><b>Note:</b><br>
+For admission to Modern Language Elective Level 1 (L%9001 series) courses, students must <a href="#1" name="1" onclick="window.open('https://sso.wis.ntu.edu.sg/webexe88/ntlm/sso_express.asp?app=https://wish.wis.ntu.edu.sg/webexe/owa/aus_stars_main.declare_modern_lang2',
+         'updWin','height=600,width=750,toolbar=yes,menubar=no,resizable=yes,directories=no,scrollbars=yes,status=yes')">declare that they have no previous study of the language.</a>
+<br>
+For admission to SSM course, students make a <a href="#1" name="1" onclick="window.open('https://sso.wis.ntu.edu.sg/webexe88/ntlm/sso_express.asp?app=https://wish.wis.ntu.edu.sg/webexe/owa/aus_stars_main.declare_SSM2',
+         'updWin','height=600,width=750,toolbar=yes,menubar=no,resizable=yes,directories=no,scrollbars=yes,status=yes')">declaration to confirm and agree to the release/waiver set out.</a>
+<br>
+<br>
+<table align="left" cellspacing="10">
+<tbody><tr>
+<td><font color="#000080">
+<b><font color="#000080">Course </font></b>
+<br>
+<select name="subj_code" style="width:350px" size="18" onchange="subj_select(this.form,this.options[this.selectedIndex].value);">
+</select>
+</font></td>
+<script>
+function option_ok (form,subj)
+       {
+        var i=0;
+        var j=0;
+        var ans;
+
+
+        if (subj =="")
+        {
+
+		      return false;
+       } return true;
+      }
+
+</script>
+<td><font color="#000080">
+<b><font color="#000080">Option</font></b>
+<br>
+<select name="option_select" style="font-family: Arial" size="18" onchange="if (option_ok(this.form,this.options[this.selectedIndex].value)) {this.form.action='AUS_STARS_PLANNER.time_table';this.form.target='_self';submit()}">
+<option value="SCH;CSC;">Computer Science</option>
+<option></option>
+<option value="PTOP;;">Top 20 Oversubscribed General Prescribed Electives past subscription rate</option>
+<option value="GTOP;;">Top 20 Oversubscribed Unrestricted Electives past subscription rate</option>
+<option></option>
+<option value=""> </option>
+<option value="">---All General Prescribed Electives by Exam Date---</option>
+<option value="PEXAM;23-NOV-2018;">GERPE 23-NOV-2018</option>
+<option value="PEXAM;26-NOV-2018;">GERPE 26-NOV-2018</option>
+<option value="PEXAM;27-NOV-2018;">GERPE 27-NOV-2018</option>
+<option value="PEXAM;28-NOV-2018;">GERPE 28-NOV-2018</option>
+<option value="PEXAM;29-NOV-2018;">GERPE 29-NOV-2018</option>
+<option value="PEXAM;03-DEC-2018;">GERPE 03-DEC-2018</option>
+<option value="PEXAM;04-DEC-2018;">GERPE 04-DEC-2018</option>
+<option value="PEXAM;05-DEC-2018;">GERPE 05-DEC-2018</option>
+<option value="PEXAM;06-DEC-2018;">GERPE 06-DEC-2018</option>
+<option value=""> </option>
+<option value="">---All Unrestricted Electives by Exam Date---</option>
+<option value="GEXAM;23-NOV-2018;">UE 23-NOV-2018</option>
+<option value="GEXAM;26-NOV-2018;">UE 26-NOV-2018</option>
+<option value="GEXAM;27-NOV-2018;">UE 27-NOV-2018</option>
+<option value="GEXAM;28-NOV-2018;">UE 28-NOV-2018</option>
+<option value="GEXAM;29-NOV-2018;">UE 29-NOV-2018</option>
+<option value="GEXAM;30-NOV-2018;">UE 30-NOV-2018</option>
+<option value="GEXAM;03-DEC-2018;">UE 03-DEC-2018</option>
+<option value="GEXAM;04-DEC-2018;">UE 04-DEC-2018</option>
+<option value="GEXAM;05-DEC-2018;">UE 05-DEC-2018</option>
+<option value="GEXAM;06-DEC-2018;">UE 06-DEC-2018</option>
+<option></option>
+<option value="HW0001;">English Proficiency</option>
+<option></option>
+<option value="GERP;AHSS;">General Education in Art, Humanities and Social Sciences</option>
+<option value="GERP;BM;">General Education in Business &amp; Management</option>
+<option value="GERP;STS;">General Education in Science, Technology &amp; Society</option>
+<option value="GERP;LS;">General Education in Liberal Studies</option>
+<option value="GERP;LA;">General Education in Liberal Arts</option>
+<option></option>
+<option value="MLOAD;AHIS;">Minor in Art History</option>
+<option value="MLOAD;APY;">Minor in Applied Physics</option>
+<option value="MLOAD;CCW;">Minor in Chinese Creative Writing</option>
+<option value="MLOAD;CDA;">Minor in Computing And Data Analysis</option>
+<option value="MLOAD;CHEM;">Minor in Chemistry And Biological Chemistry</option>
+<option value="MLOAD;CHIN;">Minor in Chinese</option>
+<option value="MLOAD;CM;">Minor in Computing</option>
+<option value="MLOAD;CS;">Minor in Communication Studies</option>
+<option value="MLOAD;CW;">Minor in Creative Writing</option>
+<option value="MLOAD;DRA;">Minor in Drama And Performance</option>
+<option value="MLOAD;ECHE;">Minor in Early Childhood Education</option>
+<option value="MLOAD;ECON;">Minor in Economics</option>
+<option value="MLOAD;EDU;">Minor in Education Studies</option>
+<option value="MLOAD;ELIT;">Minor in English Literature</option>
+<option value="MLOAD;ENGY;">Minor in Energy</option>
+<option value="MLOAD;ENT;">Minor in Entrepreneurship</option>
+<option value="MLOAD;ENUS;">Minor in Environmental And Urban Studies</option>
+<option value="MLOAD;ENV;">Minor in Environmental Management</option>
+<option value="MLOAD;ENVS;">Minor in Environmental Sustainability</option>
+<option value="MLOAD;FIN;">Minor in Finance</option>
+<option value="MLOAD;FS;">Minor in Film Studies</option>
+<option value="MLOAD;GA;">Minor in Global Asia</option>
+<option value="MLOAD;HIST;">Minor in History</option>
+<option value="MLOAD;HPA;">Minor in Public Administration</option>
+<option value="MLOAD;ICT;">Minor in Information-Communication Technology</option>
+<option value="MLOAD;LFSC;">Minor in Life Sciences</option>
+<option value="MLOAD;LING;">Minor in Linguistics And Multilingual Studies</option>
+<option value="MLOAD;MATH;">Minor in Mathematics</option>
+<option value="MLOAD;MUS;">Minor in Music</option>
+<option value="MLOAD;NBS;">Minor in Business</option>
+<option value="MLOAD;PHIL;">Minor in Philosophy</option>
+<option value="MLOAD;PHY;">Minor in Physics</option>
+<option value="MLOAD;PPGA;">Minor in Public Policy And Global Affairs</option>
+<option value="MLOAD;PSY;">Minor in Psychology</option>
+<option value="MLOAD;RMI;">Minor in Risk Management And Insurance</option>
+<option value="MLOAD;SC;">Minor in Strategic Communication</option>
+<option value="MLOAD;SOC;">Minor in Sociology</option>
+<option value="MLOAD;SSCI;">Minor in Sport  Science</option>
+<option value="MLOAD;SYMT;">Minor in Systems Management</option>
+<option value="MLOAD;STS;">Minor in Science, Technology And Society</option>
+<option value="MLOAD;TRAN;">Minor in Translation</option>
+<option value=""> </option>
+<option value="">---All Unrestricted Electives---</option>
+<option value="GLOAD;ACC;">Accountancy</option>
+<option value="GLOAD;ADM;">Art, Design &amp; Media</option>
+<option value="GLOAD;BIE;">Bioengineering</option>
+<option value="GLOAD;BS;">Biological Sciences</option>
+<option value="GLOAD;BUS;">Business</option>
+<option value="GLOAD;CBE;">Chemical &amp; Biomolecular Engineering</option>
+<option value="GLOAD;CE;">Computer Engineering</option>
+<option value="GLOAD;CEE;">Civil Engineering</option>
+<option value="GLOAD;CHEM;">Chemistry and Biological Chemistry</option>
+<option value="GLOAD;CHIN;">Chinese</option>
+<option value="GLOAD;CS;">Communication Studies</option>
+<option value="GLOAD;CSC;">Computer Science</option>
+<option value="GLOAD;ECON;">Economics</option>
+<option value="GLOAD;EEE;">Electrical &amp; Electronic Engineering</option>
+<option value="GLOAD;EESS;">Environmental Earth Systems Science</option>
+<option value="GLOAD;ELH;">English</option>
+<option value="GLOAD;HIST;">History</option>
+<option value="GLOAD;LMS;">Linguistics &amp; Multilingual Studies</option>
+<option value="GLOAD;MAT;">Materials Engineering</option>
+<option value="GLOAD;MATH;">Mathematical Sciences</option>
+<option value="GLOAD;ME;">Mechanical Engineering</option>
+<option value="GLOAD;MS;">Maritime Studies</option>
+<option value="GLOAD;NIE;">National Institute of Education</option>
+<option value="GLOAD;NTC;">Nanyang Technopreneurship Centre</option>
+<option value="GLOAD;PHIL;">Philosophy</option>
+<option value="GLOAD;PHY;">Physics and Applied Physics</option>
+<option value="GLOAD;PPGA;">Public Policy And Global Affairs</option>
+<option value="GLOAD;PSY;">Psychology</option>
+<option value="GLOAD;SOC;">Sociology</option>
+<option value="GLOAD;SOH;">Humanities</option>
+<option value="GLOAD;SPS;">Physical and Mathematical Sciences</option>
+<option value="GLOAD;SSM;">Sport Science &amp; Management</option>
+<option value="GLOAD;SSS;">Social Sciences</option>
+</select>
+</font></td></tr>
+<tr><td colspan="2">
+<font color="DARKBLUE" size="-2"><b>Denotation :</b></font>
+<br>
+<b>*</b><font color="DARKBLUE" size="-2"> UE/GERPE clashes with timeslot(s) or exam schedule selected in Plan 1</font>
+<br>
+<font color="DARKBLUE" size="-2"><b>[xxx%]</b> Previous semester subscription rate of the same course code. Subscription Rate = Total No. of Students Applied/No. of Places Available.</font>
+<br>
+<font color="DARKBLUE" size="-2">Subscription rate if available is only shown for courses offered as UE/GERPE.</font>
+<br>
+<font color="DARKBLUE" size="-2">Subscription rate is not available if course code was not offered previous semester, or if different course code (with same course title) was offered previous semester.</font>
+<br>
+<br>
+<font color="DARKBLUE" size="-2"><b>Note: </b>Core, GER Core and major Prescribed Elective (PE) courses are listed together under the respective programme in the class schedule.</font>
+<br>
+<br>
+</td>
+</tr></tbody></table>
+</font></td>
+</tr></tbody></table>
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="index_nmbr" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="subj_type" value="">
+<input type="hidden" name="r_study_yr" value="">
+<input type="hidden" name="r_subj_code" value="">
+<input type="hidden" name="r_minor" value="">
+<input type="hidden" name="boption" value="NEW">
+<input type="hidden" name="acad" value="2018">
+<input type="hidden" name="semester" value="1">
+<input type="hidden" name="p1" value="U1722582C">
+<input type="hidden" name="p2" value="">
+<input type="hidden" name="student_type" value="F">
+<input type="hidden" name="r_course_code" value="CSC">
+<input type="hidden" name="r_course_yr" value="2">
+<input type="hidden" name="r_special" value="">
+<input type="hidden" name="class_info" value="">
+<input type="hidden" name="plan_no" value="1">
+<input type="hidden" name="plan1_exists" value="N">
+<input type="hidden" name="plan2_exists" value="N">
+<input type="hidden" name="plan3_exists" value="N">
+<input type="hidden" name="option_select" value="">
+</div>
+<div id="ui_footer_container">
+<p id="ui_footer_left"> © 2001-2018 Nanyang Technological University</p>
+<p id="ui_footer_right">
+&nbsp;
+<a class="ui_navline_bottom_links" href="javascript:window.close()" onmouseover="window.status='Exit and close window'; return true;" onmouseout="window.status='';return true;">Close</a>
+</p>
+</div>
+</div>
+
+</form><span style="border-radius: 3px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font: bold 11px/20px &quot;Helvetica Neue&quot;, Helvetica, sans-serif; color: rgb(255, 255, 255); background: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjYmQwODFjIj48L3BhdGg+PC9nPjwvc3ZnPg==&quot;) 3px 50% / 14px 14px no-repeat rgb(189, 8, 28); position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; border: none; -webkit-font-smoothing: antialiased;">Save</span><span style="width: 24px; height: 24px; background: url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI0IDI0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxtYXNrIGlkPSJtIj48cmVjdCBmaWxsPSIjZmZmIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHJ4PSI2IiByeT0iNiIvPjxyZWN0IGZpbGw9IiMwMDAiIHg9IjUiIHk9IjUiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgcng9IjEiIHJ5PSIxIi8+PHJlY3QgZmlsbD0iIzAwMCIgeD0iMTAiIHk9IjAiIHdpZHRoPSI0IiBoZWlnaHQ9IjI0Ii8+PHJlY3QgZmlsbD0iIzAwMCIgeD0iMCIgeT0iMTAiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0Ii8+PC9tYXNrPjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNmZmYiIG1hc2s9InVybCgjbSkiLz48L3N2Zz4=&quot;) 50% 50% / 14px 14px no-repeat rgba(0, 0, 0, 0.4); position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; border: none; border-radius: 12px;"></span></body></html>

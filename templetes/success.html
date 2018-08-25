@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+var time=3;
+var	timer=setInterval('tiaozhuan()',1000);
+function tiaozhuan(){
+var t= document.getElementById("id8");
+if(time>0){
+t.innerHTML=time;
+time--;
+}else {
+clearInterval(timer);
+location.href="/home/";
+}
+}
+</script>
+</head>
+<body>
+<h3>Thanks for your message :)</h3>
+<font id="id8" size="3">3 </font> seconds left to go back to home page
+</body>
+</html>

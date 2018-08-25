@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head><!-- Is anyone getting tired of repeatedly entering the header over and over??-->
+    <title>Rango</title>
+</head>
+<body>
+
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!--Pulling Awesome Font -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <div class="form-login">
+            <h1>Login to Rango</h1>
+    <form id="login_form" method="post" action="/login/">
+    {% csrf_token %}
+    Username: <input type="text" name="username" value="" size="50" /><br />
+    Password: <input type="password" name="password" value="" size="50" /> <br />
+    <input type="submit" value="submit" /> </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+

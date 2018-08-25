@@ -1,0 +1,105 @@
+/*All theme colors are difined here*/
+.form-holder, .bg-light-gray, .layer3, .pricing-box .pricing-box-holder, footer, .panel-default>.panel-heading+.panel-collapse>.panel-body, .pricing-box .pricing-box-holder, .fun-facts .fact-box, .panel-default>.panel-heading, .blog .blog-box, .circle, #team .team-member .team-hover{
+    background-color: #f0e5de !important;
+}
+.picture-border{
+    border-color: #f0e5de;
+}
+.circle:hover, .layer2, .bg-light-gray-back
+{
+    background-color:#e1eef6 !important;
+}
+.fun-facts .fact-box, .border-box, .circle, .pricing-box .pricing-box-holder,
+.pricing-box .pricing-box-holder .pricing-box-header, .navbar-custom .navbar-collapse, .pricing-box .pricing-box-holder, .main-banner .owl-buttons > div{
+    border-color: #8283a7 !important;
+}
+.navbar-custom .nav li li a, .intro-heading h1, ul.social-buttons li a:hover, ul.social-buttons li a:focus,
+ul.social-buttons li a:active, ul.social-buttons li a:hover i, .blog-content span, .blog-content h4,
+.text-primary, .btn-primary .badge, .btn-xl .badge, .navbar-custom .navbar-brand, .navbar-custom .nav li a:focus,
+.breadcrumb a, .media-body a, .affix.navbar-custom .nav li li a{
+    color: #8283a7 !important;
+}
+.circle::after, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active,
+.open .dropdown-toggle.btn-primary, .open .dropdown-toggle.btn-xl, .fun-facts .fact-box:after{
+    background-color: #8283a7 !important;
+}
+#portfolio .portfolio-item .portfolio-link .portfolio-hover, .bg-darkest-gray,
+.navbar-custom.affix, .navbar-custom.affix, .portfolio-modal .close-modal .lr,
+.portfolio-modal .close-modal .lr .rl, footer .social-buttons li:hover a{
+    background-color: #222;
+}
+.btn-primary, .accordion-toggle.collapsed, .bg-head a, .navbar-custom .navbar-nav>li.active:after, .navbar-custom .navbar-nav>li:hover:after, .section-heading:after, .fun-facts .fact-box:after, section h4.section-sub-heading:after{
+    background-color: #282c37;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary, .open .dropdown-toggle.btn-xl{
+    background-color: #fec503;
+}
+.btn-xl,fieldset[disabled] .btn-primary.active, .btn-xl, fieldset[disabled] .btn-xl.active, .navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus, .navbar-custom .navbar-toggle {
+    background-color: #fed136;
+}
+.btn-primary .badge, .btn-xl .badge, #portfolio .portfolio-item .portfolio-caption {
+    background-color: white;
+}
+.navbar-custom, ul.social-buttons li a, .portfolio-modal .close-modal, .cat-list button {
+    border-color: transparent;
+}
+#contact .form-holder{
+    background-color: #fff;
+}	
+a:hover,
+a:focus,
+a:active,
+a.active, .navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .navbar-brand:active,
+.navbar-custom .navbar-brand.active {
+    color: #fec503;
+}
+.portfolio-hover-content p, 
+.portfolio-hover-content h4, 
+.btn-primary, .btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary, .btn-xl, .btn-xl, .open .dropdown-toggle.btn-xl, 
+.navbar-custom .navbar-toggle, header, ul.social-buttons li a,
+.affix.navbar-custom .nav li a, .accordion-toggle.collapsed, .bg-head a, portfolio-hover-content{
+    color: #fff !important;
+}
+.btn-primary, .navbar-custom .nav li a, header .intro-text .intro-lead-in,
+header .intro-text .intro-heading, section h2.section-heading,
+#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content,
+section#contact ::-webkit-input-placeholder, section#contact :-moz-placeholder,
+section#contact ::-moz-placeholder, section#contact :-ms-input-placeholder,
+#contact .form-holder .form-control, .blog .blog-box p a{
+    border-color: #282c37;
+}
+.cat-list li a, .intro-heading h1 span, .blog .blog-box p a, ul.social-buttons li a i, .bx-wrapper .bx-pager, h2.section-heading, .navbar-custom .nav li li a:hover {
+    color: #141414 !important;
+}
+.text-muted {
+    color: #383a3f;
+}
+section#contact .text-danger {
+    color: #e74c3c;
+}
+.btn-xl, fieldset[disabled] .btn-primary.active, .btn-xl, fieldset[disabled] .btn-xl.active, .navbar-custom .navbar-toggle, section#contact .form-control:focus {
+    border-color: #fed136;
+}
+section#contact .form-control:focus {
+    box-shadow: none;
+}
+.page_title h4{color: #434752;}
+
+/* ============= Small Mobile :320px ============= */
+@media only screen and (max-width: 767px) {
+
+    .navbar-custom {background: #222222;}
+    .navbar-custom .nav li a{color: #FFF !important;}
+
+}

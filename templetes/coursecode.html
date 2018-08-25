@@ -1,0 +1,22 @@
+{% extends "forum.html" %}
+
+{% block content_block %}
+
+    <div class="panel panel-default">
+    <div class="panel-heading">&nbsp;&nbsp;COURSE: {{ coursecode1_name }}</div>
+    <ul class="list-group">
+        {% if coursecode1 %}
+            {% if indexnumbers %}
+                {% for indexnumber in indexnumbers %}
+                <li class="list-group-item">
+                    <a href="/forum/{{ coursecode1_name_url }}/?indexnumber_id={{indexnumber.index}}">{{indexnumber.index}}</a>
+                </li>
+                {% endfor %}
+            {% else %}
+            {% endif %}
+        {% else %}
+            The specified coursecode1 {{ coursecode1_name }} does not exist!
+        {% endif %}
+    </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body_block%}
+    <section style="padding-top: 150px;padding-bottom:30px;">
+    <div class="row"><div class="col-md-3"></div>
+        <div class="col-md-7">
+        <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+        </div>
+        </div>
+    </section>
+    <section style="padding-top:10px;">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-2 ">
+    <div class="panel panel-default">
+  <div class="panel-heading">&nbsp;&nbsp;HOT</div>
+
+<ul class="list-group">
+    {% for coursecode in coursecodes %}
+            <li class="list-group-item"><a href="/forum/{{ coursecode.url }}">{{ coursecode.code }}</a></li>
+        {% endfor %}
+</ul>
+
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">&nbsp;&nbsp;All</div>
+
+<ul class="list-group">
+{% for coursecode in coursecodes %}
+            <li class="list-group-item"><a href="/forum/{{ coursecode.url }}">{{ coursecode.code }}</a></li>
+        {% endfor %}
+</ul>
+  </div>
+</div>
+
+
+        <div class="col-md-9">{% block content_block %}
+            <div class="panel panel-default">
+            <div class="panel-heading">&nbsp;&nbsp;COURSE: </div>
+            <div class="panel-body"></div>
+            </div>
+        {% endblock %}</div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

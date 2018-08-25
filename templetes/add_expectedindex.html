@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block body_block %}
+
+    <section id="services">
+        {{ myindex_name }}
+        <form id="expectedindex_form" method="post" action="/forum/{{ myindex_name_url }}/add_expectedindex/" enctype="multipart/form-data">
+
+            {{ form.as_p }}
+                    <input type="hidden" name="myindex" value="{{ myindex_name_url }}">
+        <input type="submit" name="submit" value="Add expectedindex" /></form>
+    </section>
+
+
+{% endblock %}

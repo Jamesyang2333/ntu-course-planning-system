@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header_block %}
+    <div class="layer1">
+		<div class="container">
+			<div id="main-banner" class="main-banner">
+				<div class="intro-text">
+					<div class="intro-heading"><h1><span>Welcome to</span>Course-Planning<span>System</span></h1><p class="text-muted" style="font-weight:normal;text-transform: none;font-family: 'Josefin Sans', sans-serif;color:	#888888">Here to find your ideal index combination for course registration.</p></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block body_block %}
+    <section id="services">
+	<div class="container animatedParent">
+		<div class="row text-center">
+			<div class="col-md-4 animated bounceInLeft slower">
+				<a href="/timetable/"><div class="circle"><img src="{% static 'images/timetable.png' %}" alt="" /></div></a>
+				<h4 class="service-heading">Timetable</h4>
+				<p class="text-muted">Automatically generate your timetable</p>
+			</div>
+			<div class="col-md-4 animated bounceInDown slower">
+				<a href="/forum/"><div class="circle"><img src="{% static 'images/forum.png' %}" alt="" /></div></a>
+				<h4 class="service-heading">Forum</h4>
+				<p class="text-muted">Exchange your index with other students</p>
+			</div>
+			<div class="col-md-4 animated bounceInRight slower">
+				<a href="/contact/" ><div class="circle"><img src="{% static 'images/contactus.png' %}" alt="" /></div></a>
+				<h4 class="service-heading">Contact Us</h4>
+				<p class="text-muted">Send us problems & suggestion</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+
