@@ -4,7 +4,7 @@ This project initiated by me and Taoyu Chen aims to provide NTU students with a 
 The server is written in Python and Django while the data are stored in MySQL.
 ## Setup
 ### Install Python and pip
-If you don't have Python or pip on your machine, please refer to a tutoiral [here](https://github.com/jarrettyeo/NTUOSS-PythonPipInstallation) and install them.
+If you don't have Python or pip on your machine, please refer to a tutoiral [here](https://github.com/jarrettyeo/NTUOSS-PythonPipInstallation) written by Jarrett.
 ### Required dependencies
 - [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [Django](https://www.djangoproject.com)
@@ -24,7 +24,9 @@ MySQL Workbench is optional but highly recommanded for those who are new to MySQ
 
 It might take some time and effort to install all of these. If you encounter any error in the process, don't panic! Google and Stack Overflow are your best friends. Let's install MySQL once and for all!
 ### Install git on your computer
-If you don't have git on your machine, please refer to a tutoiral [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and install them.
+If you don't have git on your machine, please refer to a tutoiral [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and install it.
+
+If you haven't used git/github before, you're strongly encouraged to go over the git tutorial [here](https://sp18.datastructur.es/materials/guides/using-git.html) written by UCB CS 61B course staff, as we'll be using git throughout the entire project.
 ## Host the website on your machine
 - Open you terminal/command line and naviage to the directory of your choice
 - Clone this repo:
