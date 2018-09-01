@@ -4,7 +4,7 @@ This project initiated by James Yang and Taoyu Chen aims to provide NTU students
 The server is written in Python and Django while the data are stored in MySQL.
 ## Setup
 ### Install Python and pip
-If you don't have Python or pip on your machine, please refer to a tutoiral [here](https://github.com/jarrettyeo/NTUOSS-PythonPipInstallation) written by Jarrett.
+If you don't have Python or pip on your machine, please refer to a tutoiral [here](https://github.com/jarrettyeo/NTUOSS-PythonPipInstallation) written by [Jarrett](https://github.com/jarrettyeo).
 ### Required dependencies
 - [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [Django](https://www.djangoproject.com)
