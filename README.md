@@ -34,7 +34,7 @@ If you haven't used git/github before, you're strongly encouraged to go over the
 git clone https://github.com/Jamesyang2333/ntu-course-planning-system
 cd ntu-course-planning-system
 ```
-- In your MySQL, create a database scheme named "courses". In the "courses" database, create a table named "allcourses" using the following SQL script:
+- In your MySQL, create a database scheme named "courses". In the "courses" database, create a table named "allcourses" using the following SQL script. The table would be used to store NTU course data.
 ```
 CREATE TABLE `allcourses` (
   `course` varchar(10) DEFAULT NULL,
