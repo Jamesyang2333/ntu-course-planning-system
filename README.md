@@ -25,3 +25,36 @@ MySQL Workbench is optional but highly recommanded for those who are new to MySQ
 It might take some time and effort to install all of these. If you encounter any error in the process, don't panic! Google and Stack Overflow are your best friends. Let's install MySQL once and for all!
 ### Install git on your computer
 If you don't have git on your machine, please refer to a tutoiral [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and install them.
+## Host the website on your machine
+- Open you terminal/command line and naviage to the directory of your choice
+- Clone this repo:
+```
+git clone https://github.com/Jamesyang2333/ntu-course-planning-system
+cd ntu-course-planning-system
+```
+- In your MySQL, create a database scheme named "courses". In the "courses" database, create a table named "allcourses" using the following SQL script:
+```
+CREATE TABLE `allcourses` (
+  `course` varchar(10) DEFAULT NULL,
+  `indexNo` int(11) DEFAULT NULL,
+  `session1` varchar(11) DEFAULT NULL,
+  `tag1` varchar(10) DEFAULT NULL,
+  `week1` int(11) DEFAULT NULL,
+  `session2` varchar(11) DEFAULT NULL,
+  `tag2` varchar(10) DEFAULT NULL,
+  `week2` int(11) DEFAULT NULL,
+  `session3` varchar(11) DEFAULT NULL,
+  `tag3` varchar(10) DEFAULT NULL,
+  `week3` int(11) DEFAULT NULL,
+  `session4` varchar(11) DEFAULT NULL,
+  `week4` int(11) DEFAULT NULL,
+  `tag4` varchar(10) DEFAULT NULL,
+  `session5` varchar(11) DEFAULT NULL,
+  `week5` int(11) DEFAULT NULL,
+  `tag5` varchar(10) DEFAULT NULL,
+  `session6` varchar(11) DEFAULT NULL,
+  `tag6` varchar(10) DEFAULT NULL,
+  `week6` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+```
+- 
