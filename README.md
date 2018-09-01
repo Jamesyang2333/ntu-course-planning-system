@@ -62,4 +62,4 @@ CREATE TABLE `allcourses` (
 ```
 python3 manage.py runserver
 ```
-- Now go to [http://127.0.0.1:8000/home](http://127.0.0.1:8000/home/), and you'll see NTU Course-Planning System hosted on your own machine! We are good to go!
+- Now go to [http://127.0.0.1:8000/home](http://127.0.0.1:8000/home/), and you'll see NTU Course-Planning System hosted on your own machine! Try it out and we are good to go!
