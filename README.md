@@ -57,4 +57,9 @@ CREATE TABLE `allcourses` (
   `week6` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
-- 
+- Update your database password in three config.ini files. The paths of the three files are "ntu-course-planning-system/config.ini", "ntu-course-planning-system/simplesite/config.ini" and "ntu-course-planning-system/coursearrangement/config.ini"
+- Host the website using the command:
+```
+python3 manage.py runserver
+```
+- Now go to [http://127.0.0.1:8000/home](http://127.0.0.1:8000/home/), and you'll see NTU Course-Planning System hosted on your own machine! We are good to go!
