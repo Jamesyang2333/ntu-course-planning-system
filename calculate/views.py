@@ -1,8 +1,7 @@
-
 # -*- coding: utf-8 -*-
 # Create your views here.
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.views import generic
@@ -11,11 +10,12 @@ import os, sys
 from coursearrangement import solve
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from calculate.models import Myindex,Expectedindex,CourseCode,IndexNumber
-from calculate.forms import MyIndexForm,ExpectedIndexForm,ContactForm
+from calculate.models import Myindex,Expectedindex,CourseCode,IndexNumber,Applicant
+from calculate.forms import MyIndexForm,ExpectedIndexForm,ContactForm, SwapForm
 from coursearrangement.display import writecontent
 from django.core.mail import send_mail, BadHeaderError
 import random
+from calculate.match import match
 
 
 
@@ -37,12 +37,10 @@ def successView(request):
     return render(request,'success.html',{})
 
 
-
-
 def timetable(request):
     return render(request,'timetable.html')
 
-# 接收请求数据
+
 def search(request):
     request.encoding = 'utf-8'
     content = {}
@@ -120,7 +118,39 @@ def search(request):
 
     return render(request, 'timetablelist.html',content)
 
+def temp(request):
 
+    if request.method == 'POST':
+        form = SwapForm(request.POST)
+        if form.is_valid():
+            form.save()
+        code = request.POST['code']
+        current = request.POST['current']
+        expected = request.POST['expected']
+        email = request.POST['email']
+
+        #def match(code,current,expected,email)
+        result = match(code,current,expected,email)
+
+        for keys in result:
+            print("{}: {}".format(keys,result[keys]))
+
+        if result["match"]:
+            return redirect("match")
+
+        else:
+            return redirect("nomatch")
+
+    else:
+        form = SwapForm()
+
+    return render(request,'comming.html',{'form':form})
+
+def matchsuccess(request):
+    return render(request,'match.html')
+
+def nomatch(request):
+    return render(request,'nomatch.html')
 
 def encode_url(str):
     return str.replace(' ', '_')
@@ -249,7 +279,7 @@ def coursecode(request,coursecode1_name_url):
     context_dict['coursecode_list'] = coursecode_list
 
     # Render and return the rendered response back to the user.
-    
+
 
     coursecode1_name = decode_url(coursecode1_name_url)
     context_dict = {'coursecode1_name':coursecode1_name,'coursecode1_name_url':coursecode1_name_url}
@@ -333,8 +363,3 @@ def add_expectedindex(request, myindex_name_url):
         form = ExpectedIndexForm()
     context_dict['form']=form
     return render(request,'add_expectedindex.html',context_dict)
-
-
-
-def temp(request):
-    return render(request,'comming.html',{})
