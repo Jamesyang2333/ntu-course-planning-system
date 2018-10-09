@@ -124,18 +124,31 @@ def temp(request):
         form = SwapForm(request.POST)
         if form.is_valid():
             form.save()
+
+        name = request.POST['name']
         code = request.POST['code']
         current = request.POST['current']
         expected = request.POST['expected']
         email = request.POST['email']
+        # id = request.POST['id']
 
-        #def match(code,current,expected,email)
         result = match(code,current,expected,email)
 
-        for keys in result:
-            print("{}: {}".format(keys,result[keys]))
+        # for keys in result:
+        #     print("{}: {}".format(keys,result[keys]))
 
         if result["match"]:
+            #send mail to both of the ppl
+            # send_mail(subject, message, from_email, recipient_list)
+            send_mail("Course Swapping MATCH!",message(name,code,current,expected,result["name"],result["email"]),"ntucourseplanner@gmail.com",[email,])
+            send_mail("Course Swapping MATCH!",message(result["name"],code,current,expected,name,email),"ntucourseplanner@gmail.com",[result["email"],])
+
+            #delte ppl from both of the database
+            p1 = Applicant.objects.get(name=name,code=code,current=current,expected=expected,email=email)
+            p1.delete()
+            p2 = Applicant.objects.get(id=result["id"])
+            p2.delete()
+
             return redirect("match")
 
         else:
@@ -145,6 +158,13 @@ def temp(request):
         form = SwapForm()
 
     return render(request,'comming.html',{'form':form})
+
+def message(name,code,current,expected,match_name,match_email):
+    return ("Congratulations {}!\nWe have found you a match for {}, to swap {} with {}."
+    "\nThe persons name is {}, and you can contact him or her @: {}."
+    "\nYour request will now be deleted from our database, "
+    "should this swap not work out feel free to submit another request.\nCheers! :)"
+    ).format(name,code,current,expected,match_name,match_email)
 
 def matchsuccess(request):
     return render(request,'match.html')
