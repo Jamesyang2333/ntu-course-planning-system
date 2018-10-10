@@ -141,7 +141,7 @@ def temp(request):
             #send mail to both of the ppl
             # send_mail(subject, message, from_email, recipient_list)
             send_mail("Course Swapping MATCH!",message(name,code,current,expected,result["name"],result["email"]),"ntucourseplanner@gmail.com",[email,])
-            send_mail("Course Swapping MATCH!",message(result["name"],code,current,expected,name,email),"ntucourseplanner@gmail.com",[result["email"],])
+            send_mail("Course Swapping MATCH!",message(result["name"],code,expected,current,name,email),"ntucourseplanner@gmail.com",[result["email"],])
 
             #delte ppl from both of the database
             p1 = Applicant.objects.get(name=name,code=code,current=current,expected=expected,email=email)
