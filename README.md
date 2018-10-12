@@ -59,7 +59,13 @@ CREATE TABLE `allcourses` (
   `week6` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
-- Update your database password in three config.ini files. The paths of the three files are "ntu-course-planning-system/config.ini", "ntu-course-planning-system/simplesite/config.ini" and "ntu-course-planning-system/coursearrangement/config.ini"
+- Create a file named "config.ini" in the project's root directory. Type in the following configuration information into the file:
+```[mysql]
+host = localhost
+database = courses
+user = root
+password = (your own password)
+```
 - Host the website using the command:
 ```
 python3 manage.py runserver
