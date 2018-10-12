@@ -43,7 +43,13 @@
             <div class="panel-heading">&nbsp;&nbsp;COURSE: </div>
             <div class="panel-body"></div>
             </div>
-        {% endblock %}</div>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        {% endblock %}
+        </div>
     </div>
   </div>
 </section>

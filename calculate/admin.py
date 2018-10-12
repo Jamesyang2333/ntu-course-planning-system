@@ -1,5 +1,5 @@
 from django.contrib import admin
-from calculate.models import UserProfile,Myindex,Expectedindex,IndexNumber,CourseCode,Email
+from calculate.models import UserProfile,Myindex,Expectedindex,IndexNumber,CourseCode,Email, Applicant
 # Register your models here.
 
 
@@ -20,12 +20,9 @@ class EmailAdmin(admin.ModelAdmin):
 	list_display = ('name','email','message')
 
 admin.site.register(UserProfile)
+admin.site.register(Applicant)
 admin.site.register(Myindex,MyIndexAdmin)
 admin.site.register(Expectedindex)
 admin.site.register(IndexNumber,IndexAdmin)
 admin.site.register(CourseCode,CourseAdmin)
 admin.site.register(Email,EmailAdmin)
-
-
-
-

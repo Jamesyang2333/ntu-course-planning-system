@@ -1,7 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 # Create your models here.
 
+
+class Applicant(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    code = models.CharField(max_length=6)
+    current = models.CharField(max_length=5)
+    expected = models.CharField(max_length=5)
+    date = models.DateTimeField(default=timezone.now)
 
 class UserProfile(models.Model):
 # This line is required. Links UserProfile to a User model instance.

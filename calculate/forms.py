@@ -1,7 +1,18 @@
 from django import forms
-from calculate.models import UserProfile,Myindex,Expectedindex,CourseCode,IndexNumber,Email
+from calculate.models import UserProfile,Myindex,Expectedindex,CourseCode,IndexNumber,Email, Applicant
 from django.contrib.auth.models import User
 
+
+class SwapForm(forms.ModelForm):
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField(max_length=100)
+    code = forms.CharField(max_length=6)
+    current = forms.CharField(max_length=5, help_text="Please enter your current index.")
+    expected = forms.CharField(max_length=5, help_text="Please enter the index you would like.")
+
+    class Meta:
+        model = Applicant
+        fields = ('name','email','code','current','expected')
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
