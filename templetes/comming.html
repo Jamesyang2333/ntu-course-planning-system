@@ -3,52 +3,73 @@
 
 
 {% block body_block%}
+{#    <section style="padding-top: 150px;padding-bottom:30px; ">#}
+{#    <div class="row"><div class="col-md-3"></div>#}
+{#        <div class="col-md-7">#}
+{#        <div class="input-group">#}
+{#      <input type="text" class="form-control" placeholder="Coming soon...">#}
+{#      <span class="input-group-btn">#}
+{#        <button class="btn btn-default" type="button">Go!</button>#}
+{#      </span>#}
+{#    </div><!-- /input-group -->#}
+{#        </div>#}
+{#        </div>#}
+{#    </section>#}
     <section style="padding-top: 150px;padding-bottom:30px; ">
-    <div class="row"><div class="col-md-3"></div>
-        <div class="col-md-7">
-        <div class="input-group">
-      <input type="text" class="form-control" placeholder="Coming soon...">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-    </div><!-- /input-group -->
-        </div>
-        </div>
-    </section>
-    <section style="padding-top:10px;height: 430px;">
     <div class="container">
     <div class="row">
-    <div class="col-md-2 ">
-    <div class="panel panel-default">
-  <div class="panel-heading">&nbsp;&nbsp;HOT</div>
+{#    <div class="col-md-2 ">#}
+{#    <div class="panel panel-default">#}
+{#  <div class="panel-heading">&nbsp;&nbsp;HOT</div>#}
+{##}
+{#    <ul class="list-group">#}
+{#        <li>&nbsp coming soon...</li>#}
+{#    </ul>#}
+{##}
+{#    </div>#}
+{##}
+{#<div class="panel panel-default">#}
+{#  <div class="panel-heading">&nbsp;&nbsp;All</div>#}
+{##}
+{#<ul class="list-group">#}
+{#<li>&nbsp coming soon...</li>#}
+{#</ul>#}
+{#  </div>#}
+{#</div>#}
 
-<ul class="list-group">
-    <li>&nbsp coming soon...</li>
-</ul>
 
-</div>
+        <div class="col-md-6">
+            {% block content_block %}
+    {#            <div class="panel panel-default">#}
+    {#            <div class="panel-heading">&nbsp;&nbsp;COURSE: </div>#}
+    {#            <div class="panel-body"></div>#}
+    {#            </div>#}
+                <div class="container">
+                    <form method="POST">
+                        {% csrf_token %}
+{#                    {% if form %}#}
+                        {% for field in form %}
+                            <div class="group">
+    {#                              <input type="text" required>#}
+                                {{ field.as_text }}
+    {#                            <span class="highlight"></span>#}
+    {#                            <span class="bar"></span>#}
+                                <label>{{ field.label }}</label>
+                            </div>
+                        {% endfor %}
+{#                    {% else %}#}
+{#                        <p>test</p>#}
+{#                    {% endif %}#}
+    {#                    {{form.as_p}}#}
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </form>
+                </div>
+            {% endblock %}
+        </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">&nbsp;&nbsp;All</div>
-
-<ul class="list-group">
-<li>&nbsp coming soon...</li>
-</ul>
-  </div>
-</div>
-
-
-        <div class="col-md-9">{% block content_block %}
-            <div class="panel panel-default">
-            <div class="panel-heading">&nbsp;&nbsp;COURSE: </div>
-            <div class="panel-body"></div>
-            </div>
-            <form method="POST">
-                {% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" class="btn btn-primary" value="Submit">
-            </form>
-        {% endblock %}
+        <div class="col-md-6">
+            {% block result_block %}
+            {% endblock %}
         </div>
     </div>
   </div>

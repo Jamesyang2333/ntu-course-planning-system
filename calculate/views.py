@@ -167,10 +167,84 @@ def message(name,code,current,expected,match_name,match_email):
     ).format(name,code,current,expected,match_name,match_email)
 
 def matchsuccess(request):
-    return render(request,'match.html')
+    if request.method == 'POST':
+        form = SwapForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+        name = request.POST['name']
+        code = request.POST['code']
+        current = request.POST['current']
+        expected = request.POST['expected']
+        email = request.POST['email']
+        # id = request.POST['id']
+
+        result = match(code,current,expected,email)
+
+        # for keys in result:
+        #     print("{}: {}".format(keys,result[keys]))
+
+        if result["match"]:
+            #send mail to both of the ppl
+            # send_mail(subject, message, from_email, recipient_list)
+            send_mail("Course Swapping MATCH!",message(name,code,current,expected,result["name"],result["email"]),"ntucourseplanner@gmail.com",[email,])
+            send_mail("Course Swapping MATCH!",message(result["name"],code,expected,current,name,email),"ntucourseplanner@gmail.com",[result["email"],])
+
+            #delte ppl from both of the database
+            p1 = Applicant.objects.get(name=name,code=code,current=current,expected=expected,email=email)
+            p1.delete()
+            p2 = Applicant.objects.get(id=result["id"])
+            p2.delete()
+
+            return redirect("match")
+
+        else:
+            return redirect("nomatch")
+
+    else:
+        form = SwapForm()
+
+    return render(request,'match.html',{'form':form})
 
 def nomatch(request):
-    return render(request,'nomatch.html')
+    if request.method == 'POST':
+        form = SwapForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+        name = request.POST['name']
+        code = request.POST['code']
+        current = request.POST['current']
+        expected = request.POST['expected']
+        email = request.POST['email']
+        # id = request.POST['id']
+
+        result = match(code,current,expected,email)
+
+        # for keys in result:
+        #     print("{}: {}".format(keys,result[keys]))
+
+        if result["match"]:
+            #send mail to both of the ppl
+            # send_mail(subject, message, from_email, recipient_list)
+            send_mail("Course Swapping MATCH!",message(name,code,current,expected,result["name"],result["email"]),"ntucourseplanner@gmail.com",[email,])
+            send_mail("Course Swapping MATCH!",message(result["name"],code,expected,current,name,email),"ntucourseplanner@gmail.com",[result["email"],])
+
+            #delte ppl from both of the database
+            p1 = Applicant.objects.get(name=name,code=code,current=current,expected=expected,email=email)
+            p1.delete()
+            p2 = Applicant.objects.get(id=result["id"])
+            p2.delete()
+
+            return redirect("match")
+
+        else:
+            return redirect("nomatch")
+
+    else:
+        form = SwapForm()
+
+    return render(request,'nomatch.html',{'form':form})
 
 def encode_url(str):
     return str.replace(' ', '_')
