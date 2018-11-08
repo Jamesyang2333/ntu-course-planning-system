@@ -1,8 +1,7 @@
-
 # -*- coding: utf-8 -*-
 # Create your views here.
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.views import generic
@@ -11,11 +10,12 @@ import os, sys
 from coursearrangement import solve
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from calculate.models import Myindex,Expectedindex,CourseCode,IndexNumber
-from calculate.forms import MyIndexForm,ExpectedIndexForm,ContactForm
+from calculate.models import Myindex,Expectedindex,CourseCode,IndexNumber,Applicant
+from calculate.forms import MyIndexForm,ExpectedIndexForm,ContactForm, SwapForm
 from coursearrangement.display import writecontent
 from django.core.mail import send_mail, BadHeaderError
 import random
+from calculate.match import match
 
 
 
@@ -37,12 +37,10 @@ def successView(request):
     return render(request,'success.html',{})
 
 
-
-
 def timetable(request):
     return render(request,'timetable.html')
 
-# 接收请求数据
+
 def search(request):
     request.encoding = 'utf-8'
     content = {}
@@ -120,7 +118,133 @@ def search(request):
 
     return render(request, 'timetablelist.html',content)
 
+def temp(request):
 
+    if request.method == 'POST':
+        form = SwapForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+        name = request.POST['name']
+        code = request.POST['code']
+        current = request.POST['current']
+        expected = request.POST['expected']
+        email = request.POST['email']
+        # id = request.POST['id']
+
+        result = match(code,current,expected,email)
+
+        # for keys in result:
+        #     print("{}: {}".format(keys,result[keys]))
+
+        if result["match"]:
+            #send mail to both of the ppl
+            # send_mail(subject, message, from_email, recipient_list)
+            send_mail("Course Swapping MATCH!",message(name,code,current,expected,result["name"],result["email"]),"ntucourseplanner@gmail.com",[email,])
+            send_mail("Course Swapping MATCH!",message(result["name"],code,expected,current,name,email),"ntucourseplanner@gmail.com",[result["email"],])
+
+            #delte ppl from both of the database
+            p1 = Applicant.objects.get(name=name,code=code,current=current,expected=expected,email=email)
+            p1.delete()
+            p2 = Applicant.objects.get(id=result["id"])
+            p2.delete()
+
+            return redirect("match")
+
+        else:
+            return redirect("nomatch")
+
+    else:
+        form = SwapForm()
+
+    return render(request,'comming.html',{'form':form})
+
+def message(name,code,current,expected,match_name,match_email):
+    return ("Congratulations {}!\nWe have found you a match for {}, to swap {} with {}."
+    "\nThe persons name is {}, and you can contact him or her @: {}."
+    "\nYour request will now be deleted from our database, "
+    "should this swap not work out feel free to submit another request.\nCheers! :)"
+    ).format(name,code,current,expected,match_name,match_email)
+
+def matchsuccess(request):
+    if request.method == 'POST':
+        form = SwapForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+        name = request.POST['name']
+        code = request.POST['code']
+        current = request.POST['current']
+        expected = request.POST['expected']
+        email = request.POST['email']
+        # id = request.POST['id']
+
+        result = match(code,current,expected,email)
+
+        # for keys in result:
+        #     print("{}: {}".format(keys,result[keys]))
+
+        if result["match"]:
+            #send mail to both of the ppl
+            # send_mail(subject, message, from_email, recipient_list)
+            send_mail("Course Swapping MATCH!",message(name,code,current,expected,result["name"],result["email"]),"ntucourseplanner@gmail.com",[email,])
+            send_mail("Course Swapping MATCH!",message(result["name"],code,expected,current,name,email),"ntucourseplanner@gmail.com",[result["email"],])
+
+            #delte ppl from both of the database
+            p1 = Applicant.objects.get(name=name,code=code,current=current,expected=expected,email=email)
+            p1.delete()
+            p2 = Applicant.objects.get(id=result["id"])
+            p2.delete()
+
+            return redirect("match")
+
+        else:
+            return redirect("nomatch")
+
+    else:
+        form = SwapForm()
+
+    return render(request,'match.html',{'form':form})
+
+def nomatch(request):
+    if request.method == 'POST':
+        form = SwapForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+        name = request.POST['name']
+        code = request.POST['code']
+        current = request.POST['current']
+        expected = request.POST['expected']
+        email = request.POST['email']
+        # id = request.POST['id']
+
+        result = match(code,current,expected,email)
+
+        # for keys in result:
+        #     print("{}: {}".format(keys,result[keys]))
+
+        if result["match"]:
+            #send mail to both of the ppl
+            # send_mail(subject, message, from_email, recipient_list)
+            send_mail("Course Swapping MATCH!",message(name,code,current,expected,result["name"],result["email"]),"ntucourseplanner@gmail.com",[email,])
+            send_mail("Course Swapping MATCH!",message(result["name"],code,expected,current,name,email),"ntucourseplanner@gmail.com",[result["email"],])
+
+            #delte ppl from both of the database
+            p1 = Applicant.objects.get(name=name,code=code,current=current,expected=expected,email=email)
+            p1.delete()
+            p2 = Applicant.objects.get(id=result["id"])
+            p2.delete()
+
+            return redirect("match")
+
+        else:
+            return redirect("nomatch")
+
+    else:
+        form = SwapForm()
+
+    return render(request,'nomatch.html',{'form':form})
 
 def encode_url(str):
     return str.replace(' ', '_')
@@ -249,7 +373,7 @@ def coursecode(request,coursecode1_name_url):
     context_dict['coursecode_list'] = coursecode_list
 
     # Render and return the rendered response back to the user.
-    
+
 
     coursecode1_name = decode_url(coursecode1_name_url)
     context_dict = {'coursecode1_name':coursecode1_name,'coursecode1_name_url':coursecode1_name_url}
@@ -333,8 +457,3 @@ def add_expectedindex(request, myindex_name_url):
         form = ExpectedIndexForm()
     context_dict['form']=form
     return render(request,'add_expectedindex.html',context_dict)
-
-
-
-def temp(request):
-    return render(request,'comming.html',{})
