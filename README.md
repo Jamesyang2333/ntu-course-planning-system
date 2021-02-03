@@ -13,7 +13,7 @@ If you don't have Python or pip on your machine, please refer to a tutoiral [her
 #### pip commands
 ```
 $ pip3 install beautifulsoup4        # Install Beautiful Soup
-$ pip3 install Django                # Install Django
+$ pip3 install Django==2.1.3         # Install Django
 $ pip3 install mysql-connector       # Install MySQL Connector
 $ pip3 install requests              # Install Requests
 ```
@@ -60,7 +60,8 @@ CREATE TABLE `allcourses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 - Create a file named "config.ini" in the project's root directory. Type in the following configuration information into the file:
-```[mysql]
+```
+[mysql]
 host = localhost
 database = courses
 user = root
